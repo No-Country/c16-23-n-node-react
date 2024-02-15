@@ -1,6 +1,6 @@
 import express from "express";
 import postRefugio from "../controller/postRefugio.js";
-import getRefugio from "../controller/getRefugio.js";
+import getRefugio from "../controller/getRefugios.js";
 
 const router = express.Router();
 
