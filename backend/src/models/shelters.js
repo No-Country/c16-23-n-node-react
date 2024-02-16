@@ -21,7 +21,12 @@ const shelterSchema = new mongoose.Schema(
     phone: {
       type: String,
       trim: true,
-    },
+      //Validación para que sólo se ingresen números de teléfono
+      validate:{
+        validator: (value) => (!/^[a-zA-Z]+$/.test(value)), 
+        message: 'Debe ingresar un número telefónico'
+        }
+      },
     email: {
       type: String,
       required: true,
@@ -32,6 +37,11 @@ const shelterSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
+      //Validación para que no se pueda ingresar un @ a la dirección
+      vvalidate: {
+        validator: (value) => /^[a-zA-Z0-9]+$/.test(value),
+        message: 'La dirección sólo puede contener letras y números'
+      }
     },
     website: {
       type: String,
