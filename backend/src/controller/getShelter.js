@@ -1,4 +1,4 @@
-import Refugio from "../models/refugios.js";
+import Refugio from "../models/shelters.js";
 
 const getRefugio = async (req, res) => {
   try {

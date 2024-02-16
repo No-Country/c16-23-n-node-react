@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-const refugioSchema = new mongoose.Schema(
+const shelterSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -55,7 +55,7 @@ const refugioSchema = new mongoose.Schema(
   }
 );
 
-refugioSchema.pre("save", async function (next) {
+shelterSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -63,8 +63,8 @@ refugioSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-refugioSchema.methods.verifyPassword = async function (pass) {
+shelterSchema.methods.verifyPassword = async function (pass) {
   return await bcrypt.compare(pass, this.password);
 };
 
-export default mongoose.model("Refugio", refugioSchema);
+export default mongoose.model("Shelter", shelterSchema);

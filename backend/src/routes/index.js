@@ -1,10 +1,10 @@
 import express from "express";
-import postRefugio from "../controller/postRefugio.js";
-import getRefugio from "../controller/getRefugios.js";
+import postShelter from "../controller/postShelter.js";
+import getShelter from "../controller/getShelter.js";
 
 const router = express.Router();
 
-router.post("/refugio", postRefugio);
-router.get("/refugio", getRefugio);
+router.post("/shelter", postShelter);
+router.get("/shelter", getShelter);
 
 export default router;
