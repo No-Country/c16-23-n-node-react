@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import User from "./usuarios"
 
 const petsSchema = new mongoose.Schema({
     pet_type: {
@@ -50,11 +49,11 @@ const petsSchema = new mongoose.Schema({
     //     required: true, 
     //     default: true
     // }, 
-      adopter:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', 
-        default:null
-    }
+    //   adopter:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User', 
+    //     default:null
+    // }
 })
 
-export default mongoose.model("Pet", userSchema);
+export default mongoose.model("Pet", petsSchema);
