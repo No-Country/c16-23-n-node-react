@@ -1,6 +1,6 @@
 //funcion de prueba para el posteo de refugios
 
-import Refugio from "../models/shelters.js";
+import Refugio from "../../models/shelters.js";
 
 const postRefugio = async (req, res) => {
   try {

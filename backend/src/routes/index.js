@@ -1,6 +1,6 @@
 import express from "express";
-import postShelter from "../controller/postShelter.js";
-import getShelter from "../controller/getShelter.js";
+import postShelter from "../controller/shelters/postShelter.js";
+import getShelter from "../controller/shelters/getShelter.js";
 
 import postPet from "../controller/pets/potsPets.js";
 import getPets from "../controller/pets/getPets.js";
