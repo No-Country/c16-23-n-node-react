@@ -1,4 +1,10 @@
-import express from "express"
-const router = express.Router()
+import express from "express";
+import postShelter from "../controller/postShelter.js";
+import getShelter from "../controller/getShelter.js";
 
-export default router
+const router = express.Router();
+
+router.post("/shelter", postShelter);
+router.get("/shelter", getShelter);
+
+export default router;
