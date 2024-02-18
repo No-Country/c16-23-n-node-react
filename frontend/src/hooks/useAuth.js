@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const useAuth = () => {
-  const createUser = (data, navigate) => {
+function useAuth () {
+  
+  function createUser (data, navigate) {
     const url = "https://e-commerce-api-v2.academlo.tech/api/v1/users";
     axios
       .post(url, data)
@@ -11,7 +12,7 @@ const useAuth = () => {
       .catch((err) => console.log(err));
   };
 
-  const loginUser = (data, navigate) => {
+  function loginUser (data, navigate) {
     const url = "https://e-commerce-api-v2.academlo.tech/api/v1/users/login";
     axios
       .post(url, data)

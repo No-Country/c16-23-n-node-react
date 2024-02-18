@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import line from "../assets/line.svg";
+import line from "../assets/img/line.svg";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const RegisterAdoptadorPage = () => {
+function RegisterAdoptadorPage () {
 
   const { register, reset, formState: { errors }, handleSubmit } = useForm()
   const navigate = useNavigate()

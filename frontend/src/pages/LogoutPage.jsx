@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import avatar from '../assets/user.png'
+import avatar from '../assets/img/user.png'
 
-const LogoutPage = () => {
+function LogoutPage () {
 
   const user = localStorage.getItem('username')
 

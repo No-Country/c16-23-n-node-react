@@ -1,0 +1,83 @@
+[
+  {
+    "image": "./img/Lina.png",
+    "member": "Lina Sánchez",
+    "job": "Project Manager",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Andrey.png",
+    "member": "Andrey Calderón",
+    "job": "UX/UI Designer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Gabriel.png",
+    "member": "Gabriel Lovera",
+    "job": "Backend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/MatiasC.png",
+    "member": "Matias Carballo",
+    "job": "Team Leader",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Billy.png",
+    "member": "Billy Mendieta",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Karelis.png",
+    "member": "Karelys Montenegro",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Maximiliano.png",
+    "member": "Maximiliano Marigno",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Edwin.png",
+    "member": "Lina Sánchez",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "image": "./img/Irvin.png",
+    "member": "Irvin Martinez",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  }
+]
