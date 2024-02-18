@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import line from "../assets/line.svg";
+import line from "../assets/img/line.svg";
 
-const LoginPage = () => {
+function LoginPage () {
   const {
     register,
     handleSubmit,

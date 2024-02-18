@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom"
 
-const ProtectedRoutes = () => {
+function ProtectedRoutes () {
 
   if(localStorage.getItem('token')) {
     return <Outlet />
