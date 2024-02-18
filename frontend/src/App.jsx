@@ -1,7 +1,13 @@
+import { BrowserRouter as Router } from 'react-router-dom'
+import Public from './routes/Rutas'
+import './styles/index.scss'
+
 function App() {
   return (
     <>
-      <h2 className="text-xl">APP</h2>
+      <Router>
+        <Public />
+      </Router>
     </>
   )
 }
