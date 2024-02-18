@@ -1,18 +1,15 @@
 import express from "express";
-import postShelter from "../controller/shelters/postShelter.js";
-import getShelter from "../controller/shelters/getShelter.js";
-import shelterByName from "../controller/shelters/shelterByName.js";
-import postPet from "../controller/pets/potsPets.js";
+
+import postPet from "../controller/pets/postPets.js";
 import getPets from "../controller/pets/getPets.js";
 import shelterRegister from "../controller/register/shelterRegister.js";
+import shelterRoutes from "./shelterRoutes.js";
+import petRoutes from "./petRoutes.js";
 
 const router = express.Router();
+router.use("/shelter", shelterRoutes);
+router.use("/pet", petRoutes);
 
-router.post("/shelter", postShelter);
-router.get("/shelter", getShelter);
-router.get("/shelterbyname", shelterByName);
-router.post("/pet", postPet);
-router.get("/pet", getPets);
 router.post("/register", shelterRegister);
 
 export default router;
