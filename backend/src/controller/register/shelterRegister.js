@@ -7,14 +7,19 @@ const resend = new Resend("re_Z6Mmk8fu_5oPc5sBvdE7UjBfooJZ92P2k");
 const shelterRegister = async (req, res) => {
   try {
     const { userName, email, password, adress, name } = req.body;
+    const existingUser = await Shelters.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "El correo electrónico ya está en uso" });
+    }
+
     const newShelter = new Shelters({ userName, email, password, adress, name });
-    console.log(newShelter);
+
     const token = jwt.sign({ email: email }, "secreto", { expiresIn: "1h" });
     newShelter.verificationToken = token;
     await newShelter.save();
 
-    const verificationLink = `https://tu-aplicacion.com/verify-email?token=${token}`;
-    // Después de registrar al usuario, envía el correo electrónico
+    const verificationLink = `http://localhost:3000/api/verify-email?token=${token}`;
+
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
       to: [email],
@@ -23,13 +28,12 @@ const shelterRegister = async (req, res) => {
     });
 
     if (error) {
-      return res.status(400).json({ error: "Error al enviar el correo electrónico" });
+      return res.status(400).json(error.message);
     }
 
-    // Si el correo se envió correctamente, responde con éxito
     res.status(200).json({ message: "Usuario registrado exitosamente y correo electrónico enviado" });
   } catch (error) {
-    console.error(error); // Imprimir el error en la consola del servidor
+    console.error(error);
     res.status(500).json({ error: "Error interno del servidor", message: error.message }); // Devolver el error al cliente
   }
 };
