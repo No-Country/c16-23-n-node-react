@@ -1,15 +1,10 @@
 import express from "express"
+import userRoute from "./user.routes.js"
+import petRoute from "./pet.routes.js"
+
 const router = express.Router()
 
+router.use('/user', userRoute)
+router.use('/pet',petRoute)
 
-import postPet from "../controller/pets/potsPets.js";
-import getPets from "../controller/pets/getPets.js";
-import getPetsId from " "
-
-router.post("/pet", postPet);
-router.get("/pet", getPets);
-router.get("/pet/:id", getPetsId);
-
-
-
-export default router;
+export default router
