@@ -1,6 +1,6 @@
 import Pet from "../models/pets.js"
 
-const petService =()=>{
+const petService ={
     createPet: async (data) =>{
         try {
             let pet = await Pet.create(data);

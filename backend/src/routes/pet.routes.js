@@ -3,7 +3,7 @@ import petController from "../controller/pet.controller.js"
 
 const router = express.Router();
 
-router.post("/pet", petController.createPet);
+router.post("/", petController.createPet);
 // router.get("/pet", getPets);
 // router.get("/pet/:id", getPetsId);
 
