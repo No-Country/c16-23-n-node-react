@@ -7,9 +7,13 @@ import shelterRoutes from "./shelterRoutes.js";
 import petRoutes from "./petRoutes.js";
 import verified from "../controller/register/verified.js";
 
+import userRoute from "./user.routes.js";
+
 const router = express.Router();
+
+router.use("/user", userRoute);
 router.use("/shelter", shelterRoutes);
-router.use("/pet", petRoutes);
+
 router.put("/verify-email", verified);
 router.post("/register", shelterRegister);
 
