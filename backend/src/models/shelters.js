@@ -48,6 +48,10 @@ const shelterSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    emailVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

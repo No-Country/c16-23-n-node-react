@@ -1,17 +1,17 @@
 //funcion de prueba para el posteo de refugios
 
-import Refugio from "../models/shelters.js";
+import Shelter from "../../models/shelters.js";
 
-const postRefugio = async (req, res) => {
+const postShelter = async (req, res) => {
   try {
     const { name, userName, password, phone, email, adress, website, instagram, description, image } = req.body; // Extrae los datos del cuerpo de la solicitud
 
-    const existingRefugio = await Refugio.findOne({ email });
-    if (existingRefugio) {
+    const existingReShelter = await Shelter.findOne({ email });
+    if (existingShelter) {
       return res.status(400).json({ message: "Ya existe un refugio con este correo electrónico" });
     }
 
-    const refugio = new Refugio({
+    const shelter = new Shelter({
       name,
       userName,
       password,
@@ -24,7 +24,7 @@ const postRefugio = async (req, res) => {
       image,
     });
 
-    await refugio.save();
+    await shelter.save();
 
     // Devuelve una respuesta de éxito
     res.status(201).json({ message: "Refugio creado exitosamente", refugio });
@@ -33,4 +33,4 @@ const postRefugio = async (req, res) => {
     res.status(500).json({ message: "Hubo un problema al procesar la solicitud" });
   }
 };
-export default postRefugio;
+export default postShelter;
