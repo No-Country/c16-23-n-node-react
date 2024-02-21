@@ -1,12 +1,11 @@
-/* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useState } from "react";
 
 const Dropdown = ({ title, options }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div className="relative inline-block text-left  mb-2">
@@ -15,14 +14,23 @@ const Dropdown = ({ title, options }) => {
           type="button"
           onClick={toggleDropdown}
           className="inline-flex justify-center items-center px-4
-          py-2 border  shadow-sm text-sm font-medium rounded-full
-           text-GrayDark  hover:bg-gray-100 bg-white
-             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          py-2 border  shadow-sm text-sm font-medium rounded-fulltext-GrayDark  hover:bg-gray-100 bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           <span className="truncate font-poppins">{title}</span>
           {/* Icono de flecha abajo */}
-          <svg className={`w-5 h-5 ml-2 ${isOpen ? '-mr-1' : 'mr-2'}`} fill="none" stroke="black" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+          <svg
+            className={`w-5 h-5 ml-2 ${isOpen ? "-mr-1" : "mr-2"}`}
+            fill="none"
+            stroke="black"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
           </svg>
         </button>
       </div>
@@ -33,7 +41,11 @@ const Dropdown = ({ title, options }) => {
           <div className="py-1">
             {/* Mapea sobre las opciones para crear los elementos del dropdown */}
             {options.map((option, index) => (
-              <a key={index} href="#" className="block px-4 py-2 text-sm text-GrayDark hover:bg-gray-100 hover:text-gray-900">
+              <a
+                key={index}
+                href="#"
+                className="block px-4 py-2 text-sm text-GrayDark hover:bg-gray-100 hover:text-gray-900"
+              >
                 {option}
               </a>
             ))}
@@ -41,7 +53,7 @@ const Dropdown = ({ title, options }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default Dropdown

@@ -1,6 +1,6 @@
-import { Bars3Icon } from '@heroicons/react/20/solid'
+import { Bars3Icon } from "@heroicons/react/20/solid";
 
-function Navbar() {
+const Navbar = () => {
   return (
     <nav className="bg-Secondary flex justify-between p-5 h-14 items-center">
       <div>
@@ -10,7 +10,7 @@ function Navbar() {
         <Bars3Icon className="h-12 w-8 text-white font-extrabold" />
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
