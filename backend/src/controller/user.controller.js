@@ -31,6 +31,15 @@ const userController = {
       return res.status(404).json({ message: error.message });
     }
   },
+  loginGoogle : async (req, res) => {
+    try {
+      const data = req.body
+      const user = await userService.login(data)
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
 }
 
 export default userController
