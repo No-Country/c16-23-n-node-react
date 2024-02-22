@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "photo01": "/img/shelters/patasfelices.jpg",
+    "photo02": "/img/shelters/patasfelices.jpg",
+    "name": "Patas Felices",
+    "description": "Un hogar amoroso para animales desamparados, donde reciben cuidados, atención médica y la oportunidad de encontrar un nuevo hogar lleno de cariño",
+    "responsible": "Javier Rodríguez",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 2,
+    "photo01": "/img/shelters/hogarpatitas.jpg",
+    "photo02": "/img/shelters/hogarpatitas.jpg",
+    "name": "Hogar de Patitas",
+    "description": "En nuestro refugio, creemos que cada vida importa. Somos un refugio sin sacrificio que se esfuerza por encontrar hogares amorosos para cada animal que llega a nosotros. Desde cachorros hasta animales mayores, todos son bienvenidos aquí, donde reciben atención individualizada y cuidado compasivo.",
+    "responsible": "Ana Quiroz",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 3,
+    "photo01": "/img/shelters/mascotasfelices.jpg",
+    "photo02": "/img/shelters/mascotasfelices.jpg",
+    "name": "Casa de Mascotas Felices",
+    "description": "En nuestro refugio, nos dedicamos a brindar amor, cuidado y un hogar temporal a las mascotas necesitadas. Nuestro objetivo es proporcionar un ambiente seguro y amoroso donde cada animal pueda encontrar comodidad y atención mientras espera su hogar para siempre.",
+    "responsible": "Julian Morante",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 4,
+    "photo01": "/img/shelters/refugioesperanza.jpg",
+    "photo02": "/img/shelters/refugioesperanza.jpg",
+    "name": "Refugio de Esperanza",
+    "description": "Bienvenido a nuestro refugio, un lugar donde los corazones peludos encuentran refugio. Nos esforzamos por ofrecer un refugio cálido y acogedor para animales abandonados o maltratados, donde reciben cuidados veterinarios, alimentación adecuada y, lo más importante, amor incondicional.",
+    "responsible": "Cecilia Saucedo",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 5,
+    "photo01": "/img/shelters/refugiopeluditos.jpg",
+    "photo02": "/img/shelters/refugiopeluditos.jpg",
+    "name": "Refugio Peluditos",
+    "description": "Somos más que un refugio; somos una familia para los animales necesitados. En nuestro santuario, ofrecemos un ambiente tranquilo y amoroso donde cada perro y gato puede sanar, jugar y recibir el amor y la atención que merecen. Únete a nosotros en nuestra misión de salvar vidas y cambiar destinos.",
+    "responsible": "Ernesto Quiñones",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  }
+]

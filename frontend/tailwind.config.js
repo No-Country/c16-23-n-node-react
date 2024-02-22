@@ -14,8 +14,7 @@ module.exports = {
         Gray: "#D8D9DA",
         GrayDark: "#939393",
         Black: "#191919",
-        Hover: "#446A95"
-
+        TertiaryDark: "#446A95"
       },
       fontFamily: {
         poppins: "'Poppins', sans-serif",
@@ -36,12 +35,14 @@ module.exports = {
         "4xl": "2rem",
       },
       height: {
+
         72: "72px",
         104: "104px",
         120: "120px",
         160: "160px",
         740: "740px",
         238: "238px",
+        340: "340px",
         360: "360px",
         // this is for the cards
         220: "220px",
@@ -50,6 +51,7 @@ module.exports = {
       },
       width: {
         68: "68px",
+        180: "180px",
         285: "285px",
         328: "328px",
         320: "320px",
