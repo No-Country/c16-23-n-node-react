@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const petsSchema = new mongoose.Schema({
-    pet_type: {
-        type:String, 
-        required: true,
-        enum:['Perro','Gato'], 
-    },
     name: {
         type:String, 
         required: true,
@@ -16,6 +11,21 @@ const petsSchema = new mongoose.Schema({
             message: 'El nombre solo debería ser letras'
           }
     }, 
+    gender:{
+        type:String, 
+        required: true,
+        enum:['Macho', 'Hembra']
+    },
+    size:{
+        type:String, 
+        required: true,
+        enum:['Pequeño', 'Mediano', 'Grande']
+    },
+    pet_type: {
+        type:String, 
+        required: true,
+        enum:['Perro','Gato'], 
+    },
     age: {
         type:Number, 
         required: true, 
@@ -25,16 +35,30 @@ const petsSchema = new mongoose.Schema({
             message: `Debes ingresar un valor igual o mayor a 0`
           }
     },
-    gender:{
-        type:String, 
-        required: true,
-        enum:['Macho', 'Hembra']
-    }, 
     characteristics: {
         type: String, 
         required: true, 
         enum:['Calmado','Jugueton','Alegre','Tranquilo','Cariñoso', 'Guardian']
     }, 
+    description: {
+        type: String, 
+        require: true, 
+    },
+    shelter: {
+        type:String, 
+        required: true,
+    }, 
+    images: [
+        {
+          url: {
+            type: String,
+          },
+          folder: {
+            type: String,
+          },
+        },
+      ],
+
     // id_fundation:{
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'Refugio'
