@@ -28,7 +28,7 @@ const shelterSchema = new mongoose.Schema(
       trim: true,
       unique: true,
     },
-    adress: {
+    address: {
       type: String,
       required: true,
       trim: true,
@@ -52,6 +52,19 @@ const shelterSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    responsable: {
+      type: String,
+    },
+    images: [
+      {
+        url: {
+          type: String,
+        },
+        folder: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
