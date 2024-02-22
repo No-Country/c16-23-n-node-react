@@ -67,24 +67,13 @@ BACK:
 ## **EQUIPO**
 
 | **NOMBRE** | **ROL** |
-| --- | --- |
 | Andrey Calderón | Diseñador UI/UX |
-| --- | --- |
 | Matías Marensi | Desarrollador Backend |
-| --- | --- |
 | Gabriel Lovera | Desarrollador Backend |
-| --- | --- |
 | Billy Mendieta | Desarrollador Backend |
-| --- | --- |
 | Edwin Amaranto | Desarrollador Frontend |
-| --- | --- |
 | Maximiliano Marigno | Desarrollador Frontend |
-| --- | --- |
 | Irvin Martínez | Desarrollador Frontend |
-| --- | --- |
 | Karelys Montenegro | Desarrollador Frontend |
-| --- | --- |
 | Lina Sánchez | Project Manager |
-| --- | --- |
 | Matías Carballo | Líder Técnico |
-| --- | --- |
