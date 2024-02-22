@@ -66,8 +66,8 @@ BACK:
 
 ## **EQUIPO**
 
-| **NOMBRE** | **ROL** |
-| Andrey Calderón | Diseñador UI/UX |
+| **NOMBRE** | **ROL** 
+| Andrey Calderón | Diseñador UI/UX 
 | Matías Marensi | Desarrollador Backend |
 | Gabriel Lovera | Desarrollador Backend |
 | Billy Mendieta | Desarrollador Backend |
