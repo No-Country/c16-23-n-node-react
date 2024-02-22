@@ -1,8 +1,11 @@
 import Pet from "../models/pets.js";
+import {uploadImage, deleteImage} from "../helpers/cloudinary.js"; 
 
 const petService = {
   createPet: async (data) => {
     try {
+      // // const {pet_type, name, age, gender, characteristics, shelter_id, status} = data; 
+      // // const images = {folder: data.folder, url: data.url}; 
       let pet = await Pet.create(data);
       //   pet = {
       //     pet_type: pet.pet_type,

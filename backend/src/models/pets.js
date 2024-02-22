@@ -44,6 +44,16 @@ const petsSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
+  images: [
+    {
+      url: {
+        type: String,
+      },
+      folder: {
+        type: String,
+      },
+    },
+  ],
   // adoption_data:{
   //     type:,
   //     required: true,

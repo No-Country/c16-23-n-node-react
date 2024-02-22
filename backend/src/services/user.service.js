@@ -2,13 +2,10 @@
 import jwt from 'jsonwebtoken';
 import User from "../models/user.js"
 
-
 const generateTokens = async (id) => {
   const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
   return token;
-
 }
-
 
 const userService = {
   createUser: async (data) => {
@@ -62,8 +59,6 @@ const userService = {
       throw new Error(`${error.message}`);
     }
   },
-
-
 }
 
 export default userService
