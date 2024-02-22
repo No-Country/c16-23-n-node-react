@@ -1,6 +1,6 @@
-import { BrowserRouter as Router } from 'react-router-dom'
-import Public from './routes/Routes'
-import './styles/index.scss'
+import { BrowserRouter as Router } from "react-router-dom";
+import Public from "./routes/Routes";
+import "./styles/index.scss";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         <Public />
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
