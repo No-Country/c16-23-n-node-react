@@ -1,11 +1,6 @@
 import Shelter from "../models/shelters.js";
 import jwt from "jsonwebtoken";
 
-const generateTokens = async (id) => {
-  const token = jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-  return token;
-};
-
 const shelterService = {
   getShelters: async () => {
     try {
@@ -35,10 +30,10 @@ const shelterService = {
 
   registerShelter: async (data) => {
     try {
-      const newShelter = await Shelter.create(data);
       // if (existingUser) {
       //   return "El correo electrónico ya está en uso";
       // }
+      const newShelter = await Shelter.create(data);
 
       return newShelter;
     } catch (error) {
