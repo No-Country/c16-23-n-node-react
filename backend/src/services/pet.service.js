@@ -17,10 +17,9 @@ const petService = {
       //     status: pet.status,
       //   };
       const pet1 = await Pet.findById(pet._id).populate("shelter_id", "address name website");
-
       return pet1;
     } catch (error) {
-      console.log(`Error encontrado: ${error.message}`);
+      throw new Error(`${error.message}`);
     }
   },
   getPets: async () => {
@@ -28,7 +27,7 @@ const petService = {
       const pets = await Pet.find();
       return pets;
     } catch (error) {
-      console.error(error);
+      throw new Error(`${error.message}`);
     }
   },
   getPetById: async (_id) => {
@@ -36,7 +35,7 @@ const petService = {
       const petFound = await Pet.findById(_id);
       return petFound;
     } catch (error) {
-      console.error(error);
+      throw new Error(`${error.message}`);
     }
   },
 };
