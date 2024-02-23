@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "image": "./img/team/Lina.png",
+    "member": "Lina Sánchez",
+    "job": "Project Manager",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 2,
+    "image": "./img/team/Andrey.png",
+    "member": "Andrey Calderón",
+    "job": "UX/UI Designer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 3,
+    "image": "./img/team/MatiasC.png",
+    "member": "Matias Carballo",
+    "job": "Team Leader",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 4,
+    "image": "./img/team/MatiasM.png",
+    "member": "Matias Marensi",
+    "job": "Backend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 5,
+    "image": "./img/team/Gabriel.png",
+    "member": "Gabriel Lovera",
+    "job": "Backend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 6,
+    "image": "./img/team/Billy.png",
+    "member": "Billy Mendieta",
+    "job": "Backend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 7,
+    "image": "./img/team/Karelis.png",
+    "member": "Karelys Montenegro",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 8,
+    "image": "./img/team/Maximiliano.png",
+    "member": "Maximiliano Marigno",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 9,
+    "image": "./img/team/Edwin.png",
+    "member": "Lina Sánchez",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  {
+    "id": 10,
+    "image": "./img/team/Irvin.png",
+    "member": "Irvin Martinez",
+    "job": "Frontend Developer",
+    "github": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  }
+]
