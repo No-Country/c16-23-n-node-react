@@ -26,6 +26,19 @@ const shelterController = {
       return res.status(500).json({ message: error.message });
     }
   },
+  editShelter: async (req, res) => {
+    try {
+      const data = req.body;
+      const id = req.params._id;
+
+      if (data.password) throw new Error("Can't change password");
+      if (data.email) throw new Error("Can't change email address");
+      const shelter = await shelterService.editShelter(data, id);
+      return res.status(200).json(shelter);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
 
   shelterByName: async (req, res) => {
     try {

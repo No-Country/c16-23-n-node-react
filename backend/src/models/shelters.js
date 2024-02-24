@@ -45,9 +45,7 @@ const shelterSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    image: {
-      type: String,
-    },
+
     emailVerified: {
       type: Boolean,
       default: false,

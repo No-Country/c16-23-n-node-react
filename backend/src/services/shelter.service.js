@@ -27,7 +27,25 @@ const shelterService = {
       throw new Error(`Error encontrado: ${error.message}`);
     }
   },
-
+  editShelter: async (data, id) => {
+    console.log(id);
+    try {
+      let shelter = await Shelter.findByIdAndUpdate(id, data, { new: true });
+      shelter = {
+        name: shelter.name,
+        userName: shelter.userName,
+        phone: shelter.phone,
+        email: shelter.email,
+        address: shelter.address,
+        website: shelter.website,
+        instagram: shelter.instagram,
+        description: shelter.description,
+      };
+      return shelter;
+    } catch (error) {
+      throw new Error(`${error.message}`);
+    }
+  },
   registerShelter: async (data) => {
     try {
       // if (existingUser) {
