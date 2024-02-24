@@ -48,6 +48,17 @@ const petController = {
       return res.status(404).json({ message: error.message });
     }
   },
+  editPetById: async (req, res) => {
+    try {
+      const data = req.body;
+      data.id = req.params._id;
+      console.log(data.id); 
+      const pet = await petService.editPetById(data);
+      return res.status(200).json(pet);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
 };
 
 export default petController;

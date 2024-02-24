@@ -38,6 +38,15 @@ const petService = {
       throw new Error(`${error.message}`);
     }
   },
+  editPetById: async (data) =>{
+    try {
+      let pet = await Pet.findByIdAndUpdate(data.id, data, { new: true });
+      return pet
+    } catch (error) {
+      throw new Error(`${error.message}`);
+    }
+  }
 };
+
 
 export default petService;
