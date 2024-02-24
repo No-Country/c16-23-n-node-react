@@ -27,20 +27,10 @@ const shelterService = {
       throw new Error(`Error encontrado: ${error.message}`);
     }
   },
-  editShelter: async (data, id) => {
-    console.log(id);
+  editShelter: async (data) => {
     try {
-      let shelter = await Shelter.findByIdAndUpdate(id, data, { new: true });
-      shelter = {
-        name: shelter.name,
-        userName: shelter.userName,
-        phone: shelter.phone,
-        email: shelter.email,
-        address: shelter.address,
-        website: shelter.website,
-        instagram: shelter.instagram,
-        description: shelter.description,
-      };
+      let shelter = await Shelter.findByIdAndUpdate(data.id, data.data, { new: true });
+
       return shelter;
     } catch (error) {
       throw new Error(`${error.message}`);
@@ -48,14 +38,20 @@ const shelterService = {
   },
   registerShelter: async (data) => {
     try {
-      // if (existingUser) {
+      // if (data.email) {
       //   return "El correo electrónico ya está en uso";
       // }
+      const { email } = data;
+      const userFound = await Shelter.findOne({ email: email });
+      if (userFound) {
+        throw new Error("El correo electrónico ya está en uso");
+      }
+
       const newShelter = await Shelter.create(data);
 
       return newShelter;
     } catch (error) {
-      throw new Error(`Error encontrado: ${error.message}`);
+      throw new Error(error.message);
     }
   },
   login: async (data) => {

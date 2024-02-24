@@ -33,9 +33,27 @@ const shelterController = {
       const data = req.body;
       const id = req.params._id;
 
+      if (req.files && req.files.image) {
+        if (!Array.isArray(req.files?.image)) {
+          req.files.image = [req.files.image];
+        }
+        if (req.files?.image) {
+          const imagesToUpload = [];
+          for (const image of req.files.image) {
+            const result = await uploadImage(image.tempFilePath);
+            fs.unlink(image.tempFilePath);
+            const folder = result.public_id;
+            const url = result.secure_url;
+            const imgs = { folder, url };
+            imagesToUpload.push(imgs);
+          }
+          data.images = imagesToUpload;
+        }
+      }
+
       if (data.password) throw new Error("Can't change password");
       if (data.email) throw new Error("Can't change email address");
-      const shelter = await shelterService.editShelter(data, id);
+      const shelter = await shelterService.editShelter({ id, data });
       return res.status(200).json(shelter);
     } catch (error) {
       return res.status(404).json({ message: error.message });
@@ -77,7 +95,6 @@ const shelterController = {
           data.images = imagesToUpload;
         }
       }
-
       const newShelter = await shelterService.registerShelter(data);
 
       //   const token = generateToken(newShelter._id);
@@ -128,7 +145,7 @@ const shelterController = {
       res.status(200).json(newShelter);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: error.message }); //
+      res.status(409).json(error.message); //
     }
   },
   login: async (req, res) => {
