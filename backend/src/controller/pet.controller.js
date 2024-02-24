@@ -1,12 +1,12 @@
 import petService from "../services/pet.service.js";
 import fs from "fs-extra";
-import {uploadImage, deleteImage} from "../helpers/cloudinary.js"; 
+import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
 
 const petController = {
   createPet: async (req, res) => {
     try {
       const data = req.body;
-      //->>>>>>>>>>if (req.files && req.files.image) {
+      if (req.files && req.files.image) {
         if (!Array.isArray(req.files?.image)) {
           req.files.image = [req.files.image];
         }
@@ -21,8 +21,9 @@ const petController = {
             imagesToUpload.push(imgs);
           }
           data.images = imagesToUpload;
+          console.log(imagesToUpload);
         }
-      //---->}
+      }
 
       const pet = await petService.createPet(data);
       return res.status(201).json(pet);
