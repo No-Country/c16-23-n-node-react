@@ -7,15 +7,6 @@ const petService = {
       // // const {pet_type, name, age, gender, characteristics, shelter_id, status} = data; 
       // // const images = {folder: data.folder, url: data.url}; 
       let pet = await Pet.create(data);
-      //   pet = {
-      //     pet_type: pet.pet_type,
-      //     shelter_id: pet.shelter_id,
-      //     name: pet.name,
-      //     age: pet.age,
-      //     gender: pet.gender,
-      //     characteristics: pet.characteristics,
-      //     status: pet.status,
-      //   };
       const pet1 = await Pet.findById(pet._id).populate("shelter_id", "address name website");
       return pet1;
     } catch (error) {
@@ -42,6 +33,14 @@ const petService = {
     try {
       let pet = await Pet.findByIdAndUpdate(data.id, data, { new: true });
       return pet
+    } catch (error) {
+      throw new Error(`${error.message}`);
+    }
+  }, 
+  deletePetById: async (data) =>{
+    try {
+      let pet = await Pet.deleteOne({_id: data.id});
+      return { message: 'Mascota eliminada correctamente' };
     } catch (error) {
       throw new Error(`${error.message}`);
     }

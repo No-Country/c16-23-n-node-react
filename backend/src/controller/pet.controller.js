@@ -60,6 +60,16 @@ const petController = {
       return res.status(404).json({ message: error.message });
     }
   },
+  deletePetById: async (req, res) => {
+    try {
+      const id = req.params._id;
+      const pet = await petService.deletePetById({ id });
+      console.log(pet);
+      return res.status(200).json(pet);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
 };
 
 export default petController;
