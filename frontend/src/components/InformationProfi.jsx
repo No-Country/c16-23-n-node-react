@@ -2,18 +2,25 @@ import { useState, useEffect } from "react";
 
 function InformationProfi () {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [message, setMessage] = useState('');
-    const [errors, setErrors] = useState({});
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
+  const [imagen, setImagen] = useState("");
 
-  
-    const handleInformation = (e) => {
-      const { name, value } = e.target;
+  const handleInformation= (e) => {
+    const { name, value } = e.target;
+    if (name === 'name') {
       setName(value);
-    };
-  
+    } else if (name === 'email') {
+      setEmail(value);
+    } else if (name === 'phoneNumber') {
+      setPhoneNumber(value);
+    } 
+
+  };
+
+    
     const handleInformationP = () => {
       const errors = {}; 
   

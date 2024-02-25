@@ -2,44 +2,42 @@ import { useState, useEffect } from "react";
 
 function ChangePassword1 () {
 
-  const [oldPassword, setOldPassword] = useState(''); 
+  // const [oldPassword, setOldPassword] = useState(''); 
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [imagen, setImagen] = useState("");
+  // const [imagen, setImagen] = useState("");
 
-  const handleChange= (e) => {
-    const { name, value } = e.target;
-    if (name === 'oldPassword') {
-      setOldPassword(value);
-    } else if (name === 'newPassword') {
-      setNewPassword(value);
-    } else if (name === 'confirmPassword') {
-      setConfirmPassword(value);
-    }
-  };
-
-  
-  const handleChangePassword = () => {
-
-    if (newPassword === confirmPassword) {
-      setError(true) 
-      setMessage('Contraseña actualizada exitosamente');
-      return
-
-    } else {
-      setMessage('Las contraseñas no coinciden');
-    }
-  };
-
-  const handleImageUpload = (event) => {
-    const selectedFile = event.target.files[0];
+  const handleSubmit = (e) => { 
+    e.preventDefault() 
+   
+    if (newPassword === "" || confirmPassword === "") { 
+    setMessage(true) 
+    return 
     
-    if (selectedFile) {
+    } 
+    setMessage(false) 
+    }; 
+   
+    const handleChangePassword = () => { 
+    if (newPassword === confirmPassword) { 
+    setError(true) 
+    setMessage('Contraseña actualizada exitosamente'); 
+    return 
+   
+    } else { 
+    setMessage('Las contraseñas no coinciden'); 
+    } 
+    }; 
+
+  // const handleImageUpload = (event) => { //para la imagen
+  //   const selectedFile = event.target.files[0];
+    
+  //   if (selectedFile) {
       
-      setImagen(URL.createObjectURL(selectedFile));
-    }
-  };
+  //     setImagen(URL.createObjectURL(selectedFile));
+  //   }
+  // };
 
 
   return (
