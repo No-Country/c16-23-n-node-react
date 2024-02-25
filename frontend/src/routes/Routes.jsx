@@ -1,4 +1,4 @@
-// import HomePage from "../pages/HomePage/HomePage";
+import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ProtectedRoutes from "../pages/ProtectedRoutes";
 import LogoutPage from "../pages/LoginPage/LogoutPage";
@@ -18,7 +18,7 @@ function Rutas() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registrationTypes" element={<TypeRegister />} />
         <Route path="/adopterRegistration" element={<RegisterAdopterPage />} />

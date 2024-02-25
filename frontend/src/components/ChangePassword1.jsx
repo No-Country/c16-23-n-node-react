@@ -71,6 +71,7 @@ function ChangePassword1 () {
       />
      
       <button className="bg-Positive text-white-500 font-poppins p-3 w-64 my-4 rounded-full relative " onClick={handleChangePassword1}>Actualizar Contraseña</button>
+      <button className="bg-red-900 text-white-500 font-poppins p-3 w-64 my-4 rounded-full relative " onClick={handleChangePassword1}>Cancelar</button>
       <p>{message}</p>
     </div>
       </section>

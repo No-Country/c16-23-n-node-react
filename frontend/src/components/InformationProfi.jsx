@@ -102,6 +102,7 @@ function InformationProfi () {
           />
          
           <button className="bg-Positive text-white-500 font-poppins p-3 w-64 my-4 rounded-full relative " onClick={handleInformationP}>Actualizar Datos</button>
+          <button className="bg-red-900 text-white-500 font-poppins p-3 w-64 my-4 rounded-full relative " onClick={handleInformationP}>Cancelar</button>
           <p>{message}</p>
         </div>
           </section>
