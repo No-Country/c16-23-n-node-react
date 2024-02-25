@@ -6,8 +6,8 @@ const petsSchema = new mongoose.Schema({
     required: true,
     maxlength: 20,
     validate: {
-      validator: (value) => /^[a-zA-Z\s]+$/.test(value),
-      message: "El nombre solo debería ser letras",
+      validator: (value) => /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/.test(value),
+      message: "El nombre solo debería ser letras y espacios. Debe incluir al menos una letra.",
     },
   },
   pet_type: {
