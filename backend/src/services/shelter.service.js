@@ -13,6 +13,8 @@ const shelterService = {
   shelterById: async (_id) => {
     try {
       const shelterFound = await Shelter.findById(_id);
+      if (!shelterFound) return "No se encontró el refugio";
+
       return shelterFound;
     } catch (error) {
       throw new Error(`Error encontrado: ${error.message}`);
