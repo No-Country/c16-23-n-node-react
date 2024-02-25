@@ -29,7 +29,11 @@ const petsSchema = new mongoose.Schema({
       message: `Debes ingresar un valor mayor a 0 y hasta 50. Puede incluir 0.# para los meses`,
     },
   },
-
+  size:{
+    type: String,
+    required: true,
+    enum: ["Pequeño", "Mediano", "Grande"],
+  },
   characteristics: {
     type: String,
     required: true,
