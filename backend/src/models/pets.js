@@ -15,21 +15,21 @@ const petsSchema = new mongoose.Schema({
     required: true,
     enum: ["Perro", "Gato"],
   },
-  
-  age: {
-    type: Number,
-    required: true,
-    min: 0,
-    validate: {
-      validator: (value) => value >= 0,
-      message: `Debes ingresar un valor igual o mayor a 0`,
-    },
-  },
   gender: {
     type: String,
     required: true,
     enum: ["Macho", "Hembra"],
   },
+  age: {
+    type: Number,
+    required: true,
+    min: 0,
+    validate: {
+      validator: (value) => value > 0 && value <= 50,
+      message: `Debes ingresar un valor mayor a 0 y hasta 50. Puede incluir 0.# para los meses`,
+    },
+  },
+
   characteristics: {
     type: String,
     required: true,
