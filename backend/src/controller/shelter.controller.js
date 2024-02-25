@@ -3,6 +3,21 @@ import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 import fs from "fs-extra";
 import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
+export const uploadImages = async (files, callback) => {
+  if (!files || !Array.isArray(files)) return;
+
+  const imagesToUpload = [];
+  for (const image of files) {
+    const result = await uploadImage(image.tempFilePath);
+    fs.unlink(image.tempFilePath);
+    const folder = result.public_id;
+    const url = result.secure_url;
+    const imgs = { folder, url };
+    imagesToUpload.push(imgs);
+  }
+
+  callback(imagesToUpload);
+};
 
 const generateToken = (userId) => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
@@ -22,6 +37,7 @@ const shelterController = {
       const { _id } = req.params;
 
       const shelter = await shelterService.shelterById(_id);
+      console.log(shelter);
       return res.json(shelter);
     } catch (error) {
       console.error("Error al buscar refugios por nombre:", error);
@@ -152,7 +168,9 @@ const shelterController = {
     try {
       const data = req.body;
       const shelterUser = await shelterService.login(data);
-      return res.status(200).json(shelterUser);
+      if (!shelterUser) throw new Error("Usuario o contraseña incorrectos");
+      const token = generateToken(shelterUser._id);
+      res.status(200).json({ token });
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }

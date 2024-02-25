@@ -1,10 +1,15 @@
 import Shelter from "../models/shelters.js";
 import jwt from "jsonwebtoken";
 
+const generateToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+};
 const shelterService = {
   getShelters: async () => {
     try {
-      const shelters = await Shelter.find();
+      const shelters = await Shelter.find().populate("pets");
+      console.log(shelters);
+
       return shelters;
     } catch (error) {
       throw new Error(`Error encontrado: ${error.message}`);
@@ -12,7 +17,7 @@ const shelterService = {
   },
   shelterById: async (_id) => {
     try {
-      const shelterFound = await Shelter.findById(_id);
+      const shelterFound = await Shelter.findById(_id).populate("pets", "name");
       if (!shelterFound) return "No se encontró el refugio";
 
       return shelterFound;
@@ -22,7 +27,7 @@ const shelterService = {
   },
   shelterByName: async (name) => {
     try {
-      const foundByName = await Shelter.find({ name: { $regex: `.*${name}.*`, $options: "i" } });
+      const foundByName = await Shelter.find({ name: { $regex: `.*${name}.*`, $options: "i" } }).populate("pets");
 
       return foundByName;
     } catch (error) {
@@ -62,7 +67,7 @@ const shelterService = {
       let shelterUser = await Shelter.findOne({ email });
       if (!shelterUser) throw new Error("Email not found");
       if (await shelterUser.verifyPassword(password)) {
-        const token = await generateTokens(shelterUser._id);
+        const token = await generateToken(shelterUser._id);
         shelterUser = {
           name: shelterUser.name,
           userName: shelterUser.userName,

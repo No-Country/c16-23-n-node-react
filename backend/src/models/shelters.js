@@ -50,6 +50,12 @@ const shelterSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    pets: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Pet",
+      },
+    ],
     responsable: {
       type: String,
     },
