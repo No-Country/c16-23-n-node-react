@@ -14,7 +14,8 @@ module.exports = {
         Gray: "#D8D9DA",
         GrayDark: "#939393",
         Black: "#191919",
-        TertiaryDark: "#446A95"
+        TertiaryDark: "#446A95",
+        Positive: "#40A2E3"
       },
       fontFamily: {
         poppins: "'Poppins', sans-serif",

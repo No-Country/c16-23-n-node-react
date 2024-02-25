@@ -1,4 +1,4 @@
-import HomePage from "../pages/HomePage/HomePage";
+// import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import ProtectedRoutes from "../pages/ProtectedRoutes";
 import LogoutPage from "../pages/LoginPage/LogoutPage";
@@ -11,12 +11,14 @@ import SheltersPage from "../pages/SheltersPage/SheltersPage";
 import ShelterInformationPage from '../pages/SheltersPage/ShelterInformationPage';
 import PetInformationPage from '../pages/PetsPage/PetInformationPage';
 import NotFound404Page from '../pages/NotFound404Page';
+import ProfileUpdatePage from "../pages/ProfileUpdatePage";
+import ProfileInformationPage from "../pages/ProfileInformationPage"
 
 function Rutas() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registrationTypes" element={<TypeRegister />} />
         <Route path="/adopterRegistration" element={<RegisterAdopterPage />} />
@@ -28,6 +30,8 @@ function Rutas() {
         {/* <Route element={<ProtectedRoutes />} > */}
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="*" element={<NotFound404Page />} />
+        <Route path="/profile" element={<ProfileUpdatePage />} />
+        <Route path="/profileInfo" element={<ProfileInformationPage />} />
         {/* </Route> */}
       </Routes>
     </div>

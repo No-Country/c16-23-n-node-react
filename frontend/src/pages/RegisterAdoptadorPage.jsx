@@ -26,7 +26,7 @@ function RegisterAdoptadorPage () {
           className="w-full max-w-md rounded-xl p-6"
           onSubmit={handleSubmit(submit)}
         >
-                    <figure className="uppercase font-bold text-2xl text-center mb-8">
+        <figure className="uppercase font-bold text-2xl text-center mb-8">
             logo
           </figure>
           <strong className="block text-2xl font-bold leading-normal mb-10 text-center">
