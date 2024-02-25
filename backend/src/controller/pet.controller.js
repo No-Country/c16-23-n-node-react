@@ -34,8 +34,12 @@ const petController = {
   getPets: async (req, res) => {
     try {
       const pets = await petService.getPets();
+      if (pets.length === 0) {
+        return res.status(200).send("No hay mascotas para mostrar");
+      } else {
+        return res.status(200).json(pets);
+      }
       // return res.status(200).send({"La cantidad de Mascotas es ": pets.length, pets});
-      return res.status(200).json(pets);
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }

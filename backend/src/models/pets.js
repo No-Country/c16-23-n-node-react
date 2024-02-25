@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
 
 const petsSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: 20,
+    validate: {
+      validator: (value) => /^[a-zA-Z\s]+$/.test(value),
+      message: "El nombre solo debería ser letras",
+    },
+  },
   pet_type: {
     type: String,
     required: true,
     enum: ["Perro", "Gato"],
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-    maxlength: 20,
-    validate: {
-      validator: (value) => /^[a-zA-Z]+$/.test(value),
-      message: "El nombre solo debería ser letras",
-    },
-  },
+  
   age: {
     type: Number,
     required: true,
