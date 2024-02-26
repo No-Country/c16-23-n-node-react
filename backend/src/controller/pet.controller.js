@@ -4,7 +4,7 @@ import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
 
 const petController = {
   createPet: async (req, res) => {
-    
+
     try {
       const data = req.body;
       if (req.files && req.files.image) {
@@ -49,7 +49,7 @@ const petController = {
     try {
       const id = req.params;
       const petFound = await petService.getPetById(id);
-      if(petFound === null) {
+      if (petFound === null) {
         return res.status(200).send(`No se encontró mascotas`);
       }
       return res.status(200).json(petFound);
@@ -57,14 +57,30 @@ const petController = {
       return res.status(404).json({ message: error.message });
     }
   },
-  getPetBySize: async (req, res) =>{
+  getPetsByFilters: async (req, res) => {
     try {
-      const {size} = req.query;
-      const petsBySize = await petService.getPetBySize(size);
-      if(petsBySize.length===0){
-        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s `});
+      const { size, pet_type, gender, characteristics } = req.query;
+      const filters = {};
+      if (size) filters.size = size;
+      if (pet_type) filters.pet_type = pet_type;
+      if (gender) filters.gender = gender;
+      if (characteristics) {
+        if (Array.isArray(characteristics)) {
+          filters.characteristics = { $in: characteristics };
+        } else {
+          filters.characteristics = characteristics;
+        }
       }
-      return res.status(200).json(petsBySize);
+      const petsByFilters = await petService.getPetsByFilters(
+        filters.size,
+        filters.pet_type,
+        filters.gender,
+        filters.characteristics
+      );
+      if (petsByFilters.length === 0) {
+        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s ` });
+      }
+      return res.status(200).json(petsByFilters);
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }
@@ -73,7 +89,7 @@ const petController = {
     try {
       const data = req.body;
       data.id = req.params._id;
-      console.log(data.id); 
+      console.log(data.id);
       const pet = await petService.editPetById(data);
       return res.status(200).json(pet);
     } catch (error) {

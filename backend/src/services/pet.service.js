@@ -29,10 +29,15 @@ const petService = {
       throw new Error(`${error.message}`);
     }
   },
-  getPetBySize: async (size) =>{
+  getPetsByFilters: async (size, pet_type, gender, characteristics) => {
     try {
-      const petsBySize = await Pet.find({size: size });
-      return petsBySize; 
+      const queryConditions = [];
+      if (size) queryConditions.push({ size: size });
+      if (pet_type) queryConditions.push({ pet_type: pet_type });
+      if (gender) queryConditions.push({ gender: gender });
+      if (characteristics) queryConditions.push({ characteristics: characteristics });
+      const petsBySize = await Pet.find({ $and: queryConditions });
+      return petsBySize;
     } catch (error) {
       throw new Error(`${error.message}`);
     }
