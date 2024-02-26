@@ -1,12 +1,9 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable react/jsx-no-comment-textnodes */
+import { Route, Routes } from "react-router-dom";
+import { useLocalStorage } from "react-use";
+import { UserProvider } from "../context/UserProvider";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-// import ProtectedRoutes from "../pages/ProtectedRoutes";
 import LogoutPage from "../pages/LoginPage/LogoutPage";
-import { Route, Routes } from "react-router-dom";
 import RegisterShelterPage from "../pages/LoginPage/RegisterShelterPage";
 import RegisterAdopterPage from "../pages/LoginPage/RegisterAdopterPage";
 import TypeRegister from "../pages/LoginPage/TypeRegister";
@@ -16,9 +13,10 @@ import ShelterInformationPage from "../pages/SheltersPage/ShelterInformationPage
 import PetInformationPage from "../pages/PetsPage/PetInformationPage";
 import NotFound404Page from "../pages/NotFound404Page";
 import ProtectedRoutes from "../pages/ProtectedRoutes";
-import { useLocalStorage } from "react-use";
-import { UserProvider } from "../context/UserProvider";
-// import ProtectedRoutes from "../pages/ProtectedRoutes";
+import UserProfilePage from "../pages/UserProfilePage/UserProfilePage";
+import ShelterProfilePage from "../pages/ShelterProfilePage/ShelterProfilePage";
+import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInformationPage";
+import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
@@ -44,6 +42,16 @@ function Rutas() {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/shelters" element={<SheltersPage />} />
         <Route path="*" element={<NotFound404Page />} />
+        <Route path="/userprofile" element={<UserProfilePage />} />
+        <Route path="/shelterprofile" element={<ShelterProfilePage />} />
+        <Route
+          path="/updateUserInformation"
+          element={<UpdateUserInformationPage />}
+        />
+        <Route
+          path="/updateUserPassword"
+          element={<UpdateUserPasswordPage />}
+        />
       </Routes>
     </UserProvider>
   );

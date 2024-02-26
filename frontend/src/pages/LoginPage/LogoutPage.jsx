@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import avatar from "/img/others/user.png";
 import Navbar from "../../components/shared/Navbar";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { LoginContext } from "../../context/LoginContext";
 
 function LogoutPage() {
   // const user = localStorage.getItem("username");
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {

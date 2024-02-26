@@ -6,7 +6,7 @@ import line from "/img/others/line2.svg";
 import Navbar from "../../components/shared/Navbar";
 import { useLocalStorage } from "react-use";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
+import { LoginContext } from "../../context/LoginContext";
 
 function LoginPage() {
   const {
@@ -20,7 +20,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const [user, setUser] = useLocalStorage("user");
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
 
   const submit = (data) => {
     if (!user) {

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { UserContext } from "./UserContext";
+import { LoginContext } from "./LoginContext";
 
 export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,8 +14,8 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, login, logout }}>
+    <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, login, logout }}>
       {children}
-    </UserContext.Provider>
+    </LoginContext.Provider>
   );
 };

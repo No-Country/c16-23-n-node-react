@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars */
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logoApp from "/img/logo/IconConexion.png";
 import { useLocalStorage } from "react-use";
-import { UserContext } from "../../context/UserContext";
+import { LoginContext } from "../../context/LoginContext";
 
 const Navbar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const [user, setUser] = useLocalStorage("user");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [windowDimension, setWindowDimension] = useState({
     innerWidth: window.innerWidth,
@@ -24,9 +24,6 @@ const Navbar = () => {
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  const [user, setUser] = useLocalStorage("user");
-  console.log(isLoggedIn);
 
   useEffect(() => {
     window.addEventListener("resize", detectSize);
@@ -76,7 +73,7 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="#"
+              to="/userprofile"
               className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600 "
             >
               Mi Perfil
@@ -168,7 +165,7 @@ const Navbar = () => {
           <li>
             <Link
               onClick={handleClick}
-              to="#"
+              to="/userprofile"
               className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
             >
               Mi Perfil

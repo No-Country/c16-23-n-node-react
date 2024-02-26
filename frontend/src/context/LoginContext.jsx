@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
 
-export const UserContext = createContext();
+export const LoginContext = createContext();
 
 const UserContextProvider = ({ children }) => {
-  return <UserContext.Provider>{children}</UserContext.Provider>;
+  return <LoginContext.Provider>{children}</LoginContext.Provider>;
 };
 
 export default UserContextProvider;
