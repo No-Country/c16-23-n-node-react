@@ -65,7 +65,7 @@ const shelterService = {
     try {
       const { email, password } = data;
       let shelterUser = await Shelter.findOne({ email });
-      if (!shelterUser) throw new Error("Email not found");
+      if (!shelterUser) throw new Error("Email or password not found");
       if (await shelterUser.verifyPassword(password)) {
         const token = await generateToken(shelterUser._id);
         shelterUser = {
@@ -77,8 +77,6 @@ const shelterService = {
           token,
         };
         return shelterUser;
-      } else {
-        throw new Error("Password is wrong");
       }
     } catch (error) {
       throw new Error(`${error.message}`);
