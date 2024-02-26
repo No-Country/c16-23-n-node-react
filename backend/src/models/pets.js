@@ -35,7 +35,7 @@ const petsSchema = new mongoose.Schema({
     enum: ["Pequeño", "Mediano", "Grande"],
   },
   characteristics: {
-    type: String,
+    type: [String],
     required: true,
     enum: ["Calmado", "Jugueton", "Alegre", "Tranquilo", "Cariñoso", "Guardian"],
   },

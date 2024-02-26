@@ -30,6 +30,7 @@ const petService = {
     }
   },
   getPetsByFilters: async (size, pet_type, gender, characteristics) => {
+    console.log(characteristics);
     try {
       const queryConditions = [];
       if (size) queryConditions.push({ size: size });
