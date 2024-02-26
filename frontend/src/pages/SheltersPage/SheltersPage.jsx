@@ -8,7 +8,7 @@ function SheltersPage() {
   return (
     <>
       <Navbar />
-      <main className="flex select-none flex-col bg-Primary font-poppins">
+      <main className="flex select-none flex-col bg-Primary pt-16 font-poppins">
         <Searcher />
         <RefugeCard />
       </main>

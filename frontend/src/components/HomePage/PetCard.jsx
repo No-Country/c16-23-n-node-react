@@ -1,12 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 
 function PetCard({ pet }) {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  
   const handleDetails = () => {
-    navigate(`/petInformation/${pet.id}`)
-  }
+    navigate(`/petInformation/${pet.id}`);
+  };
 
   return (
     <div className="m-1 overflow-hidden rounded-xl bg-PrimaryDark shadow-sm">
@@ -19,12 +19,20 @@ function PetCard({ pet }) {
       </div>
       <div className="px-3">
         <div className="mb-2 flex justify-between">
-          <p className="font-poppins text-sm">{pet.name}</p>
-          <p className="font-poppins text-sm">{pet.size}</p>
+          <span className="rounded-lg border bg-White px-1 text-sm font-medium">
+            {pet.name}
+          </span>
+          <span className="rounded-lg border bg-White px-1 text-sm font-medium">
+            {pet.size}
+          </span>
         </div>
         <div className="flex justify-between">
-          <p className="font-poppins text-sm">{pet.gender}</p>
-          <p className="text-right font-poppins text-sm ">{pet.kind}</p>
+          <span className="rounded-lg border bg-White px-1 text-sm font-medium">
+            {pet.gender}
+          </span>
+          <span className="rounded-lg border bg-White px-1 text-sm font-medium">
+            {pet.kind}
+          </span>
         </div>
         <div className="my-3 text-center">
           <button

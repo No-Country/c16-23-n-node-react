@@ -4,7 +4,7 @@ const Description = () => {
       <h2 className="text-center text-3xl font-semibold">
         Conoce un poco más sobre nosotros
       </h2>
-      <p className="text-xl">
+      <p className="text-lg">
         Somos un equipo comprometido con el bienestar animal que ha participado
         en una simulación de No-Country. Nos unimos para crear una plataforma
         innovadora de adopción de mascotas. Nuestro equipo, diverso y

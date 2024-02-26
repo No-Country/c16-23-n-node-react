@@ -1,4 +1,4 @@
-import Carousel from "../../components/HomePage/Carrousel";
+import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import pets from "../../data/pets.json";
@@ -14,7 +14,7 @@ function PetInformationPage() {
   return (
     <>
       <Navbar />
-      <main className="select-none bg-Primary font-poppins text-black">
+      <main className="select-none bg-Primary pt-16 font-poppins text-black">
         <h1 className="px-5 pt-5 text-2xl font-semibold">{pet.name}</h1>
         <div className="mx-5 mb-8 p-5">
           <Carousel images={images} />

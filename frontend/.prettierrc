@@ -1,4 +1,11 @@
 {
+  "prettier/prettier": [
+    "error",
+    {
+      "singleQuote": true,
+      "parser": "flow"
+    }
+  ],
   "plugins": [
     "prettier-plugin-tailwindcss"
   ]

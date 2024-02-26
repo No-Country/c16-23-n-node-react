@@ -1,20 +1,20 @@
 import FotoPerro from "/img/pets/fotoPerro.jpg";
 import FotoGato from "/img/pets/fotoGato.jpg";
 import PetCard from "../../components/HomePage/PetCard";
-import Carousel from "../../components/HomePage/Carrousel";
+import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import Dropdown from "../../components/HomePage/Dropdown";
 import pets from "../../data/pets.json";
 
+// eslint-disable-next-line react/prop-types
 function HomePage() {
-
   const images = [FotoPerro, FotoGato];
 
   return (
     <>
       <Navbar />
-      <div className="select-none bg-Primary p-5">
+      <div className="select-none bg-Primary p-5 pt-16">
         <div className="mx-5 mb-8">
           <Carousel images={images} />
         </div>

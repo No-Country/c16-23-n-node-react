@@ -1,24 +1,25 @@
 import { Link } from "react-router-dom";
+import logoApp from "/img/logo/Logo.png";
 
 const Footer = () => {
   return (
     <footer className="flex h-max flex-col items-center justify-center gap-6 bg-SecondaryDark py-14">
       <div className="w-[90%] border-b border-White">
-        <figure className="mb-8 text-center text-2xl font-bold uppercase text-White">
-          logo
+        <figure className="mb-8">
+          <img src={logoApp} className="mx-auto block" alt="Logo" />
         </figure>
         <ul className="my-4 flex flex-col gap-6 text-center text-xl text-White">
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/shelter">Refugios</Link>
+            <Link to="/shelters">Refugios</Link>
           </li>
           <li>
-            <Link to="/contact">Contacto</Link>
+            <Link to="#">Contacto</Link>
           </li>
           <li>
-            <Link to="/about">Sobre nosotros</Link>
+            <Link to="/aboutus">Sobre nosotros</Link>
           </li>
         </ul>
         <ul className="my-8 flex flex-row justify-center gap-4">

@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-vars */
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logoApp from "/img/logo/IconConexion.png";
+import { useLocalStorage } from "react-use";
+import { UserContext } from "../../context/UserContext";
 
 const Navbar = () => {
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [windowDimension, setWindowDimension] = useState({
     innerWidth: window.innerWidth,
@@ -20,6 +25,9 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [user, setUser] = useLocalStorage("user");
+  console.log(isLoggedIn);
+
   useEffect(() => {
     window.addEventListener("resize", detectSize);
     return () => {
@@ -28,9 +36,11 @@ const Navbar = () => {
   }, [windowDimension.innerWidth]);
 
   return (
-    <nav className="flex h-14 items-center justify-between bg-Secondary p-5">
+    <nav className="fixed z-30 flex h-14 w-full select-none items-center justify-between bg-Secondary p-5">
       <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between">
-        <h2 className="text-3xl font-bold uppercase text-white">Logo</h2>
+        <figure>
+          <img src={logoApp} className="h-12" />
+        </figure>
         <ul className="hidden text-xl font-bold text-white md:flex md:gap-4">
           <li>
             <Link
@@ -82,9 +92,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* <div>
-        <Bars3Icon className="h-12 w-8 font-extrabold text-white" onClick={handleClick} />
-      </div> */}
 
       {windowDimension.innerWidth < 768 && !isMenuOpen ? (
         <Bars3Icon
@@ -94,7 +101,7 @@ const Navbar = () => {
       ) : (
         windowDimension.innerWidth < 768 && (
           <XMarkIcon
-            className="visible z-20 block h-12 w-8 cursor-pointer font-extrabold text-white "
+            className="visible z-20 block h-12 w-8 cursor-pointer font-extrabold text-white"
             onClick={handleClick}
           />
         )
@@ -107,7 +114,7 @@ const Navbar = () => {
       ) : (
         windowDimension.innerWidth > 768 && (
           <XMarkIcon
-            className="invisible hidden h-12 w-8 cursor-pointer font-extrabold text-white sticky"
+            className="invisible sticky hidden h-12 w-8 cursor-pointer font-extrabold text-white"
             onClick={handleClick}
           />
         )
@@ -116,8 +123,11 @@ const Navbar = () => {
       <div
         className={`${
           windowDimension.innerWidth < 768 && isMenuOpen ? "top-0" : "-top-full"
-        } h-340 fixed left-0 z-10 flex w-full items-center justify-center bg-Secondary transition-all duration-500 ease-in-out`}
+        } fixed left-0 z-10 flex h-340 w-full items-center justify-center bg-Secondary transition-all duration-500 ease-in-out`}
       >
+        <figure className="absolute left-0 top-0 px-5 pt-1">
+          <img src={logoApp} className="h-12" />
+        </figure>
         <ul className="flex flex-col gap-4 text-center">
           <li>
             <Link
@@ -164,15 +174,50 @@ const Navbar = () => {
               Mi Perfil
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={handleClick}
-              to="/login"
-              className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
-            >
-              Registro/Inicio de Sesión
-            </Link>
-          </li>
+          {user &&
+            (!isLoggedIn ? (
+              <li>
+                <Link
+                  onClick={handleClick}
+                  to="/login"
+                  className="text-shadow-sm text-xl font-bold text-White hover:text-blue-600 active:text-zinc-600"
+                >
+                  Registro/Inicio de Sesión
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  onClick={handleClick}
+                  to="/logout"
+                  className="text-shadow-sm text-xl font-bold text-Alert hover:text-blue-600 active:text-zinc-600"
+                >
+                  Cerrar Sesión
+                </Link>
+              </li>
+            ))}
+          {!user &&
+            (!isLoggedIn ? (
+              <li>
+                <Link
+                  onClick={handleClick}
+                  to="/login"
+                  className="text-shadow-sm text-xl font-bold text-White hover:text-blue-600 active:text-zinc-600"
+                >
+                  Registro/Inicio de Sesión
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  onClick={handleClick}
+                  to="/logout"
+                  className="text-shadow-sm text-xl font-bold text-Alert hover:text-blue-600 active:text-zinc-600"
+                >
+                  Cerrar Sesión
+                </Link>
+              </li>
+            ))}
         </ul>
       </div>
     </nav>

@@ -1,32 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import avatar from "/img/others/user.png";
+import Navbar from "../../components/shared/Navbar";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function LogoutPage() {
-  const user = localStorage.getItem("username");
-
+  // const user = localStorage.getItem("username");
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
+    localStorage.removeItem("user");
+    setIsLoggedIn(isLoggedIn);
     navigate("/login");
   };
 
+  console.log(isLoggedIn);
+
   return (
-    <main className="select-none bg-Primary font-poppins text-black">
-      <section className="mx-auto flex min-h-screen items-center justify-center">
-        <div className=" p-25 w-full max-w-xs rounded-xl bg-Secondary">
-          <img className="mx-auto block h-full rounded" src={avatar} />
-          <span className="block text-white text-center text-xl font-bold">Jose Pereda</span>
-          <button
-            className="bg-transparent my-4 w-full rounded p-2 text-lg text-blue-500 no-underline font-semibold"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </div>
-      </section>
-    </main>
+    <>
+      <Navbar />
+      <main className="select-none bg-Primary pt-16 font-poppins text-black">
+        <section className="mx-auto flex min-h-screen items-center justify-center">
+          <div className=" p-25 w-full max-w-xs rounded-xl bg-Secondary">
+            <img className="mx-auto block h-full rounded" src={avatar} />
+            <span className="block text-center text-xl font-bold text-white">
+              Jose Pereda
+            </span>
+            <button
+              className="my-4 w-full rounded bg-transparent p-2 text-lg font-semibold text-blue-500 no-underline"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 export default LogoutPage;

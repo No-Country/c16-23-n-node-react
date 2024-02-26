@@ -1,4 +1,4 @@
-import sad from "/img/logo/saddog.png"
+import sad from "/img/logo/saddog.png";
 
 function NotFound404Page() {
   return (
