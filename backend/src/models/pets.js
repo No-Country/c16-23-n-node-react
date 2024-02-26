@@ -43,7 +43,7 @@ const petsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Shelter",
   },
-  status: {
+  adoption_status: {
     type: Boolean,
     required: true,
     default: true,

@@ -49,7 +49,22 @@ const petController = {
     try {
       const id = req.params;
       const petFound = await petService.getPetById(id);
+      if(petFound === null) {
+        return res.status(200).send(`No se encontró mascotas`);
+      }
       return res.status(200).json(petFound);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
+  getPetBySize: async (req, res) =>{
+    try {
+      const {size} = req.query;
+      const petsBySize = await petService.getPetBySize(size);
+      if(petsBySize.length===0){
+        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s `});
+      }
+      return res.status(200).json(petsBySize);
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }
