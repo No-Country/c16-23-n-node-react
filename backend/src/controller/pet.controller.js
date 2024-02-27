@@ -33,8 +33,12 @@ const petController = {
   getPets: async (req, res) => {
     try {
       const pets = await petService.getPets();
+      if (pets.length === 0) {
+        return res.status(200).send("No hay mascotas para mostrar");
+      } else {
+        return res.status(200).json(pets);
+      }
       // return res.status(200).send({"La cantidad de Mascotas es ": pets.length, pets});
-      return res.status(200).json(pets);
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }
@@ -42,9 +46,60 @@ const petController = {
   getPetById: async (req, res) => {
     try {
       const id = req.params;
-
       const petFound = await petService.getPetById(id);
+      if (petFound === null) {
+        return res.status(200).send(`No se encontró mascotas`);
+      }
       return res.status(200).json(petFound);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
+  getPetsByFilters: async (req, res) => {
+    try {
+      const { size, pet_type, gender, characteristics } = req.query;
+      const filters = {};
+      if (size) filters.size = size;
+      if (pet_type) filters.pet_type = pet_type;
+      if (gender) filters.gender = gender;
+      if (characteristics) {
+        if (Array.isArray(characteristics)) {
+          filters.characteristics = { $in: characteristics };
+        } else {
+          filters.characteristics = characteristics;
+        }
+      }
+      const petsByFilters = await petService.getPetsByFilters(
+        filters.size,
+        filters.pet_type,
+        filters.gender,
+        filters.characteristics
+      );
+      if (petsByFilters.length === 0) {
+        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s ` });
+      }
+      return res.status(200).json(petsByFilters);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
+  editPetById: async (req, res) => {
+    try {
+      const data = req.body;
+      data.id = req.params._id;
+      console.log(data.id);
+      const pet = await petService.editPetById(data);
+      return res.status(200).json(pet);
+    } catch (error) {
+      return res.status(404).json({ message: error.message });
+    }
+  },
+  deletePetById: async (req, res) => {
+    try {
+      const id = req.params._id;
+      const pet = await petService.deletePetById({ id });
+      console.log(pet);
+      return res.status(200).json(pet);
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }

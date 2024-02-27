@@ -1,37 +1,41 @@
 import mongoose from "mongoose";
 
 const petsSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: 20,
+    validate: {
+      validator: (value) => /^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/.test(value),
+      message: "El nombre solo debería ser letras y espacios. Debe incluir al menos una letra.",
+    },
+  },
   pet_type: {
     type: String,
     required: true,
     enum: ["Perro", "Gato"],
-  },
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-    maxlength: 20,
-    validate: {
-      validator: (value) => /^[a-zA-Z]+$/.test(value),
-      message: "El nombre solo debería ser letras",
-    },
-  },
-  age: {
-    type: Number,
-    required: true,
-    min: 0,
-    validate: {
-      validator: (value) => value >= 0,
-      message: `Debes ingresar un valor igual o mayor a 0`,
-    },
   },
   gender: {
     type: String,
     required: true,
     enum: ["Macho", "Hembra"],
   },
-  characteristics: {
+  age: {
+    type: Number,
+    required: true,
+    min: 0,
+    validate: {
+      validator: (value) => value > 0 && value <= 50,
+      message: `Debes ingresar un valor mayor a 0 y hasta 50. Puede incluir 0.# para los meses`,
+    },
+  },
+  size:{
     type: String,
+    required: true,
+    enum: ["Pequeño", "Mediano", "Grande"],
+  },
+  characteristics: {
+    type: [String],
     required: true,
     enum: ["Calmado", "Jugueton", "Alegre", "Tranquilo", "Cariñoso", "Guardian"],
   },
@@ -39,7 +43,7 @@ const petsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Shelter",
   },
-  status: {
+  adoption_status: {
     type: Boolean,
     required: true,
     default: true,
