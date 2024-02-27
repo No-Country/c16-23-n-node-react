@@ -21,7 +21,6 @@ const petController = {
             imagesToUpload.push(imgs);
           }
           data.images = imagesToUpload;
-          console.log(imagesToUpload);
         }
       }
 
@@ -43,7 +42,7 @@ const petController = {
   getPetById: async (req, res) => {
     try {
       const id = req.params;
-      console.log(id);
+
       const petFound = await petService.getPetById(id);
       return res.status(200).json(petFound);
     } catch (error) {

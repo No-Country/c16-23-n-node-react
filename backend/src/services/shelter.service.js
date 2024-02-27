@@ -7,8 +7,7 @@ const generateToken = (userId) => {
 const shelterService = {
   getShelters: async () => {
     try {
-      const shelters = await Shelter.find().populate("pets");
-      console.log(shelters);
+      const shelters = await Shelter.find().populate("pets", "name age images");
 
       return shelters;
     } catch (error) {
@@ -17,7 +16,7 @@ const shelterService = {
   },
   shelterById: async (_id) => {
     try {
-      const shelterFound = await Shelter.findById(_id).populate("pets", "name");
+      const shelterFound = await Shelter.findById(_id).populate("pets", "name images");
       if (!shelterFound) return "No se encontró el refugio";
 
       return shelterFound;

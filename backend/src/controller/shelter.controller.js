@@ -37,10 +37,9 @@ const shelterController = {
       const { _id } = req.params;
 
       const shelter = await shelterService.shelterById(_id);
-      console.log(shelter);
+
       return res.json(shelter);
     } catch (error) {
-      console.error("Error al buscar refugios por nombre:", error);
       return res.status(500).json({ message: error.message });
     }
   },
@@ -85,7 +84,6 @@ const shelterController = {
       if (shelters.length === 0) return res.status(404).json({ message: "No se encontraron refugios con ese nombre" });
       return res.json(shelters);
     } catch (error) {
-      console.error("Error al buscar refugios por nombre:", error);
       return res.status(500).json({ message: error.message });
       //
     }
@@ -160,7 +158,6 @@ const shelterController = {
 
       res.status(200).json(newShelter);
     } catch (error) {
-      console.error(error);
       res.status(409).json(error.message); //
     }
   },
