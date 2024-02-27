@@ -3,6 +3,7 @@ import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import shelters from "../../data/shelters.json";
 import { useParams } from "react-router-dom";
+
 function ShelterInformationPage() {
   const { id } = useParams();
 

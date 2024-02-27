@@ -17,6 +17,9 @@ import UserProfilePage from "../pages/UserProfilePage/UserProfilePage";
 import ShelterProfilePage from "../pages/ShelterProfilePage/ShelterProfilePage";
 import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInformationPage";
 import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
+import ShelterProfileInformationPage from "../pages/ShelterProfilePage/ShelterProfileInformationPage";
+import ShelterPasswordPage from "../pages/ShelterProfilePage/ShelterPasswordPage";
+
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
@@ -52,6 +55,15 @@ function Rutas() {
           path="/updateUserPassword"
           element={<UpdateUserPasswordPage />}
         />
+        <Route
+          path="/shelterProfileInformation"
+          element={<ShelterProfileInformationPage />}
+        />
+        <Route
+          path="/shelterPassword"
+          element={<ShelterPasswordPage />}
+        />
+
       </Routes>
     </UserProvider>
   );
