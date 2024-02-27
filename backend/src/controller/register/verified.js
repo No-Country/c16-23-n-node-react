@@ -8,12 +8,8 @@ const verified = async (req, res) => {
     if (!token) {
       return res.status(400).json({ error: "Token de verificación no proporcionado" });
     }
-
-    const decoded = jwt.verify(token, "secreto");
-
-    const userEmail = decoded.email;
-
-    const shelter = await Shelters.findOne({ email: userEmail });
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const shelter = await Shelters.findOne({ _id: decoded.userId });
 
     if (!shelter) {
       return res.status(404).json({ error: "Refugio no encontrado" });

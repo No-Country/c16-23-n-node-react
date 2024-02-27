@@ -1,12 +1,29 @@
 import Pet from "../models/pets.js";
+import Shelter from "../models/shelters.js";
 import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
 
 const petService = {
   createPet: async (data) => {
     try {
-      // // const {pet_type, name, age, gender, characteristics, shelter_id, status} = data; 
-      // // const images = {folder: data.folder, url: data.url}; 
       let pet = await Pet.create(data);
+      const shelter = await Shelter.findById(data.shelter_id);
+
+      // Agregar el ID de la nueva mascota a la lista de mascotas del refugio
+      if (shelter) {
+        shelter.pets.push(pet._id);
+        await shelter.save();
+      }
+      // // const {pet_type, name, age, gender, characteristics, shelter_id, status} = data;
+      // // const images = {folder: data.folder, url: data.url};
+      //   pet = {
+      //     pet_type: pet.pet_type,
+      //     shelter_id: pet.shelter_id,
+      //     name: pet.name,
+      //     age: pet.age,
+      //     gender: pet.gender,
+      //     characteristics: pet.characteristics,
+      //     status: pet.status,
+      //   };
       const pet1 = await Pet.findById(pet._id).populate("shelter_id", "address name website");
       return pet1;
     } catch (error) {
@@ -15,7 +32,7 @@ const petService = {
   },
   getPets: async () => {
     try {
-      const pets = await Pet.find();
+      const pets = await Pet.find().populate("shelter_id", "address name website");
       return pets;
     } catch (error) {
       throw new Error(`${error.message}`);
@@ -23,7 +40,7 @@ const petService = {
   },
   getPetById: async (_id) => {
     try {
-      const petFound = await Pet.findById(_id);
+      const petFound = await Pet.findById(_id).populate("shelter_id", "address name website");
       return petFound;
     } catch (error) {
       throw new Error(`${error.message}`);
@@ -46,7 +63,7 @@ const petService = {
   editPetById: async (data) => {
     try {
       let pet = await Pet.findByIdAndUpdate(data.id, data, { new: true });
-      return pet
+      return pet;
     } catch (error) {
       throw new Error(`${error.message}`);
     }
@@ -54,11 +71,11 @@ const petService = {
   deletePetById: async (data) => {
     try {
       let pet = await Pet.deleteOne({ _id: data.id });
-      return { message: 'Mascota eliminada correctamente' };
+      return { message: "Mascota eliminada correctamente" };
     } catch (error) {
       throw new Error(`${error.message}`);
     }
-  }
+  },
 };
 
 export default petService;

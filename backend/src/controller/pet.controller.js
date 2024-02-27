@@ -4,7 +4,6 @@ import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
 
 const petController = {
   createPet: async (req, res) => {
-
     try {
       const data = req.body;
       if (req.files && req.files.image) {
@@ -22,7 +21,6 @@ const petController = {
             imagesToUpload.push(imgs);
           }
           data.images = imagesToUpload;
-          console.log(imagesToUpload);
         }
       }
 

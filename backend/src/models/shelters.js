@@ -45,13 +45,17 @@ const shelterSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    image: {
-      type: String,
-    },
+
     emailVerified: {
       type: Boolean,
       default: false,
     },
+    pets: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Pet",
+      },
+    ],
     responsable: {
       type: String,
     },
