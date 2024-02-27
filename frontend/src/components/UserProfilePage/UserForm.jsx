@@ -33,7 +33,7 @@ function UserForm() {
               Nombre
             </label>
             <input
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-xl outline-none"
               {...register("name", {
                 required: true,
                 minLength: 8,
@@ -56,7 +56,7 @@ function UserForm() {
               Correo Electrónico
             </label>
             <input
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-xl outline-none"
               {...register("email", {
                 required: true,
                 pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
@@ -81,7 +81,7 @@ function UserForm() {
                 required: true,
                 pattern: /^[0-9]{10}$/,
               })}
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-2xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-2xl outline-none"
               type="tel"
               placeholder="Número de teléfono (10 dígitos)"
             />
