@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "photo01": "/img/pets/firulais.jpg",
+    "photo02": "/img/pets/firulais.jpg",
+    "name": "Firulais",
+    "shelter": "Refugio de Esperanza",
+    "size": "mediano",
+    "gender": "Macho",
+    "kind": "tranquila",
+    "description": "Este dulce perrito mediano ha pasado por mucho. Fue encontrado perdido y desorientado en las calles, pero ahora busca un hogar lleno de amor. Bobby es una fuente inagotable de energía y diversión, listo para llenar tu vida de alegría y compañerismo"
+  },
+  {
+    "id": 2,
+    "photo01": "/img/pets/michifus.jpeg",
+    "photo02": "/img/pets/michifus.jpeg",
+    "name": "Michifus",
+    "shelter": "Hogar de Patitas",
+    "size": "pequeño",
+    "gender": "Macho",
+    "kind": "jugueton",
+    "description": "Este dulce perrito mediano ha pasado por mucho. Fue encontrado perdido y desorientado en las calles, pero ahora busca un hogar lleno de amor. Bobby es una fuente inagotable de energía y diversión, listo para llenar tu vida de alegría y compañerismo"
+  },
+  {
+    "id": 3,
+    "photo01": "/img/pets/kira.jpg",
+    "photo02": "/img/pets/kira.jpg",
+    "name": "Kira",
+    "shelter": "Hogar de Patitas",
+    "size": "pequeño",
+    "gender": "Hembra",
+    "kind": "jugueton",
+    "description": "Este dulce perrito mediano ha pasado por mucho. Fue encontrado perdido y desorientado en las calles, pero ahora busca un hogar lleno de amor. Bobby es una fuente inagotable de energía y diversión, listo para llenar tu vida de alegría y compañerismo"
+  },
+  {
+    "id": 4,
+    "photo01": "/img/pets/nanar.jpg",
+    "photo02": "/img/pets/nanar.jpg",
+    "name": "Nanar",
+    "shelter": "Patas Felices",
+    "size": "grande",
+    "gender": "Hembra",
+    "kind": "enojona",
+    "description": "Este dulce perrito mediano ha pasado por mucho. Fue encontrado perdido y desorientado en las calles, pero ahora busca un hogar lleno de amor. Bobby es una fuente inagotable de energía y diversión, listo para llenar tu vida de alegría y compañerismo"
+  }
+]
