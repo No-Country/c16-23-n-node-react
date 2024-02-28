@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -71,14 +72,17 @@ const Navbar = () => {
               Sobre nosotros
             </Link>
           </li>
-          <li>
-            <Link
-              to="/userprofile"
-              className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600 "
-            >
-              Mi Perfil
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <Link
+                onClick={handleClick}
+                to="/userprofile"
+                className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
+              >
+                Mi Perfil
+              </Link>
+            </li>
+          )}
           <li>
             <Link
               to="/login"
@@ -162,15 +166,17 @@ const Navbar = () => {
               Sobre Nosotros
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={handleClick}
-              to="/userprofile"
-              className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
-            >
-              Mi Perfil
-            </Link>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <Link
+                onClick={handleClick}
+                to="/userprofile"
+                className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
+              >
+                Mi Perfil
+              </Link>
+            </li>
+          )}
           {user &&
             (!isLoggedIn ? (
               <li>

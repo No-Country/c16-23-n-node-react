@@ -32,7 +32,7 @@ function HomePage() {
         <main className="flex flex-wrap">
           {pets.map((pet, index) => (
             <div key={index} className="w-1/2">
-              <PetCard pet={pet} />
+              <PetCard pet={pet} uso={"home"} />
             </div>
           ))}
         </main>
