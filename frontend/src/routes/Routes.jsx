@@ -56,7 +56,7 @@ function Rutas() {
           element={<UpdateUserPasswordPage />}
         />
         <Route
-          path="/shelterProfileInformation"
+          path="/shelterInformationProfile"
           element={<ShelterProfileInformationPage />}
         />
         <Route

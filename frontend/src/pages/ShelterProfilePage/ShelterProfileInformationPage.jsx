@@ -1,7 +1,8 @@
-import { useForm } from "../../components/ShelterProfilePage/ShelterForm";
+import { useForm } from "react-hook-form";
 import Footer from "../../components/shared/Footer";
-// import ImageShelterProf from "/img/profile/shelter.png";
+import ImageShelterProf from "../../components/ShelterProfilePage/ImageShelterProf";
 import Navbar from "../../components/shared/Navbar";
+import ShelterForm from "../../components/ShelterProfilePage/ShelterForm";
 
 
 function ShelterProfileInformationPage() {
@@ -9,10 +10,9 @@ function ShelterProfileInformationPage() {
     <>
       <Navbar />
       <main className="select-none bg-Primary pt-16 font-poppins text-black">
-        {/* <ImageShelterProf/> */}
+        <ImageShelterProf/>
         <ShelterForm />
-        <ShelterProfileInformationPage/>
-      </main>
+        </main>
       <Footer />
     </>
   );
