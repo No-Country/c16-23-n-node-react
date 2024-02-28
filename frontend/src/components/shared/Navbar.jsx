@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";

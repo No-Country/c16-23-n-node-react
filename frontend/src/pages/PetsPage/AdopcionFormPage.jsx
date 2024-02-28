@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import { useForm } from "react-hook-form";
