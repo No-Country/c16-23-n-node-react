@@ -1,35 +1,60 @@
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import ProtectedRoutes from "../pages/ProtectedRoutes";
-import LogoutPage from "../pages/LogoutPage";
 import { Route, Routes } from "react-router-dom";
-import RegisterRefugioPage from "../pages/RegisterRefugioPage";
-import RegisterAdoptadorPage from "../pages/RegisterAdoptadorPage";
-import TypeRegister from "../pages/TypeRegister";
-import AboutPage from '../pages/AboutPage';
-import DescriptionPage from '../pages/DescriptionPage';
-import RefugesPage from '../pages/RefugesPage';
+import { useLocalStorage } from "react-use";
+import { UserProvider } from "../context/UserProvider";
+import HomePage from "../pages/HomePage/HomePage";
+import LoginPage from "../pages/LoginPage/LoginPage";
+import LogoutPage from "../pages/LoginPage/LogoutPage";
+import RegisterShelterPage from "../pages/LoginPage/RegisterShelterPage";
+import RegisterAdopterPage from "../pages/LoginPage/RegisterAdopterPage";
+import TypeRegister from "../pages/LoginPage/TypeRegister";
+import AboutUsPage from "../pages/AboutUsPage/AboutUsPage";
+import SheltersPage from "../pages/SheltersPage/SheltersPage";
+import ShelterInformationPage from "../pages/SheltersPage/ShelterInformationPage";
+import PetInformationPage from "../pages/PetsPage/PetInformationPage";
+import NotFound404Page from "../pages/NotFound404Page";
+import ProtectedRoutes from "../pages/ProtectedRoutes";
+import UserProfilePage from "../pages/UserProfilePage/UserProfilePage";
+import ShelterProfilePage from "../pages/ShelterProfilePage/ShelterProfilePage";
+import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInformationPage";
+import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
 
 function Rutas() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/description" element={<DescriptionPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/typeRegister" element={<TypeRegister />} />
-        <Route path="/registerAdoptador" element={<RegisterAdoptadorPage />} />
-        <Route path="/registerRefugio" element={<RegisterRefugioPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/refuges" element={<RefugesPage />} />
-        {/* <Route element={<ProtectedRoutes />} > */}
-        <Route path="/logout" element={<LogoutPage />} />
-        {/* </Route> */}
-      </Routes>
+  const [user, setUser] = useLocalStorage("user");
 
-      
-    </div>
+  return (
+    <UserProvider>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registrationTypes" element={<TypeRegister />} />
+        <Route path="/adopterRegistration" element={<RegisterAdopterPage />} />
+        <Route path="/shelterRegistration" element={<RegisterShelterPage />} />
+        <Route path="/petInformation/:id" element={<PetInformationPage />} />
+        <Route
+          path="/shelterInformation/:id"
+          element={<ShelterInformationPage />}
+        />
+        <Route
+          element={<ProtectedRoutes canActivate={user} redirectPath="/login" />}
+        >
+          <Route path="/" element={<HomePage />} />
+          <Route path="/logout" element={<LogoutPage />} />
+        </Route>
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/shelters" element={<SheltersPage />} />
+        <Route path="*" element={<NotFound404Page />} />
+        <Route path="/userprofile" element={<UserProfilePage />} />
+        <Route path="/shelterprofile" element={<ShelterProfilePage />} />
+        <Route
+          path="/updateUserInformation"
+          element={<UpdateUserInformationPage />}
+        />
+        <Route
+          path="/updateUserPassword"
+          element={<UpdateUserPasswordPage />}
+        />
+      </Routes>
+    </UserProvider>
   );
 }
 
-export default Rutas
+export default Rutas;

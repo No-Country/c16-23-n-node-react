@@ -1,12 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom";
 
-function ProtectedRoutes () {
-
-  if(localStorage.getItem('token')) {
-    return <Outlet />
-  } else {
-    return <Navigate to='/login' />
+// eslint-disable-next-line react/prop-types
+function ProtectedRoutes({ canActivate, redirectPath = "/" }) {
+  if (!canActivate) {
+    return <Navigate to={redirectPath} replace />;
   }
+
+  return <Outlet />;
 }
 
-export default ProtectedRoutes
+export default ProtectedRoutes;
