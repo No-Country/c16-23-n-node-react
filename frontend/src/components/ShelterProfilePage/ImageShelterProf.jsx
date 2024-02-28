@@ -24,6 +24,7 @@ function ImageShelterProf() {
     <section className="h-max relative flex flex-col items-center justify-center">
       <figure className="w-166 h-166 flex items-center justify-center rounded-full border-4 border-black bg-Gray">
      <img src="shelter.jpg" alt="" className="w-33 h-33"/>
+     
       </figure>
       <input
         type="file"
