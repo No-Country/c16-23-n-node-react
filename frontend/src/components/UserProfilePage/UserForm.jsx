@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { UserContext } from "../../context/UserContext";
 
 function UserForm() {
   const {
@@ -9,7 +11,8 @@ function UserForm() {
   } = useForm();
   // const navigate = useNavigate();
 
-  // eslint-disable-next-line no-unused-vars
+  const { userData, setUserData } = useContext(UserContext);
+
   const submit = (data) => {
     // createUser(data, navigate);
     reset({
@@ -42,6 +45,7 @@ function UserForm() {
               type="text"
               id="name"
               placeholder="Ingresa tu nombre"
+              defaultValue={userData.username}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.name?.type === "required" && "* Nombre es requerido"}
@@ -64,6 +68,7 @@ function UserForm() {
               type="email"
               id="email"
               placeholder="ejemplo@gmail.com"
+              defaultValue={userData.email}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.email?.type === "required" &&
@@ -84,6 +89,7 @@ function UserForm() {
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-2xl outline-none"
               type="tel"
               placeholder="Número de teléfono (10 dígitos)"
+              defaultValue={userData.phoneNumber}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.phoneNumber &&
