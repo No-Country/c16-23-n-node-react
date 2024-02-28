@@ -26,7 +26,7 @@ const shelterController = {
   getShelter: async (req, res) => {
     try {
       const refugios = await shelterService.getShelters();
-      return res.send({ "Cantidad de Refugios": refugios.length, refugios });
+      return res.send(refugios);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
@@ -158,7 +158,13 @@ const shelterController = {
 
       res.status(200).json(newShelter);
     } catch (error) {
-      res.status(409).json(error.message); //
+      if (error instanceof Error) {
+        if (error.message === "El correo electrónico ya está en uso" || error.message === "Falta información") {
+          res.status(409).json(error.message);
+        } else {
+          res.status(500).json({ error: "Hubo un problema en el servidor" });
+        }
+      }
     }
   },
   login: async (req, res) => {
