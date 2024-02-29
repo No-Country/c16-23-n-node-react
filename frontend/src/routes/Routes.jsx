@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useLocalStorage } from "react-use";
+import { LoginProvider } from "../context/LoginProvider";
 import { UserProvider } from "../context/UserProvider";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -24,33 +25,46 @@ function Rutas() {
 
   return (
     <UserProvider>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/registrationTypes" element={<TypeRegister />} />
-        <Route path="/adopterRegistration" element={<RegisterAdopterPage />} />
-        <Route path="/shelterRegistration" element={<RegisterShelterPage />} />
-        <Route path="/petInformation/:id" element={<PetInformationPage />} />
-        <Route path="/AdoptionForm" element={<AdopcionFormPage />} />
-        <Route
-          path="/shelterInformation/:id"
-          element={<ShelterInformationPage />}
-        />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/logout" element={<LogoutPage />} />
-        <Route path="/aboutus" element={<AboutUsPage />} />
-        <Route path="/shelters" element={<SheltersPage />} />
-        <Route path="*" element={<NotFound404Page />} />
-        <Route path="/userprofile" element={<UserProfilePage />} />
-        <Route path="/shelterprofile" element={<ShelterProfilePage />} />
-        <Route
-          path="/updateUserInformation"
-          element={<UpdateUserInformationPage />}
-        />
-        <Route
-          path="/updateUserPassword"
-          element={<UpdateUserPasswordPage />}
-        />
-      </Routes>
+      <LoginProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/registrationTypes" element={<TypeRegister />} />
+          <Route
+            path="/adopterRegistration"
+            element={<RegisterAdopterPage />}
+          />
+          <Route
+            path="/shelterRegistration"
+            element={<RegisterShelterPage />}
+          />
+          <Route path="/petInformation/:id" element={<PetInformationPage />} />
+          <Route
+            path="/shelterInformation/:id"
+            element={<ShelterInformationPage />}
+          />
+          <Route
+            element={
+              <ProtectedRoutes canActivate={user} redirectPath="/login" />
+            }
+          >
+            <Route path="/" element={<HomePage />} />
+            <Route path="/logout" element={<LogoutPage />} />
+          </Route>
+          <Route path="/aboutus" element={<AboutUsPage />} />
+          <Route path="/shelters" element={<SheltersPage />} />
+          <Route path="*" element={<NotFound404Page />} />
+          <Route path="/userprofile" element={<UserProfilePage />} />
+          <Route path="/shelterprofile" element={<ShelterProfilePage />} />
+          <Route
+            path="/updateUserInformation"
+            element={<UpdateUserInformationPage />}
+          />
+          <Route
+            path="/updateUserPassword"
+            element={<UpdateUserPasswordPage />}
+          />
+        </Routes>
+      </LoginProvider>
     </UserProvider>
   );
 }
