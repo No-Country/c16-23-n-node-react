@@ -1,26 +1,25 @@
 import Navbar from "../../components/shared/Navbar";
-import Footer from "../../components/shared/Footer"
+import Footer from "../../components/shared/Footer";
 import ImageDefault from "/img/shelters/AddNewPet.svg";
 import { useState } from "react";
 function NewPet() {
-    const [images, setImages] = useState([]);
-    // 1. Agregar onChange function 
-    // 2. Handle each input inside onChange function 
-    // 3. setNewDataPet 
-    // 4. Pass NewDataPet into submit function
-    const [dataNewPet, setDataNewPet] = useState({
-        name: name, 
-    })
+  const [images, setImages] = useState([]);
+  // 1. Agregar onChange function
+  // 2. Handle each input inside onChange function
+  // 3. setNewDataPet
+  // 4. Pass NewDataPet into submit function
+  const [dataNewPet, setDataNewPet] = useState({
+    name: name,
+  });
 
-
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        setImages(files);
-      };
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages(files);
+  };
   function handleSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     console.log(images[0].name);
-}
+  }
   return (
     <>
       <Navbar />
@@ -35,13 +34,13 @@ function NewPet() {
             accept="image/*"
             className="hidden"
             id="galleryInput"
-            onChange={handleImageChange} 
+            onChange={handleImageChange}
           />
           <label htmlFor="galleryInput" className="cursor-pointer">
-            <img src={ImageDefault} alt="Add Pet"/>
+            <img src={ImageDefault} alt="Add Pet" />
           </label>
         </div>
-        <form className="w-full max-w-md rounded-xl p-6 m-5">
+        <form className="m-5 w-full max-w-md rounded-xl p-6">
           <div className="mb-5">
             <label className="mb-3 block text-lg font-semibold" htmlFor="email">
               Nombre de la Mascota
@@ -153,9 +152,26 @@ function NewPet() {
                 <span className="ml-2">Guardian</span>
               </label>
             </div>
-          </div><button onClick={handleSubmit}>Ver Images</button>
+          </div>
+          <div className="mb-5">
+            <label className="mb-3 block text-lg font-semibold">
+              Descripción
+            </label>
+            <textarea
+              className="mt-1 block w-full rounded-lg bg-white px-4 py-3 shadow-xl outline-none"
+              id="petDescription"
+              placeholder="Escribe una descripción..."
+              defaultValue=""
+            />
+          </div>
+          <button className="mb-9 mt-3 h-10 w-180 rounded-2xl bg-Tertiary text-White">
+            Guardar Cambios
+          </button>
+          <button className="mb-9 mt-3 h-10 w-180 rounded-2xl bg-Tertiary text-White">
+            Vista Previa
+          </button>
         </form>
-        <Footer/>
+        <Footer />
       </main>
     </>
   );
