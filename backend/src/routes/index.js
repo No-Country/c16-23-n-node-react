@@ -10,7 +10,7 @@ const router = express.Router();
 router.use("/user", userRoute);
 router.use("/shelter", shelterRoutes);
 
-router.put("/verify-email", verified);
+router.get("/verify-email", verified);
 
 router.use("/pet", petRoute);
 

@@ -18,10 +18,8 @@ const verified = async (req, res) => {
     shelter.emailVerified = true;
 
     await shelter.save();
-
-    res
-      .status(200)
-      .json({ message: "Correo electrónico verificado exitosamente. Ahora tienes acceso permanente a la aplicación." });
+    const url = "http://localhost:3001/bienvenida";
+    res.redirect(url);
   } catch (error) {
     res.status(400).json({ error: "Token de verificación inválido o expirado" });
   }

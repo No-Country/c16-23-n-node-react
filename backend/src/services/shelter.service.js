@@ -44,15 +44,15 @@ const shelterService = {
   },
   registerShelter: async (data) => {
     try {
-      // if (data.email) {
-      //   return "El correo electrónico ya está en uso";
-      // }
       const { email } = data;
       const userFound = await Shelter.findOne({ email: email });
       if (userFound) {
         throw new Error("El correo electrónico ya está en uso");
       }
-
+      const { name, userName, password, address, responsable } = data;
+      if (!name || !userName || !password || !address || !responsable) {
+        throw new Error("Falta información");
+      }
       const newShelter = await Shelter.create(data);
 
       return newShelter;
@@ -64,7 +64,8 @@ const shelterService = {
     try {
       const { email, password } = data;
       let shelterUser = await Shelter.findOne({ email });
-      if (!shelterUser) throw new Error("Email or password not found");
+
+      if (!shelterUser || shelterUser.emailVerified === false) throw new Error("Email o Contraseña no válidas");
       if (await shelterUser.verifyPassword(password)) {
         const token = await generateToken(shelterUser._id);
         shelterUser = {
