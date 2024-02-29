@@ -1,8 +1,10 @@
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
-import PetCardComponent from "../..//components/HomePage/ComponentPrueba";
+import PetCardComponent from "../../components/PetCardComponent";
 import pets from "../../data/pets.json";
-import Plus from "/img/shelter/plus.svg";
+import Plus from "/img/shelters/plus.svg";
+import Pen from "/img/others/pen-solid.svg";
+import Trash from "/img/others/trash-solid.svg";
 import { useNavigate } from "react-router-dom";
 
 function ShelterDashboard() {
@@ -36,21 +38,29 @@ function ShelterDashboard() {
           {pets.map((pet, index) => (
             <div key={index} className="w-1/2">
               <PetCardComponent pet={pet}>
-                <div className="flex w-1/2">
-                <div>
-                <button
-                  className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                  onClick={handleButtonDelete}
-                >
-                  Borrar
-                </button>
-                </div>
-                <button
-                  className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                  onClick={handleButtonEdite}
-                >
-                  Editar
-                </button>
+                <div className="flex justify-between ">
+                  <button
+                    className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-xs text-White"
+                    onClick={handleButtonDelete}
+                  >
+                    <span className="flex items-center justify-center w-1/2">
+                      <img
+                        src={Trash}
+                        alt="Icono Papelera de Borrar"
+                        width={25}
+                      />
+                    Borrar
+                    </span>
+                  </button>
+                  <button
+                    className="rounded-full bg-Tertiary px-3 font-poppins text-xs text-White"
+                    onClick={handleButtonEdite}
+                  >
+                    <span className="flex items-center justify-center w-1/2 c-white  ">
+                      <img src={Pen} className="text-white" alt="Icono lapíz" width={25} />
+                      Editar
+                    </span>
+                  </button>
                 </div>
               </PetCardComponent>
             </div>
