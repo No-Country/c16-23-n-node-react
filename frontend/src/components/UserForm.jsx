@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../../context/UserContext";
 
 function UserForm() {
   const {
@@ -11,8 +9,7 @@ function UserForm() {
   } = useForm();
   // const navigate = useNavigate();
 
-  const { userData, setUserData } = useContext(UserContext);
-
+  // eslint-disable-next-line no-unused-vars
   const submit = (data) => {
     // createUser(data, navigate);
     reset({
@@ -36,7 +33,7 @@ function UserForm() {
               Nombre
             </label>
             <input
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               {...register("name", {
                 required: true,
                 minLength: 8,
@@ -45,7 +42,6 @@ function UserForm() {
               type="text"
               id="name"
               placeholder="Ingresa tu nombre"
-              defaultValue={userData.username}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.name?.type === "required" && "* Nombre es requerido"}
@@ -60,7 +56,7 @@ function UserForm() {
               Correo Electrónico
             </label>
             <input
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               {...register("email", {
                 required: true,
                 pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
@@ -68,7 +64,6 @@ function UserForm() {
               type="email"
               id="email"
               placeholder="ejemplo@gmail.com"
-              defaultValue={userData.email}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.email?.type === "required" &&
@@ -86,10 +81,9 @@ function UserForm() {
                 required: true,
                 pattern: /^[0-9]{10}$/,
               })}
-              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 text-GrayDark shadow-2xl outline-none"
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-2xl outline-none"
               type="tel"
               placeholder="Número de teléfono (10 dígitos)"
-              defaultValue={userData.phoneNumber}
             />
             <small className="text-xs font-medium text-red-700">
               {errors.phoneNumber &&
