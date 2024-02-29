@@ -8,7 +8,7 @@ function ShelterPasswordPage() {
     <>
       <Navbar />
       <main className="select-none bg-Primary pt-20 font-poppins text-black">
-       <ImageShelterProf/>
+        <ImageShelterProf />
       </main>
       <Footer />
     </>
