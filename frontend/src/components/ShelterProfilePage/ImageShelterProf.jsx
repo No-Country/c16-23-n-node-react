@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 
-
 function ImageShelterProf() {
   const [selectedImage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
@@ -21,10 +20,9 @@ function ImageShelterProf() {
   };
 
   return (
-    <section className="h-max relative flex flex-col items-center justify-center">
-      <figure className="w-166 h-166 flex items-center justify-center rounded-full border-4 border-black bg-Gray">
-     <img src="shelter.jpg" alt="" className="w-33 h-33"/>
-     
+    <section className="relative flex h-max flex-col items-center justify-center">
+      <figure className="flex h-166 w-166 items-center justify-center rounded-full border-4 border-black bg-Gray">
+        <img src="shelter.jpg" alt="" className="w-33 h-33" />
       </figure>
       <input
         type="file"
@@ -42,4 +40,3 @@ function ImageShelterProf() {
 }
 
 export default ImageShelterProf;
-

@@ -29,7 +29,10 @@ function ShelterForm() {
           onSubmit={handleSubmit(submit)}
         >
           <div className="mb-5">
-            <label className="mb-3 block text-lg font-semibold" htmlFor="shelterName">
+            <label
+              className="mb-3 block text-lg font-semibold"
+              htmlFor="shelterName"
+            >
               Nombre del Refugio
             </label>
             <input
@@ -52,7 +55,10 @@ function ShelterForm() {
             </small>
           </div>
           <div className="mb-5">
-            <label className="mb-3 block text-lg font-semibold" htmlFor="responsible">
+            <label
+              className="mb-3 block text-lg font-semibold"
+              htmlFor="responsible"
+            >
               Responsable
             </label>
             <input
@@ -98,7 +104,10 @@ function ShelterForm() {
           </div>
 
           <div className="mb-5">
-            <label className="mb-3 block text-lg font-semibold" htmlFor="description">
+            <label
+              className="mb-3 block text-lg font-semibold"
+              htmlFor="description"
+            >
               Descripción
             </label>
             <input
