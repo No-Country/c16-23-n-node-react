@@ -28,6 +28,7 @@ function Rutas() {
       <LoginProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/adopcionForm" element={<AdopcionFormPage />} />
           <Route path="/registrationTypes" element={<TypeRegister />} />
           <Route
             path="/adopterRegistration"
