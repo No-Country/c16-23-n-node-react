@@ -1,4 +1,4 @@
-import UserForm from "../../components/UserProfilePage/UserForm";
+import { useForm } from "react-hook-form";
 import Footer from "../../components/shared/Footer";
 import ImageUpload from "../../components/shared/ImageUpload";
 import Navbar from "../../components/shared/Navbar";
