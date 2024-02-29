@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Route, Routes } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { LoginProvider } from "../context/LoginProvider";
@@ -48,9 +49,9 @@ function Rutas() {
               <ProtectedRoutes canActivate={user} redirectPath="/login" />
             }
           >
-            <Route path="/" element={<HomePage />} />
             <Route path="/logout" element={<LogoutPage />} />
           </Route>
+          <Route path="/" element={<HomePage />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/shelters" element={<SheltersPage />} />
           <Route path="*" element={<NotFound404Page />} />
