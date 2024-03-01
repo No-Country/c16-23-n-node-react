@@ -57,7 +57,7 @@ function ShelterDashboard() {
                     onClick={handleButtonEdite}
                   >
                     <span className="flex items-center justify-center w-1/2 c-white  ">
-                      <img src={Pen} className="text-white" alt="Icono lapíz" width={25} />
+                      <img src={Pen} className="text-white" alt="Icono lapíz" width={100} />
                       Editar
                     </span>
                   </button>
