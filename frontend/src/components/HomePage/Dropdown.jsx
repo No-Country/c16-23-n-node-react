@@ -9,12 +9,12 @@ const Dropdown = ({ title, options }) => {
 
   return (
     <div className="relative mb-2 inline-block text-left">
-      <div>
+      <div className="">
         <button
           type="button"
           onClick={toggleDropdown}
-          className="inline-flex items-center justify-center rounded-full border
-          bg-white px-4  py-2 text-sm font-medium text-GrayDark  shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="2xl:w-288 inline-flex items-center justify-center rounded-full border
+          bg-white px-4  py-2 text-sm font-medium text-GrayDark shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 2xl:justify-between 2xl:text-xl"
         >
           <span className="truncate font-poppins">{title}</span>
           {/* Icono de flecha abajo */}
