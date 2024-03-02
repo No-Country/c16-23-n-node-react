@@ -29,14 +29,14 @@ const petsSchema = new mongoose.Schema({
       message: `Debes ingresar un valor mayor a 0 y hasta 50. Puede incluir 0.# para los meses`,
     },
   },
-  size:{
+  size: {
     type: String,
     required: true,
     enum: ["Pequeño", "Mediano", "Grande"],
   },
-  description:{
+  description: {
     type: String,
-    maxlength:300,
+    maxlength: 300,
   },
   characteristics: {
     type: [String],
@@ -62,16 +62,16 @@ const petsSchema = new mongoose.Schema({
       },
     },
   ],
+  adopter: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
+  },
   // adoption_data:{
   //     type:,
   //     required: true,
   //     default: true
   // },
-  //   adopter:{
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'User',
-  //     default:null
-  // }
 });
 
 export default mongoose.model("Pet", petsSchema);

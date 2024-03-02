@@ -40,14 +40,14 @@ const petService = {
   },
   getPetById: async (_id) => {
     try {
-      const petFound = await Pet.findById(_id).populate("shelter_id", "address name website");
+      const petFound = await Pet.findById(_id).populate("shelter_id", "address name website adopter");
+
       return petFound;
     } catch (error) {
       throw new Error(`${error.message}`);
     }
   },
   getPetsByFilters: async (size, pet_type, gender, characteristics) => {
-    console.log(characteristics);
     try {
       const queryConditions = [];
       if (size) queryConditions.push({ size: size });
