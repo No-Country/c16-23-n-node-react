@@ -34,11 +34,11 @@ const Navbar = () => {
 
   return (
     <nav className="fixed z-30 flex h-14 w-full select-none items-center justify-between bg-Secondary p-5">
-      <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between">
+      <div className="2xl:w-1440 mx-auto flex w-full max-w-screen-2xl items-center justify-between">
         <figure>
           <img src={logoApp} className="h-12" />
         </figure>
-        <ul className="hidden text-xl font-bold text-white md:flex md:gap-4">
+        <ul className="hidden text-xl font-bold text-white md:flex md:gap-4 2xl:gap-8">
           <li>
             <Link
               to="/"

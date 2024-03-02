@@ -34,9 +34,6 @@ function RegisterAdopterPage() {
             className="w-full max-w-md rounded-xl p-6"
             onSubmit={handleSubmit(submit)}
           >
-            <figure className="mb-8 text-center text-2xl font-bold uppercase">
-              logo
-            </figure>
             <strong className="mb-10 block text-center text-2xl font-bold leading-normal">
               Regístrate
             </strong>

@@ -3,8 +3,8 @@ import { createContext } from "react";
 
 export const LoginContext = createContext();
 
-const UserContextProvider = ({ children }) => {
+function LoginContextProvider({ children }) {
   return <LoginContext.Provider>{children}</LoginContext.Provider>;
-};
+}
 
-export default UserContextProvider;
+export default LoginContextProvider;

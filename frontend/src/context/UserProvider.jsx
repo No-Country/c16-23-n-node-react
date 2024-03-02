@@ -1,21 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { LoginContext } from "./LoginContext";
+import { UserContext } from "./UserContext";
 
 export const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const login = () => {
-    setIsLoggedIn(true);
-  };
-
-  const logout = () => {
-    setIsLoggedIn(false);
-  };
+  const [userData, setUserData] = useState({
+    username: "User342",
+    email: "example@gmail.com",
+    phoneNumber: "+54 555555555",
+  });
 
   return (
-    <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, login, logout }}>
+    <UserContext.Provider value={{ userData, setUserData }}>
       {children}
-    </LoginContext.Provider>
+    </UserContext.Provider>
   );
 };

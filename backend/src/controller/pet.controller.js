@@ -1,5 +1,7 @@
 import petService from "../services/pet.service.js";
 import fs from "fs-extra";
+import User from "../models/user.js";
+import jwt from "jsonwebtoken";
 import { uploadImage, deleteImage } from "../helpers/cloudinary.js";
 
 const petController = {
@@ -102,6 +104,40 @@ const petController = {
       return res.status(200).json(pet);
     } catch (error) {
       return res.status(404).json({ message: error.message });
+    }
+  },
+  adoptPetById: async (req, res) => {
+    try {
+      const id = req.params._id;
+
+      const pet = await petService.getPetById(id);
+
+      const authHeader = req.headers.bearer;
+
+      if (!authHeader) {
+        return res.status(401).json({ error: "Token de autenticación vacío" });
+      }
+
+      const decodedToken = jwt.verify(authHeader, process.env.JWT_SECRET);
+
+      const userId = decodedToken.id;
+
+      const user = await User.findById(userId);
+
+      if (!user) {
+        return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      pet.adopter = user._id;
+      pet.adoption_status = false;
+
+      await pet.save();
+
+      await pet.populate("adopter");
+      res.status(200).json(pet);
+    } catch (error) {
+      console.error("Error al adoptar mascota:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
     }
   },
 };
