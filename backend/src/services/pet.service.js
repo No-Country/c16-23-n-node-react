@@ -32,7 +32,7 @@ const petService = {
   },
   getPets: async () => {
     try {
-      const pets = await Pet.find().populate("shelter_id", "address name website");
+      const pets = await Pet.find().populate("shelter_id", "address name website adopter");
       return pets;
     } catch (error) {
       throw new Error(`${error.message}`);
@@ -40,7 +40,7 @@ const petService = {
   },
   getPetById: async (_id) => {
     try {
-      const petFound = await Pet.findById(_id).populate("shelter_id", "address name website adopter");
+      const petFound = await Pet.findById(_id).populate("shelter_id", "address name website").populate("adopter");
 
       return petFound;
     } catch (error) {

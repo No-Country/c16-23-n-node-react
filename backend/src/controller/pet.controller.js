@@ -122,21 +122,17 @@ const petController = {
 
       const userId = decodedToken.id;
 
-      // Buscar al usuario basado en el ID del token
       const user = await User.findById(userId);
 
       if (!user) {
         return res.status(404).json({ error: "Usuario no encontrado" });
       }
 
-      // Asignar el ID del usuario como adoptante de la mascota
       pet.adopter = user._id;
       pet.adoption_status = false;
 
-      // Guardar la mascota actualizada en la base de datos
       await pet.save();
 
-      // Cargar automáticamente los datos del usuario relacionado en el campo 'adopter'
       await pet.populate("adopter");
       res.status(200).json(pet);
     } catch (error) {
