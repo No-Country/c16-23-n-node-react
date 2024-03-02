@@ -13,7 +13,7 @@ function ShelterProfileInformation() {
   };
 
   const handleEditProfile = () => {
-    // navigate("/ShelterProfileInformation");
+    navigate("/shelterProfileUpdate");
     console.log(imageProfile)
   };
 

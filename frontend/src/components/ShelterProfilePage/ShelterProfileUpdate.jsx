@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import SocialIcons from "./SocialIcons"; 
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 // import ShelterProfileInformation from "./ShelterProfileInformation";
 
 function ShelterProfileUpdate(props) {
- 
+  const navigate = useNavigate();
   const {
     register,
     reset,
@@ -15,13 +15,18 @@ function ShelterProfileUpdate(props) {
 
   const submit = (data) => {
     // createUser(data, navigate);
-    reset({
-      shelterName: "",
-      reponsible: "",
-      email: "",
-      password: "",
-      description: "",
-    });
+    // reset({
+    //   shelterName: "",
+    //   reponsible: "",
+    //   email: "",
+    //   password: "",
+    //   description: "",
+    //   userName:"",
+    // });
+    console.log(data),
+
+  navigate("/shelterprofile");
+
   };
   return (
     <>
@@ -130,22 +135,20 @@ function ShelterProfileUpdate(props) {
               Cancelar
             </button>
           </div> */}
-        </form>
+        
 
+      
           <SocialIcons />
 
-          <div className="mt-6 flex flex-col items-center justify-center gap-2">
+                   
+          <div className="mt-1 flex flex-col items-center justify-center gap-2">
           <button className="w-200 h-10 rounded-2xl bg-Tertiary text-White"
-           type="submit">Guardar Cambios</button>
+           type="submit" onClick={submit}>
+            Guardar Cambios
+            </button>
           </div>
        
-       <div className="mt-6 flex flex-col items-center justify-center gap-2">
-          {/* <button
-            className="w-200 h-10 rounded-2xl bg-Alert text-White"
-            onClick={() => navigate("/ShelterPassword")}
-          >
-            Cambiar contraseña
-          </button> */}
+       <div className="mt-1 flex flex-col items-center justify-center gap-2">
           <button
             className="w-200 h-10 rounded-2xl bg-Alert text-White"
             onClick={() => navigate("/")}
@@ -153,6 +156,7 @@ function ShelterProfileUpdate(props) {
             Cancelar
           </button>
         </div>
+        </form>
       </section>
     </main>
     </>
