@@ -37,20 +37,20 @@ function PetDashboard() {
             <div key={index} className="w-1/2">
               <PetCardComponent pet={pet}>
                 <div className="flex w-1/2">
-                <div>
-                <button
-                  className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                  onClick={handleButtonDelete}
-                >
-                  Borrar
-                </button>
-                </div>
-                <button
-                  className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                  onClick={handleButtonEdite}
-                >
-                  Editar
-                </button>
+                  <div>
+                    <button
+                      className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
+                      onClick={handleButtonDelete}
+                    >
+                      Borrar
+                    </button>
+                  </div>
+                  <button
+                    className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
+                    onClick={handleButtonEdite}
+                  >
+                    Editar
+                  </button>
                 </div>
               </PetCardComponent>
             </div>
