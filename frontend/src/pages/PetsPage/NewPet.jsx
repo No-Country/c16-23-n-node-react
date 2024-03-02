@@ -2,6 +2,7 @@ import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import ImageDefault from "/img/others/addNew.svg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NewPet() {
   const [images, setImages] = useState([]);
@@ -12,6 +13,10 @@ function NewPet() {
   const [dataNewPet, setDataNewPet] = useState({
     name: name,
   });
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+      navigate(`/PetPreview`);
+    };
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -130,7 +135,8 @@ function NewPet() {
             </button>
           </div>
           <div className="mb-5 flex justify-center">
-            <button className="my-1 w-1/2 rounded-2xl bg-TertiaryDark p-2 text-lg text-white">
+            <button className="my-1 w-1/2 rounded-2xl bg-TertiaryDark p-2 text-lg text-white" onClick={handleNavigation}
+>
               Vista Previa
             </button>
           </div>
