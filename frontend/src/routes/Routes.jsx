@@ -37,9 +37,8 @@ function Rutas() {
             element={<RegisterAdopterPage />}
           />
           <Route path="/shelterRegistration" element={<RegisterShelterPage />}/>
-          <Route path="/PetDashboard" element={<PetDashboard />}/>
-          <Route path="/NewPet" element={<NewPet />}/>
-          <Route path="/PetPreview" element={<PetPreview />}
+          <Route path="/newPet" element={<NewPet />}/>
+          <Route path="/petPreview" element={<PetPreview />}
           />
           <Route path="/petInformation/:id" element={<PetInformationPage />} />
           <Route
@@ -53,6 +52,7 @@ function Rutas() {
           >
             <Route path="/" element={<HomePage />} />
             <Route path="/logout" element={<LogoutPage />} />
+            <Route path="/petDashboard" element={<PetDashboard />}/>
           </Route>
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/shelters" element={<SheltersPage />} />
