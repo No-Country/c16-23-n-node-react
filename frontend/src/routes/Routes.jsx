@@ -19,6 +19,8 @@ import ShelterProfilePage from "../pages/ShelterProfilePage/ShelterProfilePage";
 import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInformationPage";
 import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
 import AdopcionFormPage from "../pages/PetsPage/AdopcionFormPage";
+import PetDashboard from "../pages/PetsPage/PetDashboard";
+import NewPet from "../pages/PetsPage/NewPet";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");

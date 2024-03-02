@@ -1,26 +1,26 @@
 import Navbar from "../../components/shared/Navbar";
-import Footer from "../../components/shared/Footer"
+import Footer from "../../components/shared/Footer";
 import ImageDefault from "/img/others/addNew.svg";
 import { useState } from "react";
+
 function NewPet() {
-    const [images, setImages] = useState([]);
-    // 1. Agregar onChange function 
-    // 2. Handle each input inside onChange function 
-    // 3. setNewDataPet 
-    // 4. Pass NewDataPet into submit function
-    const [dataNewPet, setDataNewPet] = useState({
-        name: name, 
-    })
+  const [images, setImages] = useState([]);
+  // 1. Agregar onChange function
+  // 2. Handle each input inside onChange function
+  // 3. setNewDataPet
+  // 4. Pass NewDataPet into submit function
+  const [dataNewPet, setDataNewPet] = useState({
+    name: name,
+  });
 
-
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        setImages(files);
-      };
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    setImages(files);
+  };
   function handleSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     console.log(images[0].name);
-}
+  }
   return (
     <>
       <Navbar />
@@ -35,13 +35,13 @@ function NewPet() {
             accept="image/*"
             className="hidden"
             id="galleryInput"
-            onChange={handleImageChange} 
+            onChange={handleImageChange}
           />
           <label htmlFor="galleryInput" className="cursor-pointer">
-            <img src={ImageDefault} alt="Add Pet"/>
+            <img src={ImageDefault} alt="Add Pet" />
           </label>
         </div>
-        <form className="w-full max-w-md rounded-xl p-6 m-5">
+        <form className="w-full max-w-md rounded-xl p-5">
           <div className="mb-5">
             <label className="mb-3 block text-lg font-semibold" htmlFor="email">
               Nombre de la Mascota
@@ -94,68 +94,48 @@ function NewPet() {
             </select>
           </div>
           <div className="mb-5">
-            <label className="mb-3 block text-lg font-semibold">
-              Características de la Mascota
+            <select
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
+              id="petName"
+              defaultValue=""
+            >
+              <option value="" disabled hidden>
+                Comportamiento
+              </option>
+              <option value="Calmado">Macho</option>
+              <option value="Jugueton">Jugueton</option>
+              <option value="Alegre">Alegre</option>
+              <option value="Tranquilo">Tranquilo</option>
+              <option value="Cariñoso">Cariñoso</option>
+              <option value="Guardian">Guardian</option>
+            </select>
+          </div>
+          <div className="mb-5">
+            <label
+              className="mb-3 block text-lg font-semibold"
+              htmlFor="description"
+            >
+              Descripción
             </label>
-            <div className="flex flex-wrap">
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="kind"
-                />
-                <span className="ml-2">Calmado</span>
-              </label>
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="happy"
-                />
-                <span className="ml-2">Jugueton</span>
-              </label>
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="sad"
-                />
-                <span className="ml-2">Alegre</span>
-              </label>
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="sad"
-                />
-                <span className="ml-2">Tranquilo</span>
-              </label>
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="sad"
-                />
-                <span className="ml-2">Cariñoso</span>
-              </label>
-              <label className="mb-2 mr-4 inline-flex items-center">
-                <input
-                  type="checkbox"
-                  className="form-checkbox text-primary h-5 w-5"
-                  name="characteristics"
-                  value="sad"
-                />
-                <span className="ml-2">Guardian</span>
-              </label>
-            </div>
-          </div><button onClick={handleSubmit}>Ver Images</button>
+            <textarea
+              className="mt-1 h-40 w-full rounded-3xl bg-White px-3 py-5 shadow-xl outline-none"
+              type="textare"
+              id="description"
+              placeholder="Cuéntanos un poco más sobre la mascota, condiciones especiales y en qué estado fue encontrado"
+            />
+          </div>
+          <div className="mb-2 flex justify-center">
+            <button className="my-1 w-1/2 rounded-2xl bg-Tertiary p-2 text-lg text-white">
+              Guardar Cambios
+            </button>
+          </div>
+          <div className="mb-5 flex justify-center">
+            <button className="my-1 w-1/2 rounded-2xl bg-TertiaryDark p-2 text-lg text-white">
+              Vista Previa
+            </button>
+          </div>
         </form>
-        <Footer/>
+        <Footer />
       </main>
     </>
   );
