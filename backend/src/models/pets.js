@@ -34,6 +34,10 @@ const petsSchema = new mongoose.Schema({
     required: true,
     enum: ["Pequeño", "Mediano", "Grande"],
   },
+  description:{
+    type: String,
+    maxlength:300,
+  },
   characteristics: {
     type: [String],
     required: true,
