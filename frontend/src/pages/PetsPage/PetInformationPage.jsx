@@ -2,7 +2,7 @@ import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 // import pets from "../../data/pets.json";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import usePet from "../../hooks/usePet";
 import { useEffect, useState } from "react";
 
@@ -10,6 +10,7 @@ function PetInformationPage() {
   const { id } = useParams();
   const [pet, getSinglePet] = usePet();
   const [images, setImages] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSinglePet(`/pet/${id}`);
@@ -21,6 +22,10 @@ function PetInformationPage() {
       setImages(imageUrls);
     }
   }, [pet]);
+
+  const handleDetails = () => {
+    navigate(`/adopcionForm`);
+  };
 
   return (
     <>
@@ -54,7 +59,10 @@ function PetInformationPage() {
             {/* <span className="text-base font-normal">{pet.shelter_id}</span> */}
           </div>
           <div className="text-center">
-            <button className="mb-9 mt-3 h-10 w-180 rounded-2xl bg-Tertiary text-White">
+            <button
+              className="mb-9 mt-3 h-10 w-180 rounded-2xl bg-Tertiary text-White"
+              onClick={handleDetails}
+            >
               Iniciar Adopción
             </button>
           </div>
