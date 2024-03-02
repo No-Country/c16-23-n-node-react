@@ -18,6 +18,8 @@ import UserProfilePage from "../pages/UserProfilePage/UserProfilePage";
 import ShelterProfilePage from "../pages/ShelterProfilePage/ShelterProfilePage";
 import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInformationPage";
 import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
+import PetDashboard from "../pages/PetsPage/PetDashboard";
+import NewPet from "../pages/PetsPage/NewPet";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
@@ -35,6 +37,14 @@ function Rutas() {
           <Route
             path="/shelterRegistration"
             element={<RegisterShelterPage />}
+          />
+          <Route            
+            path="/PetDashboard"
+            element={<PetDashboard />}
+          />
+          <Route            
+            path="/NewPet"
+            element={<NewPet />}
           />
           <Route path="/petInformation/:id" element={<PetInformationPage />} />
           <Route
