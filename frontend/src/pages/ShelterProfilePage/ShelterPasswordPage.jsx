@@ -1,6 +1,5 @@
 import Footer from "../../components/shared/Footer";
-// import ImageShelterProf from "../components/shared/ImageShelterProf";
-import ImageShelterProf from "../../components/ShelterProfilePage/ImageShelterProf";
+import ShelterPassword from "../../components/ShelterProfilePage/ShelterPassword";
 import Navbar from "../../components/shared/Navbar";
 
 function ShelterPasswordPage() {
@@ -8,7 +7,7 @@ function ShelterPasswordPage() {
     <>
       <Navbar />
       <main className="select-none bg-Primary pt-20 font-poppins text-black">
-       <ImageShelterProf/>
+       <ShelterPassword />
       </main>
       <Footer />
     </>

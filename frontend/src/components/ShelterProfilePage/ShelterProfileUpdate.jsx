@@ -14,16 +14,16 @@ function ShelterProfileUpdate(props) {
   } = useForm();
 
   const submit = (data) => {
-    // createUser(data, navigate);
-    // reset({
-    //   shelterName: "",
-    //   reponsible: "",
-    //   email: "",
-    //   password: "",
-    //   description: "",
-    //   userName:"",
-    // });
-    console.log(data),
+    createUser(data, navigate);
+    reset({
+      shelterName: "",
+      reponsible: "",
+      email: "",
+      password: "",
+      description: "",
+      userName:"",
+    });
+    
 
   navigate("/shelterprofile");
 
@@ -127,17 +127,8 @@ function ShelterProfileUpdate(props) {
             />
           </div>
 
-          {/* <div className="my-8 flex flex-col items-center justify-center gap-4">
-            <button className="h-10 w-240 rounded-2xl bg-Tertiary p-2 text-base text-white">
-              Actualizar datos
-            </button>
-            <button className="h-10 w-240 rounded-2xl bg-Alert p-2 text-base text-white">
-              Cancelar
-            </button>
-          </div> */}
-        
+              
 
-      
           <SocialIcons />
 
                    
