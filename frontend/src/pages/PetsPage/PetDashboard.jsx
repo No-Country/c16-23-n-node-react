@@ -1,11 +1,20 @@
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import PetCardComponent from "../../components/HomePage/PetCardRefined";
-import pets from "../../data/pets.json";
+// import pets from "../../data/pets.json";
 import Plus from "/img/others/plus.svg";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import usePets from "../../hooks/usePets";
 
 function PetDashboard() {
+  const { petInfo: pets, getPetInfo: getAllPets } = usePets();
+
+  useEffect(() => {
+    getAllPets("/pet");
+  }, []);
+  console.log(pets);
+
   const navigate = useNavigate();
   function handleButtonDelete() {
     alert("Próximamente se Borrará Firuly");

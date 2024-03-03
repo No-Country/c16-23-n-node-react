@@ -28,7 +28,7 @@ function LoginPage() {
       // setIsLoggedIn(!isLoggedIn);
     } else {
       setIsLoggedIn(!isLoggedIn);
-      navigate("/");
+      navigate("/petDashboard");
     }
 
     reset({

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const usePet = (baseUrl) => {
-  baseUrl = "http://localhost:3000/api";
+  baseUrl = "http://localhost:3002/api";
 
   const [infoApi, setInfoApi] = useState();
 
