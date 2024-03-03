@@ -28,9 +28,9 @@ function PetCardComponent({ pet,children}) {
             {pet.pet_type}
           </span>
         </div>
-        <div className="my-3 text-center">
+        <div>
         {children && (
-          <div className="my-3 text-center">
+          <div className=" flex justify-between my-3 text-center">
             {children}
           </div>
         )}

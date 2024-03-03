@@ -16,7 +16,16 @@ const usePets = () => {
       .catch((err) => console.error("Error fetching pet info:", err));
   };
 
-  return { petInfo, getPetInfo };
+  const deletePetById = async (id) => {
+    const url = `${defaultBaseUrl}/pet/${id}`;
+    try {
+      await axios.delete(url);
+      alert("Pet deleted successfully");
+    } catch (error) {
+      console.error("Error deleting pet:", error);
+    }
+  };
+  return { petInfo, getPetInfo, deletePetById };
 };
 
 export default usePets;
