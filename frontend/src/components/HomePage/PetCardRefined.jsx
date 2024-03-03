@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 
-function PetCardComponent({ pet,children}) {
-
+function PetCardComponent({ pet, children }) {
   return (
     <div className="m-1 overflow-hidden rounded-xl bg-PrimaryDark shadow-sm">
       <div className="m-3">
         <img
           src={pet.images[0].url}
           alt="foto perro"
-          className="h-20 w-full object-cover object-center rounded-md"
+          className="h-20 w-full rounded-md object-cover object-center"
         />
       </div>
       <div className="px-3">
@@ -29,11 +28,11 @@ function PetCardComponent({ pet,children}) {
           </span>
         </div>
         <div>
-        {children && (
-          <div className=" flex justify-between my-3 text-center">
-            {children}
-          </div>
-        )}
+          {children && (
+            <div className=" my-3 flex justify-between text-center">
+              {children}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -41,4 +40,3 @@ function PetCardComponent({ pet,children}) {
 }
 
 export default PetCardComponent;
-

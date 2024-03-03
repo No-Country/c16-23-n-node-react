@@ -14,7 +14,7 @@ function PetDashboard() {
   useEffect(() => {
     getAllPets("/pet");
   }, []);
-  console.log(pets);
+  console.log("deevuelte :" + pets.length);
 
   const navigate = useNavigate();
   const handleButtonDelete = async (id, name) => {
@@ -24,6 +24,7 @@ function PetDashboard() {
       );
       if (confirmDelete) {
         await deletePetById(id);
+        alert("Mascota Eliminada");
         getAllPets("/pet");
       }
     } catch (error) {
@@ -31,7 +32,7 @@ function PetDashboard() {
     }
   };
 
-  function handleButtonEdite() {
+  function handleButtonEdit() {
     alert("Próximamente se Editarás a Firuly");
   }
   const handleNavigation = () => {
@@ -44,7 +45,7 @@ function PetDashboard() {
         <strong className="mb-10 ml-5 block pt-5 text-left text-2xl font-bold leading-normal">
           Tus Mascotas
         </strong>
-        <section className="m-5 flex flex-wrap">
+        <section className="mx-5 flex flex-wrap pb-10">
           <div
             className="flex w-1/2 items-center justify-center rounded-xl bg-Tertiary"
             onClick={handleNavigation}
@@ -53,24 +54,32 @@ function PetDashboard() {
               <img src={Plus} alt="Add Pet" />
             </span>
           </div>
-          {pets.map((pet, index) => (
-            <div key={index} className="w-1/2">
-              <PetCardComponent pet={pet}>
-                <button
-                  className="rounded-full bg-Alert px-3 py-1 font-poppins text-White"
-                  onClick={() => handleButtonDelete(pet._id, pet.name)}
-                >
-                  <TrashIcon className="mr-2 h-5 w-8" />
-                </button>
-                <button
-                  className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                  onClick={handleButtonEdite}
-                >
-                  Editar
-                </button>
-              </PetCardComponent>
+          {pets.length == 28 ? (
+            <div className="w-full py-40 text-center ">
+              <p>No hay mascotas. Agrega una nueva mascota.</p>
             </div>
-          ))}
+          ) : (
+            <>
+              {pets.map((pet, index) => (
+                <div key={index} className="w-1/2">
+                  <PetCardComponent pet={pet}>
+                    <button
+                      className="rounded-full bg-Alert px-3 py-1 font-poppins text-White"
+                      onClick={() => handleButtonDelete(pet._id, pet.name)}
+                    >
+                      <TrashIcon className="mr-2 h-5 w-8" />
+                    </button>
+                    <button
+                      className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
+                      onClick={handleButtonEdit}
+                    >
+                      Editar
+                    </button>
+                  </PetCardComponent>
+                </div>
+              ))}
+            </>
+          )}
         </section>
       </main>
       <Footer />

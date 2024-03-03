@@ -16,16 +16,37 @@ const usePets = () => {
       .catch((err) => console.error("Error fetching pet info:", err));
   };
 
-  const deletePetById = async (id) => {
+  const deletePetById = async (id, name) => {
     const url = `${defaultBaseUrl}/pet/${id}`;
     try {
       await axios.delete(url);
-      alert("Pet deleted successfully");
     } catch (error) {
       console.error("Error deleting pet:", error);
     }
   };
-  return { petInfo, getPetInfo, deletePetById };
+  const createPet = async (petData) => {
+    const url = `${defaultBaseUrl}/pet`;
+    try {
+      const formData = new FormData();
+      Object.entries(petData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      petData.images.forEach((image) => {
+        formData.append('image', image);
+      });
+      const response = await axios.post(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      alert("Mascota creada correctamente!");
+      return response.data;
+    } catch (error) {
+      console.error("Error creating pet:", error);
+      throw error;
+    }
+  };
+  return { petInfo, getPetInfo, deletePetById, createPet };
 };
 
 export default usePets;

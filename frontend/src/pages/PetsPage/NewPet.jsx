@@ -3,29 +3,58 @@ import Footer from "../../components/shared/Footer";
 import ImageDefault from "/img/others/addNew.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import usePets from "../../hooks/usePets";
 
 function NewPet() {
-  const [images, setImages] = useState([]);
-  // 1. Agregar onChange function
-  // 2. Handle each input inside onChange function
-  // 3. setNewDataPet
-  // 4. Pass NewDataPet into submit function
-  const [dataNewPet, setDataNewPet] = useState({
-    name: name,
+  const { createPet } = usePets();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    pet_type: "",
+    size: "",
+    gender: "",
+    characteristics: "",
+    description: "",
   });
-  const navigate = useNavigate();
-  const handleNavigation = () => {
-      navigate(`/PetPreview`);
-    };
+  const [images, setImages] = useState([]);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages(files);
+    const selectedImage = files[0];
+    const imageUrl = URL.createObjectURL(selectedImage);
+    setImagePreview(imageUrl);
+    setFormData((prevData) => ({
+      ...prevData,
+      image: imageUrl,
+    }));
   };
-  function handleSubmit(e) {
+
+  const navigate = useNavigate();
+  const handleNavigation = () => {
+    navigate(`/PetPreview`);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(images[0].name);
-  }
+    try {
+      const petData = { ...formData, images };
+      await createPet(petData);
+      navigate("/PetDashboard");
+    } catch (error) {
+      console.error("Error creating pet:", error);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -43,7 +72,11 @@ function NewPet() {
             onChange={handleImageChange}
           />
           <label htmlFor="galleryInput" className="cursor-pointer">
-            <img src={ImageDefault} alt="Add Pet" />
+            {imagePreview ? (
+              <img src={imagePreview} alt="Pet Preview" width={150} />
+            ) : (
+              <img src={ImageDefault} alt="Add Pet" />
+            )}
           </label>
         </div>
         <form className="w-full max-w-md rounded-xl p-5">
@@ -55,14 +88,31 @@ function NewPet() {
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               type="text"
               id="text"
+              name="name"
               placeholder="Conexión Huellitas"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="mb-5">
+            <label className="mb-3 block text-lg font-semibold" htmlFor="email">
+              Edad
+            </label>
+            <input
+              className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
+              type="number"
+              id="text"
+              name="age"
+              placeholder="Conexión Huellitas"
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-5">
             <select
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               id="petName"
+              name="pet_type"
               defaultValue=""
+              onChange={handleInputChange}
             >
               <option value="" disabled hidden>
                 Elige una especie
@@ -75,7 +125,9 @@ function NewPet() {
             <select
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               id="petName"
+              name="size"
               defaultValue=""
+              onChange={handleInputChange}
             >
               <option value="" disabled hidden>
                 Selecciona su Tamaño
@@ -89,7 +141,9 @@ function NewPet() {
             <select
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               id="petName"
+              name="gender"
               defaultValue=""
+              onChange={handleInputChange}
             >
               <option value="" disabled hidden>
                 Selecciona su Genero
@@ -103,11 +157,13 @@ function NewPet() {
               className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
               id="petName"
               defaultValue=""
+              name="characteristics"
+              onChange={handleInputChange}
             >
               <option value="" disabled hidden>
                 Comportamiento
               </option>
-              <option value="Calmado">Macho</option>
+              <option value="Calmado">Calmado</option>
               <option value="Jugueton">Jugueton</option>
               <option value="Alegre">Alegre</option>
               <option value="Tranquilo">Tranquilo</option>
@@ -126,17 +182,24 @@ function NewPet() {
               className="mt-1 h-40 w-full rounded-3xl bg-White px-3 py-5 shadow-xl outline-none"
               type="textare"
               id="description"
+              name="description"
               placeholder="Cuéntanos un poco más sobre la mascota, condiciones especiales y en qué estado fue encontrado"
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-2 flex justify-center">
-            <button className="my-1 w-1/2 rounded-2xl bg-Tertiary p-2 text-lg text-white">
+            <button
+              className="my-1 w-1/2 rounded-2xl bg-Tertiary p-2 text-lg text-white"
+              onClick={handleSubmit}
+            >
               Guardar Cambios
             </button>
           </div>
           <div className="mb-5 flex justify-center">
-            <button className="my-1 w-1/2 rounded-2xl bg-TertiaryDark p-2 text-lg text-white" onClick={handleNavigation}
->
+            <button
+              className="my-1 w-1/2 rounded-2xl bg-TertiaryDark p-2 text-lg text-white"
+              onClick={handleNavigation}
+            >
               Vista Previa
             </button>
           </div>
