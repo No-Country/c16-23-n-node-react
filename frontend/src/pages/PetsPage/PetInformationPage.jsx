@@ -51,7 +51,7 @@ function PetInformationPage() {
               {pet?.pet_type}
             </span>
           </div>
-          {/* <p className="text-base font-normal">{pet.description}</p> */}
+          <p className="text-base font-normal">{pet?.description}</p>
           <div className="flex flex-col">
             <span className="text-base font-semibold">
               Refugio en que se encuentra:

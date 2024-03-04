@@ -92,7 +92,6 @@ function UserPasswordForm() {
       // Guardar el usuario actualizado en el localStorage
       const updatedUserInfo = { ...userInfo, password: password2 };
       localStorage.setItem("user", JSON.stringify(updatedUserInfo));
-      console.log("Contraseña actualizada:", updatedUserInfo);
     }
   };
 
