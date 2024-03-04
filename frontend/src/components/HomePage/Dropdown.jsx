@@ -1,10 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const Dropdown = ({ title, options }) => {
+const Dropdown = ({ title, options, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null); // Estado para almacenar la opción seleccionada
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleSelectOption = (option) => {
+    onSelect(option);
+    setSelectedOption(option); // Actualizar el estado con la opción seleccionada
+    setIsOpen(false);
   };
 
   return (
@@ -13,10 +20,13 @@ const Dropdown = ({ title, options }) => {
         <button
           type="button"
           onClick={toggleDropdown}
-          className="2xl:w-288 inline-flex items-center justify-center rounded-full border
-          bg-white px-4  py-2 text-sm font-medium text-GrayDark shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 2xl:justify-between 2xl:text-xl"
+          className="inline-flex items-center justify-center rounded-full border bg-white
+          px-4 py-2  text-sm font-medium text-GrayDark shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 2xl:w-288 2xl:justify-between 2xl:text-xl"
         >
-          <span className="truncate font-poppins">{title}</span>
+          <span className="truncate font-poppins">
+            {selectedOption || title}{" "}
+            {/* Mostrar la opción seleccionada o el título predeterminado */}
+          </span>
           {/* Icono de flecha abajo */}
           <svg
             className={`ml-2 h-5 w-5 ${isOpen ? "-mr-1" : "mr-2"}`}
@@ -41,13 +51,13 @@ const Dropdown = ({ title, options }) => {
           <div className="py-1">
             {/* Mapea sobre las opciones para crear los elementos del dropdown */}
             {options.map((option, index) => (
-              <a
+              <button
                 key={index}
-                href="#"
-                className="block px-4 py-2 text-sm text-GrayDark hover:bg-gray-100 hover:text-gray-900"
+                onClick={() => handleSelectOption(option)}
+                className="block w-full px-4 py-2 text-left text-sm text-GrayDark hover:bg-gray-100 hover:text-gray-900"
               >
                 {option}
-              </a>
+              </button>
             ))}
           </div>
         </div>

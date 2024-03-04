@@ -5,9 +5,11 @@ import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import Dropdown from "../../components/HomePage/Dropdown";
+// import pets from "../../data/pets.json";
 import usePet from "../../hooks/usePet";
 import { useEffect, useState } from "react";
 
+// eslint-disable-next-line react/prop-types
 function HomePage() {
   const images = [FotoPerro, FotoGato];
   const [pets, getAllPets] = usePet();
@@ -24,6 +26,7 @@ function HomePage() {
     const fetchPetsByFilters = async () => {
       let url = "/pet";
 
+      // Construir la URL de la API con los filtros aplicados
       if (species || size || gender || attitude) {
         url += "/byFilters?";
         if (species) url += `pet_type=${species}&`;
@@ -32,6 +35,7 @@ function HomePage() {
         if (attitude) url += `characteristics=${attitude}&`;
       }
 
+      // Eliminar el último '&' de la URL, si existe
       url = url.replace(/&$/, "");
 
       // Hacer la solicitud a la API
@@ -58,25 +62,25 @@ function HomePage() {
               title={"Especie"}
               options={["Perro", "Gato"]}
               className="2xl:w-288"
-              onSelect={(option) => setSpecies(option)} // Asegúrate de pasar la opción seleccionada al estado
+              onSelect={setSpecies}
             />
             <Dropdown
               title={"Tamaño"}
               options={["Pequeño", "Mediano", "Grande"]}
               className="2xl:w-288"
-              onSelect={(option) => setSize(option)} // Asegúrate de pasar la opción seleccionada al estado
+              onSelect={setSize}
             />
             <Dropdown
               title={"Genero"}
               options={["Macho", "Hembra"]}
               className="2xl:w-288"
-              onSelect={(option) => setGender(option)} // Asegúrate de pasar la opción seleccionada al estado
+              onSelect={setGender}
             />
             <Dropdown
               title={"Actitud"}
               options={["Tranquilo", "Jugueton", "Cariñoso"]}
               className="2xl:w-288"
-              onSelect={(option) => setAttitude(option)} // Asegúrate de pasar la opción seleccionada al estado
+              onSelect={setAttitude}
             />
           </div>
 
