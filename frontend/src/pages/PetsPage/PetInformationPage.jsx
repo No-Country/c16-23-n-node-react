@@ -3,12 +3,13 @@ import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 // import pets from "../../data/pets.json";
 import { useParams, useNavigate } from "react-router-dom";
-import usePet from "../../hooks/usePet";
+import usePets from "../../hooks/usePets";
 import { useEffect, useState } from "react";
 
 function PetInformationPage() {
   const { id } = useParams();
-  const [pet, getSinglePet] = usePet();
+  // const [pet, getSinglePet] = usePet();
+  const { petInfo: pet, getPetInfo: getSinglePet } = usePets();
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
 

@@ -1,339 +1,14 @@
 {
   "adoption": [
     {
-      "contactoPermanente": "si",
-      "deAcuerdo": "si",
-      "dormir": "en un colchon",
-      "email": "edwinagemiler17@gmail.com",
-      "motivoAdopcion": "111111111111",
-      "motivoDevolucion": "dddddddddddd",
-      "noEsta": "vanesa",
-      "nombre": "EDWIN AGEMILER",
-      "personas": "1111",
-      "presupuesto": "122",
-      "responsable": "edwin",
-      "telefono": "954647683",
-      "tuvoMascota": [
-        "boby",
-        "firulais"
-      ],
-      "actividades": [
-        "aireLibre",
-        "paseos",
-        "vacunacion",
-        "Desparasitación"
-      ],
-      "id": "0b01"
-    },
-    {
-      "id": "a957",
-      "contactoPermanente": "si",
-      "deAcuerdo": "si",
-      "dormir": "en un colchon",
-      "email": "edwinagemiler17@gmail.com",
-      "motivoAdopcion": "111111111111",
-      "motivoDevolucion": "dddddddddddd",
-      "noEsta": "LOURDES",
-      "nombre": "PEDOFILA",
-      "personas": "1111",
-      "presupuesto": "200",
-      "responsable": "LUPE",
-      "telefono": "9999999999",
-      "tuvoMascota": [
-        "KIRA"
-      ],
-      "actividades": [
-        "aireLibre",
-        "Desparasitación"
-      ]
-    },
-    {
-      "id": "8814",
-      "nombre": "Sergie",
-      "email": "sergiecode@gmail.com",
-      "telefono": "909090900",
-      "responsable": "Lalo",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "250",
-      "dormir": "en un colchon",
-      "tuvoMascota": "Chusquis",
-      "motivoAdopcion": "dsfdsfdsfdsds",
-      "motivoDevolucion": "fdsfdsfds",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "5c87",
-      "contactoPermanente": "si",
-      "deAcuerdo": "si",
-      "dormir": "en un colchon",
-      "email": "anacleta@gmail.com",
-      "motivoAdopcion": "111111111111",
-      "motivoDevolucion": "dddddddddddd",
-      "noEsta": "LOURDES",
-      "nombre": "PEDOFILA",
-      "personas": "1111",
-      "presupuesto": "100",
-      "responsable": "anacleta",
-      "telefono": "9999999999",
-      "tuvoMascota": [
-        "zorris"
-      ],
-      "actividades": [
-        "aireLibre",
-        "Desparasitación"
-      ]
-    },
-    {
-      "id": "8ca7",
-      "nombre": "Jazziel Fabrizzio",
-      "email": "jazzielitoamor@hotmail.com",
-      "telefono": "929292917",
-      "responsable": "Loca",
-      "personas": "3",
-      "deAcuerdo": "si",
-      "noEsta": "Loca",
-      "presupuesto": "200",
-      "dormir": "en una casita",
-      "tuvoMascota": "Lobezno",
-      "motivoAdopcion": "me encantan los animales",
-      "motivoDevolucion": "para nada",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "af4f",
-      "nombre": "Utrilla Camones Javier Lucho",
-      "email": "alex_xx@yahoo.es",
-      "telefono": "111111111111",
-      "responsable": "edwin",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "1212",
-      "dormir": "en una casita",
-      "tuvoMascota": "Chusquis",
-      "motivoAdopcion": "DFSFDSFDS",
-      "motivoDevolucion": "FDSFDSFDSF",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "93a9",
-      "nombre": "DSDSDAD",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "23423423423",
-      "responsable": "edwin",
-      "personas": "12",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "111",
-      "dormir": "en un colchon",
-      "tuvoMascota": "Lobezno",
-      "motivoAdopcion": "DFSDSFDSF",
-      "motivoDevolucion": "DSFDSFDSF",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "9b79",
-      "nombre": "Utrilla Camones Javier Lucho",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "954647683",
-      "responsable": "edwin",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "12",
-      "dormir": "en un colchon",
-      "tuvoMascota": "boby, firulais",
-      "motivoAdopcion": "FDSFSDF",
-      "motivoDevolucion": "DSFDSFDSF",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "ca35",
-      "nombre": "EDWIN AGEMILER",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "954647683",
-      "responsable": "edwin",
-      "personas": "111",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "220",
-      "dormir": "en un colchon",
-      "tuvoMascota": "Chusquis",
-      "motivoAdopcion": "SDASDASDASDS",
-      "motivoDevolucion": "ADASDASDS",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "cd76",
-      "contactoPermanente": "si",
-      "deAcuerdo": "si",
-      "dormir": "en un colchon",
-      "email": "anacleta@gmail.com",
-      "motivoAdopcion": "111111111111",
-      "motivoDevolucion": "dddddddddddd",
-      "noEsta": "LOURDES",
-      "nombre": "PEDOFILA",
-      "personas": "1111",
-      "presupuesto": "100",
-      "responsable": "anacleta",
-      "telefono": "9999999999",
-      "tuvoMascota": [
-        "zorris"
-      ],
-      "actividades": [
-        "aireLibre",
-        "Desparasitación"
-      ]
-    },
-    {
-      "id": "6592",
-      "nombre": "RAMIREZ SANTOS LINCOL JUAN",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "963456789",
-      "responsable": "edwin",
-      "personas": "12",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "300",
-      "dormir": "en un colchon",
-      "tuvoMascota": "Chusquis",
-      "motivoAdopcion": "SFSDFDSFDSFSDF",
-      "motivoDevolucion": "DSFDSFDSFDSF",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "e356",
-      "nombre": "Lourdes Nano",
-      "email": "lulu@hotmail.com",
-      "telefono": "999900001",
-      "responsable": "Lalo",
-      "personas": "3",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "400",
-      "dormir": "en un colchon",
-      "tuvoMascota": "boby, firulais",
-      "motivoAdopcion": "ddddd",
-      "motivoDevolucion": "qqqqqq",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "b2e0",
-      "nombre": "DDDDD",
-      "email": "alayinsiempre@gmail.com",
-      "telefono": "969696961",
-      "responsable": "Lalo",
-      "personas": "3",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "500",
-      "dormir": "en una casita",
-      "tuvoMascota": "Lobezno",
-      "motivoAdopcion": "DDDD",
-      "motivoDevolucion": "DDDD",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "c677",
-      "nombre": "Sergie",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "96969696960",
-      "responsable": "edwin",
-      "personas": "4",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "900",
-      "dormir": "en un colchon",
-      "tuvoMascota": "boby, firulais",
-      "motivoAdopcion": "DDDDD",
-      "motivoDevolucion": "DDDDD",
-      "contactoPermanente": "si"
-    },
-    {
-      "id": "16e7",
-      "nombre": "LALO",
-      "email": "lalo@gmail.com",
-      "telefono": "987654321",
-      "responsable": "Lalo",
-      "personas": "3",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "900",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "Lobezno"
-      ],
-      "motivoAdopcion": "ddddd",
-      "motivoDevolucion": "wwwwww",
-      "contactoPermanente": "si",
-      "actividades": [
-        "aireLibre",
-        "paseos",
-        "Desparasitación"
-      ]
-    },
-    {
-      "id": "8b9f",
-      "nombre": "EDWIN AGEMILER",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "954647683",
-      "responsable": "edwin",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "501",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "boby",
-        "firulais"
-      ],
-      "motivoAdopcion": "ssssssssssss",
-      "motivoDevolucion": "dddddddddddd",
-      "contactoPermanente": "no",
-      "actividades": [
-        "Desparasitación"
-      ]
-    },
-    {
-      "id": "1124",
-      "nombre": "NELIDA EMELDA",
-      "email": "emelda@gmail.com",
-      "telefono": "454545458",
-      "responsable": "1",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "Loca",
-      "presupuesto": "600",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "boby",
-        "firulais",
-        "kira",
-        "lobo"
-      ],
-      "motivoAdopcion": "ddddddddddd",
-      "motivoDevolucion": "dddddddd",
-      "contactoPermanente": "si",
-      "actividades": [
-        "baño",
-        "Desparasitación",
-        "veterinario",
-        "vacunacion",
-        "paseos",
-        "aireLibre"
-      ]
-    },
-    {
       "id": "69ec",
-      "nombre": "jose peralezs",
-      "email": "perales@hotmail.com",
+      "nombre": "Jose Perales",
+      "email": "joseperales@hotmail.com",
       "telefono": "9878971223",
-      "responsable": "4",
-      "personas": "4",
+      "responsable": "Jose",
+      "personas": "2",
       "deAcuerdo": "si",
-      "noEsta": "PERALES",
+      "noEsta": "Jose",
       "presupuesto": "900",
       "dormir": "en un colchon",
       "tuvoMascota": [
@@ -342,8 +17,8 @@
         "kira",
         "lobo"
       ],
-      "motivoAdopcion": "DDDDDDDDDDDDDDDD",
-      "motivoDevolucion": "DDDDDDDDDD",
+      "motivoAdopcion": "Tener a una mascota para cuidarlo",
+      "motivoDevolucion": "No tengo motivos de devolucion",
       "contactoPermanente": "no",
       "actividades": [
         "aireLibre",
@@ -354,21 +29,21 @@
     },
     {
       "id": "89d4",
-      "nombre": "sadasd",
-      "email": "edwinagemiler17@gmail.com",
+      "nombre": "Lourdes Flores",
+      "email": "lourdescorazon@gmail.com",
       "telefono": "954647683",
-      "responsable": "Loca",
+      "responsable": "Vanesa",
       "personas": "3",
       "deAcuerdo": "si",
-      "noEsta": "vanesa",
+      "noEsta": "Vanesa",
       "presupuesto": "222",
       "dormir": "en un colchon",
       "tuvoMascota": [
         "boby",
         "firulais"
       ],
-      "motivoAdopcion": "ddddddddddd",
-      "motivoDevolucion": "dddddd",
+      "motivoAdopcion": "Desde niña quise tener una mascota",
+      "motivoDevolucion": "No hay motivo de devolucion",
       "contactoPermanente": "si",
       "actividades": [
         "aireLibre",
@@ -380,115 +55,15 @@
       ]
     },
     {
-      "id": "92a5",
-      "nombre": "Utrilla Camones Javier Lucho",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "9090909089",
-      "responsable": "PERRO",
-      "personas": "2",
-      "deAcuerdo": "si",
-      "noEsta": "Lalo",
-      "presupuesto": "234",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "boby",
-        "firulais",
-        "kira",
-        "lobo"
-      ],
-      "motivoAdopcion": "DDDDDDDDDDDDDDDDDDD",
-      "motivoDevolucion": "DDDDDDD",
-      "contactoPermanente": "no",
-      "actividades": [
-        "paseos",
-        "vacunacion"
-      ]
-    },
-    {
-      "id": "1681",
-      "nombre": "EDWIN AGEMILER",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "1111111",
-      "responsable": "edwin",
-      "personas": "1",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "444",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "boby",
-        "firulais"
-      ],
-      "motivoAdopcion": "ffffffffffffffff",
-      "motivoDevolucion": "ffffffffffffffffffff",
-      "contactoPermanente": "si",
-      "actividades": [
-        "aireLibre",
-        "paseos"
-      ]
-    },
-    {
-      "id": "f44b",
-      "nombre": "Utrilla Camones Javier Lucho",
-      "email": "edwinagemiler17@gmail.com",
-      "telefono": "11111111111111",
-      "responsable": "Loca",
-      "personas": "1",
-      "deAcuerdo": "si",
-      "noEsta": "vanesa",
-      "presupuesto": "111",
-      "dormir": "en un colchon",
-      "tuvoMascota": [
-        "boby",
-        "firulais",
-        "kira",
-        "lobo"
-      ],
-      "motivoAdopcion": "DDDDDD",
-      "motivoDevolucion": "DDDD",
-      "contactoPermanente": "no",
-      "actividades": [
-        "paseos",
-        "vacunacion"
-      ]
-    },
-    {
-      "id": "17d2",
-      "nombre": "Carlos Perez",
-      "email": "perez@hotmail.com",
-      "telefono": "969696968",
-      "responsable": "Carlos",
-      "personas": "5",
-      "deAcuerdo": "si",
-      "noEsta": "Carlos",
-      "presupuesto": "400",
-      "dormir": "en una casita",
-      "tuvoMascota": [
-        "boby",
-        "firulais",
-        "kira",
-        "lobo"
-      ],
-      "motivoAdopcion": "porque me gustan los animales",
-      "motivoDevolucion": "ninguna que yo sepa",
-      "contactoPermanente": "si",
-      "actividades": [
-        "aireLibre",
-        "paseos",
-        "baño",
-        "Desparasitación"
-      ]
-    },
-    {
       "id": "b3da",
-      "nombre": "EDWIN AGEMILER",
+      "nombre": "Edwin Amaranto",
       "email": "edwinagemiler17@gmail.com",
       "telefono": "111111111",
-      "responsable": "edwin",
+      "responsable": "Edwin",
       "personas": "3",
       "deAcuerdo": "si",
-      "noEsta": "Loca",
-      "presupuesto": "199",
+      "noEsta": "Nelida",
+      "presupuesto": "200",
       "dormir": "en un colchon",
       "tuvoMascota": [
         "boby",
@@ -496,8 +71,8 @@
         "kira",
         "lobo"
       ],
-      "motivoAdopcion": "dddddd",
-      "motivoDevolucion": "dddddddd",
+      "motivoAdopcion": "Tener a quien engreir y cuidar",
+      "motivoDevolucion": "No tengo porque devolver a una mascota que quiero",
       "contactoPermanente": "si",
       "actividades": [
         "aireLibre",

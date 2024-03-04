@@ -5,12 +5,13 @@ import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import Dropdown from "../../components/HomePage/Dropdown";
-import usePet from "../../hooks/usePet";
+import usePets from "../../hooks/usePets";
 import { useEffect, useState } from "react";
 
 function HomePage() {
   const images = [FotoPerro, FotoGato];
-  const [pets, getAllPets] = usePet();
+  // const [pets, getAllPets] = usePet();
+  const { petInfo: pets, getPetInfo: getAllPets } = usePets();
   const [species, setSpecies] = useState(null);
   const [size, setSize] = useState(null);
   const [gender, setGender] = useState(null);
