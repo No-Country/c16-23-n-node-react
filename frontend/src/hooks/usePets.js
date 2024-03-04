@@ -32,11 +32,11 @@ const usePets = () => {
         formData.append(key, value);
       });
       petData.images.forEach((image) => {
-        formData.append('image', image);
+        formData.append("image", image);
       });
       const response = await axios.post(url, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
       alert("Mascota creada correctamente!");
