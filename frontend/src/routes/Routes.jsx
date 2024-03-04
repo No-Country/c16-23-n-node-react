@@ -22,6 +22,9 @@ import AdopcionFormPage from "../pages/PetsPage/AdopcionFormPage";
 import PetDashboard from "../pages/PetsPage/PetDashboard";
 import NewPet from "../pages/PetsPage/NewPet";
 import PetPreview from "../pages/PetsPage/PetPreview";
+import { PetProvider } from "../context/PetContext";
+import ShelterPasswordPage from "../pages/ShelterProfilePage/ShelterPasswordPage";
+import ShelterProfileUpdatePage from "../pages/ShelterProfilePage/ShelterProfileUpdatePage";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
@@ -29,46 +32,59 @@ function Rutas() {
   return (
     <UserProvider>
       <LoginProvider>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/registrationTypes" element={<TypeRegister />} />
-          <Route
-            path="/adopterRegistration"
-            element={<RegisterAdopterPage />}
-          />
-          <Route path="/shelterRegistration" element={<RegisterShelterPage />}/>
-          <Route path="/newPet" element={<NewPet />}/>
-          <Route path="/petPreview" element={<PetPreview />}
-          />
-          <Route path="/petInformation/:id" element={<PetInformationPage />} />
-          <Route
-            path="/shelterInformation/:id"
-            element={<ShelterInformationPage />}
-          />
-          <Route
-            element={
-              <ProtectedRoutes canActivate={user} redirectPath="/login" />
-            }
-          >
-            <Route path="/" element={<HomePage />} />
-            <Route path="/logout" element={<LogoutPage />} />
-            <Route path="/petDashboard" element={<PetDashboard />}/>
-          </Route>
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/shelters" element={<SheltersPage />} />
-          <Route path="*" element={<NotFound404Page />} />
-          <Route path="/userprofile" element={<UserProfilePage />} />
-          <Route path="/shelterprofile" element={<ShelterProfilePage />} />
-          <Route
-            path="/updateUserInformation"
-            element={<UpdateUserInformationPage />}
-          />
-          <Route
-            path="/updateUserPassword"
-            element={<UpdateUserPasswordPage />}
-          />
-          <Route path="/adopcionForm" element={<AdopcionFormPage />} />
-        </Routes>
+        <PetProvider>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registrationTypes" element={<TypeRegister />} />
+            <Route
+              path="/adopterRegistration"
+              element={<RegisterAdopterPage />}
+            />
+            <Route
+              path="/shelterRegistration"
+              element={<RegisterShelterPage />}
+            />
+            <Route path="/newPet" element={<NewPet />} />
+            <Route path="/petPreview" element={<PetPreview />} />
+            <Route
+              path="/petInformation/:id"
+              element={<PetInformationPage />}
+            />
+            <Route
+              path="/shelterInformation/:id"
+              element={<ShelterInformationPage />}
+            />
+            <Route
+              element={
+                <ProtectedRoutes canActivate={user} redirectPath="/login" />
+              }
+            >
+              <Route path="/" element={<HomePage />} />
+              <Route path="/logout" element={<LogoutPage />} />
+              <Route path="/petDashboard" element={<PetDashboard />} />
+            </Route>
+            <Route path="/aboutus" element={<AboutUsPage />} />
+            <Route path="/shelters" element={<SheltersPage />} />
+            <Route path="*" element={<NotFound404Page />} />
+            <Route path="/userprofile" element={<UserProfilePage />} />
+            <Route path="/shelterprofile" element={<ShelterProfilePage />} />
+            <Route
+              path="/updateUserInformation"
+              element={<UpdateUserInformationPage />}
+            />
+            <Route
+              path="/updateUserPassword"
+              element={<UpdateUserPasswordPage />}
+            />
+            <Route path="/shelterPassword" element={<ShelterPasswordPage />} />
+            <Route
+              path="/shelterProfileUpdate"
+              element={<ShelterProfileUpdatePage />}
+            />
+
+            <Route path="/adopcionForm" element={<AdopcionFormPage />} />
+          </Routes>
+        </PetProvider>
       </LoginProvider>
     </UserProvider>
   );

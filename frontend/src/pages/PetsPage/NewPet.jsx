@@ -3,42 +3,49 @@ import Footer from "../../components/shared/Footer";
 import ImageDefault from "/img/others/addNew.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import usePets from "../../hooks/usePets";
+import { PetContext } from "../../context/PetContext";
 
 function NewPet() {
   const { createPet } = usePets();
+  const { setPetData, petData, updatePetData } = useContext(PetContext);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    pet_type: "",
-    size: "",
-    gender: "",
-    characteristics: "",
-    description: "",
-  });
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   age: "",
+  //   pet_type: "",
+  //   size: "",
+  //   gender: "",
+  //   characteristics: "",
+  //   description: "",
+  // });
+  // const [images, setImages] = useState([]);
+  // const [imagePreview, setImagePreview] = useState(null);
 
-  const handleInputChange = (e) => {
+ const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setPetData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleImageChange = (e) => {
+    const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
     setImages(files);
     const selectedImage = files[0];
     const imageUrl = URL.createObjectURL(selectedImage);
     setImagePreview(imageUrl);
-    setFormData((prevData) => ({
+    setPetData((prevData) => ({
       ...prevData,
       image: imageUrl,
     }));
   };
+
+  
 
   const navigate = useNavigate();
   const handleNavigation = () => {
@@ -48,8 +55,9 @@ function NewPet() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const petData = { ...formData, images };
-      await createPet(petData);
+      const petDataWithImages = { ...petData, images };
+      await createPet(petDataWithImages);
+      updatePetData(petDataWithImages);
       navigate("/PetDashboard");
     } catch (error) {
       console.error("Error creating pet:", error);
@@ -62,6 +70,8 @@ function NewPet() {
         <strong className="mb-10 ml-5 block pt-5 text-left text-2xl font-bold leading-normal">
           Agregar una mascota
         </strong>
+        
+        <form onSubmit={handleSubmit} className="w-full max-w-md rounded-xl p-5">
         <div className="flex justify-center">
           <input
             type="file"
@@ -79,7 +89,6 @@ function NewPet() {
             )}
           </label>
         </div>
-        <form className="w-full max-w-md rounded-xl p-5">
           <div className="mb-5">
             <label className="mb-3 block text-lg font-semibold" htmlFor="email">
               Nombre de la Mascota

@@ -1,19 +1,19 @@
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
-import ShelterProfileInformation from "../../components/ShelterProfilePage/ShelterProfileInformation";
+import ShelterProfileUpdate from "../../components/ShelterProfilePage/ShelterProfileUpdate";
 
 
 
-function ShelterProfilePage() {
+function ShelterProfileUpdatePage() {
   return (
     <>
       <Navbar />
       <main className="select-none bg-Primary pt-20 font-poppins text-black">
-        <ShelterProfileInformation/>
+        <ShelterProfileUpdate />
       </main>
       <Footer />
     </>
   );
 }
 
-export default ShelterProfilePage;
+export default ShelterProfileUpdatePage;
