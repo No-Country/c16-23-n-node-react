@@ -15,8 +15,12 @@ const Carousel = ({ images }) => {
   return (
     <Slider {...settings}>
       {images.map((image, index) => (
-        <div key={index} className="flex h-40 w-64 items-center">
-          <img src={image} alt={`imagen-${index}`} className="rounded-md" />
+        <div key={index} className="flex h-40 w-64 items-center justify-center">
+          <img
+            src={image}
+            alt={`imagen-${index}`}
+            className="h-full w-full rounded-md object-cover"
+          />
         </div>
       ))}
     </Slider>

@@ -2,7 +2,6 @@
 import FormAdoption from "../../components/HomePage/FormAdoption";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
-import { useForm } from "react-hook-form";
 
 function AdopcionFormPage() {
   return (

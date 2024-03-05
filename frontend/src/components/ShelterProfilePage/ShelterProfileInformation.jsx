@@ -13,8 +13,8 @@ function ShelterProfileInformation() {
   };
 
   const handleEditProfile = () => {
-    // navigate("/ShelterProfileInformation");
-    console.log(imageProfile);
+    navigate("/shelterProfileUpdate");
+    console.log(imageProfile)
   };
 
   const handleChangePassword = () => {
@@ -22,7 +22,9 @@ function ShelterProfileInformation() {
   };
 
   return (
+
     <main className="select-none bg-Primary pt-16 font-poppins text-black">
+
       <div className="flex justify-center">
         <input
           type="file"
@@ -45,20 +47,18 @@ function ShelterProfileInformation() {
         <span className="text-base font-semibold">Correo</span>
         <span>example@gmail.com</span>
         <span className="text-base font-semibold">Descripción</span>
-        <span>
-          Un hogar amoroso para animales desamparados, donde reciben cuidados,
-          atención médica y la oportunidad de encontrar un nuevo hogar lleno de
-          cariño.
+        <span>Un hogar amoroso para animales desamparados, donde reciben cuidados, atención médica
+          y la oportunidad de encontrar un nuevo hogar lleno de cariño.
         </span>
         <div className="mt-6 flex flex-col items-center justify-center gap-4">
           <button
-            className="h-10 w-200 rounded-2xl bg-Tertiary text-White"
+            className="w-200 h-10 rounded-2xl bg-Tertiary text-White"
             onClick={handleEditProfile}
           >
             Editar perfil
           </button>
           <button
-            className="h-10 w-200 rounded-2xl bg-TertiaryDark text-White"
+            className="w-200 h-10 rounded-2xl bg-TertiaryDark text-White"
             onClick={handleChangePassword}
           >
             Cambiar contraseña

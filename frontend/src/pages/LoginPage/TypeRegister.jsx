@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import { UserGroupIcon, BuildingOfficeIcon } from "@heroicons/react/24/outline";
 import Navbar from "../../components/shared/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function TypeRegister() {
+  const navigate = useNavigate();
+
+  const RedirectShelterForm =()=>{
+    navigate("/shelterRegistration");7
+  }
+
   return (
     <>
       <Navbar />
@@ -26,7 +33,9 @@ function TypeRegister() {
                 <Link to="/shelterRegistration">
                   <BuildingOfficeIcon className="h-12 w-12 text-white" />
                 </Link>
-                <span className="text-2xl text-white">Como Refugio</span>
+                <button>
+                <span className="text-2xl text-white" onClick={RedirectShelterForm}>Como Refugio</span>
+                </button>
               </div>
             </article>
           </div>

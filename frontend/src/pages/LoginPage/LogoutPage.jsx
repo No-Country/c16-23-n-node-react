@@ -15,8 +15,6 @@ function LogoutPage() {
     navigate("/login");
   };
 
-  console.log(isLoggedIn);
-
   return (
     <>
       <Navbar />

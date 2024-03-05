@@ -2,8 +2,6 @@ import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import ShelterProfileInformation from "../../components/ShelterProfilePage/ShelterProfileInformation";
 
-
-
 function ShelterProfilePage() {
   return (
     <>
