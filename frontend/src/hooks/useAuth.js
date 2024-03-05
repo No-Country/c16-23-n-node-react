@@ -1,33 +1,42 @@
 import axios from "axios";
+import { useState } from "react";
 
-function useAuth () {
-  
-  function createUser (data, navigate) {
-    const url = "https://e-commerce-api-v2.academlo.tech/api/v1/users";
+const useAuth = () => {
+  const defaultBaseUrl = "http://localhost:4000/api";
+  const [userInfo, setUserInfo] = useState([]);
+
+  const createUser = (data, navigate, path = "/users") => {
+    const url = `${defaultBaseUrl}${path}`;
     axios
       .post(url, data)
       .then((res) => {
+        console.log("Response from API:", res.data);
+        setUserInfo(res.data);
         navigate("/login");
       })
       .catch((err) => console.log(err));
   };
 
-  function loginUser (data, navigate) {
-    const url = "https://e-commerce-api-v2.academlo.tech/api/v1/users/login";
+  const loginUser = (data, navigate, path = "/users") => {
+    const url = `${defaultBaseUrl}${path}`;
     axios
       .post(url, data)
       .then((res) => {
-        localStorage.setItem("token", res.data.token)
-        localStorage.setItem("username", res.data.user.firstName + " " + res.data.user.lastName)
+        console.log("Response from API:", res.data);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem(
+          "username",
+          res.data.user.firstName + " " + res.data.user.lastName,
+        );
         navigate("/logout");
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Error fetching pet info:", err);
         localStorage.removeItem("token");
       });
   };
 
-  return { createUser, loginUser };
+  return { userInfo, createUser, loginUser };
 };
 
 export default useAuth;

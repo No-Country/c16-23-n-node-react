@@ -31,7 +31,7 @@
       "id": "89d4",
       "nombre": "Lourdes Flores",
       "email": "lourdescorazon@gmail.com",
-      "telefono": "954647683",
+      "telefono": "999879121",
       "responsable": "Vanesa",
       "personas": "3",
       "deAcuerdo": "si",
@@ -101,6 +101,22 @@
         "veterinario",
         "baño"
       ]
+    }
+  ],
+  "users": [
+    {
+      "firstname": "Edwin",
+      "lastname": "Amaranto",
+      "email": "edwinagemiler17@gmail.com",
+      "password": "def0cd770269129dceb5ef4b4f24f69f",
+      "phone": "954647683"
+    },
+    {
+      "firstname": "Lourdes",
+      "lastname": "Flores",
+      "email": "lourdescorazon@gmail.com",
+      "password": "08f2a09b56badc983e584507e408d39e",
+      "phone": "999879121"
     }
   ]
 }

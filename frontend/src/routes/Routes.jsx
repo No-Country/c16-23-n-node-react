@@ -82,7 +82,7 @@ function Rutas() {
               element={<ShelterProfileUpdatePage />}
             />
 
-            <Route path="/adopcionForm" element={<AdopcionFormPage />} />
+            <Route path="/adopcionForm/:id" element={<AdopcionFormPage />} />
           </Routes>
         </PetProvider>
       </LoginProvider>

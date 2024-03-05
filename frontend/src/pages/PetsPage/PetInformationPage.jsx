@@ -12,6 +12,7 @@ function PetInformationPage() {
   const { petInfo: pet, getPetInfo: getSinglePet } = usePets();
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
+  console.log(pet);
 
   useEffect(() => {
     getSinglePet(`/pet/${id}`);
@@ -25,7 +26,8 @@ function PetInformationPage() {
   }, [pet]);
 
   const handleDetails = () => {
-    navigate(`/adopcionForm`);
+    navigate(`/adopcionForm/${id}`);
+    localStorage.setItem("token", id);
   };
 
   return (

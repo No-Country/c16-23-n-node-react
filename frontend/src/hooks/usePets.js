@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const usePets = () => {
-  const defaultBaseUrl = "http://localhost:3002/api";
+  const defaultBaseUrl = "http://localhost:3000/api";
   const [petInfo, setPetInfo] = useState([]);
 
   const getPetInfo = (path = "/pet") => {
