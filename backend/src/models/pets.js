@@ -70,16 +70,16 @@ const petsSchema = new mongoose.Schema({
       },
     },
   ],
+  adopter: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
+  },
   // adoption_data:{
   //     type:,
   //     required: true,
   //     default: true
   // },
-  //   adopter:{
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: 'User',
-  //     default:null
-  // }
 });
 
 export default mongoose.model("Pet", petsSchema);

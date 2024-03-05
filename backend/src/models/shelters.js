@@ -5,7 +5,7 @@ const shelterSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     userName: {
@@ -30,7 +30,7 @@ const shelterSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
     },
     website: {
