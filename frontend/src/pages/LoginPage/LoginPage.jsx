@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import line from "/img/others/line2.svg";
 import Navbar from "../../components/shared/Navbar";
-import { useLocalStorage } from "react-use";
-import { useContext } from "react";
-import { LoginContext } from "../../context/LoginContext";
+import useAuthUser from "../../hooks/useAuthUser";
+import useShelter from "../../hooks/useShelter";
 
 function LoginPage() {
+  const { loginUser } = useAuthUser();
+  const { loginShelter } = useShelter();
   const {
     register,
     reset,
@@ -18,26 +19,19 @@ function LoginPage() {
   } = useForm();
 
   const navigate = useNavigate();
-  const [user, setUser] = useLocalStorage("user");
 
-  const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+  const location = useLocation();
 
-  const submit = (data) => {
-    if (!user) {
-      localStorage.setItem("user", JSON.stringify(data));
-      // setIsLoggedIn(!isLoggedIn);
-    } else {
-      setIsLoggedIn(!isLoggedIn);
-      navigate("/petDashboard");
+  const isShelterLogin = location.pathname === "/loginShelter";
+  const isUserLogin = location.pathname === "/loginUser";
+
+  const submit = async (data) => {
+    if (isShelterLogin) {
+      loginShelter(data);
+    } else if (isUserLogin) {
+      loginUser(data);
     }
-
-    reset({
-      email: "",
-      password: "",
-    });
   };
-
-  // const [user, setUser] = useLocalStorage("user");
 
   return (
     <>
@@ -105,7 +99,13 @@ function LoginPage() {
             <div className="mb-5">
               <label className="ml-2 text-sm">¿No tienes una cuenta?</label>
               <Link
-                to="/registrationTypes"
+                to={
+                  isUserLogin
+                    ? "/adopterRegistration"
+                    : isShelterLogin
+                      ? "/shelterRegistration"
+                      : "/"
+                }
                 className="ml-2 text-sm text-blue-500"
               >
                 Creala Aquí
@@ -115,36 +115,6 @@ function LoginPage() {
               <button className="my-4 w-1/2 rounded-2xl bg-Tertiary p-2 text-lg text-white">
                 Iniciar Sesión
               </button>
-            </div>
-            <div className="relative mb-5 flex items-center justify-center">
-              <label className="relative z-10 ml-2 bg-Primary px-3 text-sm">
-                O inicia con
-              </label>
-              <img className="absolute top-2.5 z-0" src={line} alt="" />
-            </div>
-            <div className="mb-5 flex items-center justify-center gap-2">
-              <Link className="my-4 flex w-14 items-center justify-center rounded-2xl bg-PrimaryDark  p-2 text-lg text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-white"
-                >
-                  <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
-                </svg>
-              </Link>
-              <Link className="my-4 flex w-14 items-center justify-center rounded-2xl bg-PrimaryDark  p-2 text-lg text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-white"
-                >
-                  <path d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z"></path>
-                </svg>
-              </Link>
             </div>
           </form>
         </section>

@@ -1,60 +1,34 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import useShelter from "../../hooks/useShelter";
-import ModalAdoption from "./ModalAdoption";
 
 function FormAdoption() {
   const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+
+  const handleCheckboxChange = (e) => {
+    const { value } = e.target;
+
+    if (opcionesSeleccionadas.includes(value)) {
+      setOpcionesSeleccionadas(
+        opcionesSeleccionadas.filter((opcion) => opcion !== value),
+      );
+    } else {
+      setOpcionesSeleccionadas([...opcionesSeleccionadas, value]);
+    }
+  };
 
   const {
     register,
-    reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const navigate = useNavigate();
-
-  const { registerAdoption } = useShelter();
-
-  const handleCheckboxChange = (e) => {
-    const { value } = e.target;
-    setOpcionesSeleccionadas((prevOpciones) => {
-      if (prevOpciones.includes(value)) {
-        return prevOpciones.filter((opcion) => opcion !== value);
-      } else {
-        return [...prevOpciones, value];
-      }
-    });
-  };
-
-  const handleGoShelter = () => {
-    setShowModal(false);
-    navigate("/shelters");
-  };
-
-  const handleGoHome = () => {
-    setShowModal(false);
-    navigate("/");
-  };
-
-  const onSubmit = async (data) => {
-    try {
-      const formData = {
-        ...data,
-        tuvoMascota: data.tuvoMascota.split(", "), // Si tuvoMascota es un string, divídalo en un array
-        actividades: opcionesSeleccionadas, // Agrega las opciones seleccionadas al objeto de datos
-      };
-
-      registerAdoption(formData); // Llama a la función registerAdoption del custom hook useShelter
-      localStorage.setItem("formData", JSON.stringify(formData));
-      reset();
-      setShowModal(true);
-    } catch (error) {
-      console.error("Error al enviar formulario:", error);
-    }
+  const onSubmit = (data) => {
+    console.log(
+      "Formulario enviado con datos:",
+      data,
+      "opciones elegidas",
+      opcionesSeleccionadas,
+    );
   };
 
   return (
@@ -420,13 +394,6 @@ function FormAdoption() {
           Enviar Formulario
         </button>
       </form>
-
-      <ModalAdoption
-        showModal={showModal}
-        setShowModal={setShowModal}
-        handleGoShelter={handleGoShelter}
-        handleGoHome={handleGoHome}
-      />
     </>
   );
 }
