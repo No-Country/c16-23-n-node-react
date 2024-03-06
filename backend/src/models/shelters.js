@@ -58,7 +58,6 @@ const shelterSchema = new mongoose.Schema(
     ],
     responsable: {
       type: String,
-      required: true,
     },
     images: [
       {
