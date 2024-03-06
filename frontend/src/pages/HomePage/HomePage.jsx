@@ -45,6 +45,7 @@ function HomePage() {
   return (
     <>
       <Navbar />
+
       <main className="select-none bg-Primary p-5 pt-16">
         <div className="mx-auto 2xl:w-1440">
           <div className="mx-5 mb-8">
@@ -81,14 +82,15 @@ function HomePage() {
             />
           </div>
 
-        <main className="flex flex-wrap">
-          {pets.map((pet, index) => (
-            <div key={index} className="w-1/2">
-              <PetCard pet={pet} uso={"home"} />
-            </div>
-          ))}
-        </main>
-      </div>
+          <article className="flex flex-wrap">
+            {pets.map((pet, index) => (
+              <div key={index} className="w-1/2">
+                <PetCard pet={pet} uso={"home"} />
+              </div>
+            ))}
+          </article>
+        </div>
+      </main>
       <Footer />
     </>
   );
