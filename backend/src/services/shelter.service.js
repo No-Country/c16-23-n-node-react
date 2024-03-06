@@ -49,8 +49,8 @@ const shelterService = {
       if (userFound) {
         throw new Error("El correo electrónico ya está en uso");
       }
-      const { name, userName, password, address, responsable } = data;
-      if (!name || !userName || !password || !address || !responsable) {
+      const { name, userName, password } = data;
+      if (!name || !userName || !password ) {
         throw new Error("Falta información");
       }
       const newShelter = await Shelter.create(data);

@@ -173,7 +173,7 @@ const shelterController = {
       const shelterUser = await shelterService.login(data);
       if (!shelterUser) throw new Error("Usuario o contraseña incorrectos");
       const token = generateToken(shelterUser._id);
-      res.status(200).json({ token });
+      res.status(200).json({ token, shelterUser });
     } catch (error) {
       return res.status(404).json({ message: error.message });
     }

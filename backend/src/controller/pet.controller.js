@@ -131,6 +131,10 @@ const petController = {
       if (!user) {
         return res.status(404).json({ error: "Usuario no encontrado" });
       }
+
+      if (!pet.shelter_id) {
+        return res.status(404).json({ error: "mascota sin refugio" });
+      }
       // envio de mail
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -141,7 +145,7 @@ const petController = {
           pass: process.env.NODEMAILER,
         },
       });
-      console.log(pet.shelter_id.email);
+
       const mailOptions1 = {
         from: "conexionhuellitas@gmail.com",
         to: user.email,
