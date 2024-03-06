@@ -7,7 +7,7 @@ function ModalAdoption({
   return (
     showModal && (
       <div className="fixed inset-0 z-30 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
-        <div className="w-296 relative h-400 max-w-md rounded-lg bg-PrimaryDark p-8 shadow-lg">
+        <div className="relative h-400 w-296 max-w-md rounded-lg bg-PrimaryDark p-8 shadow-lg">
           <div className="absolute right-0 top-0">
             <button
               className="p-2 text-SecondaryDark hover:text-gray-700"

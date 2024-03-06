@@ -80,7 +80,9 @@ const petController = {
         filters.characteristics
       );
       if (petsByFilters.length === 0) {
-        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s ` });
+        return res
+          .status(404)
+          .json({ message: `No se encontraron Mascotas ${size}s ` });
       }
       return res.status(200).json(petsByFilters);
     } catch (error) {
@@ -116,7 +118,7 @@ const petController = {
       const { body } = req;
 
       const authHeader = req.headers.bearer;
-
+      console.log(authHeader);
       if (!authHeader) {
         return res.status(401).json({ error: "Token de autenticación vacío" });
       }
@@ -188,14 +190,20 @@ a
         if (error) {
           console.log("Error al enviar el correo electrónico:", error);
         } else {
-          console.log("Correo electrónico de validación enviado:", info.response);
+          console.log(
+            "Correo electrónico de validación enviado:",
+            info.response
+          );
         }
       });
       transporter.sendMail(mailOptions2, (error, info) => {
         if (error) {
           console.log("Error al enviar el correo electrónico:", error);
         } else {
-          console.log("Correo electrónico de validación enviado:", info.response);
+          console.log(
+            "Correo electrónico de validación enviado:",
+            info.response
+          );
         }
       });
 
