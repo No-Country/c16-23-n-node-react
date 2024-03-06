@@ -35,7 +35,12 @@ const Navbar = () => {
     <nav className="fixed z-30 flex h-14 w-full select-none items-center justify-between bg-Secondary p-5">
       <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between 2xl:w-1440">
         <figure>
-          <img src={logoApp} className="h-12" />
+          <Link
+            to="/"
+            className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
+          >
+            <img src={logoApp} className="h-12" />
+          </Link>
         </figure>
         <ul className="hidden text-xl font-bold text-white md:flex md:gap-4 2xl:gap-8">
           <li>
@@ -150,7 +155,12 @@ const Navbar = () => {
         } fixed left-0 z-10 flex h-340 w-full items-center justify-center bg-Secondary transition-all duration-500 ease-in-out`}
       >
         <figure className="absolute left-0 top-0 px-5 pt-1">
-          <img src={logoApp} className="h-12" />
+          <Link
+            to="/"
+            className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
+          >
+            <img src={logoApp} className="h-12" />
+          </Link>
         </figure>
         <ul className="flex flex-col gap-6 text-center">
           <li>
