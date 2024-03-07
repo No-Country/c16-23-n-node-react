@@ -14,8 +14,8 @@ function PetCard({ pet }) {
         <img
           src={pet.images[0]?.url}
           alt="foto perro"
-          className="h-20 w-full rounded-md 2xl:h-240"
-          // className="h-full w-full rounded-md object-cover"
+         // className="h-20 w-full rounded-md 2xl:h-240"
+         className="h-20 w-full rounded-md object-cover object-center"
         />
       </div>
       <div className="px-3 2xl:mt-6">
