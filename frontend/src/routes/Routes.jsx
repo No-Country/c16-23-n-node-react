@@ -2,6 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useLocalStorage } from "react-use";
 import { UserProvider } from "../context/UserProvider";
+import {PetProvider} from "../context/PetContext"
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import LogoutPage from "../pages/LoginPage/LogoutPage";
@@ -20,12 +21,14 @@ import UpdateUserInformationPage from "../pages/UserProfilePage/UpdateUserInform
 import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordPage";
 import AdopcionFormPage from "../pages/PetsPage/AdopcionFormPage";
 import PetDashboard from "../pages/PetsPage/PetDashboard";
+import NewPet from "../pages/PetsPage/NewPet";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
 
   return (
     <UserProvider>
+      <PetProvider>
       <Routes>
         <Route path="/loginUser" element={<LoginPage />} />
         <Route path="/loginShelter" element={<LoginPage />} />
@@ -45,6 +48,7 @@ function Rutas() {
           }
         >
         <Route path="/petdashboard" element={<PetDashboard />} />
+        <Route path="/newpet" element={<NewPet />} />
         <Route path="/adopcionForm" element={<AdopcionFormPage />} />
         </Route>
         <Route path="/" element={<HomePage />} />
@@ -63,6 +67,7 @@ function Rutas() {
         />
         <Route path="/adopcionForm/:id" element={<AdopcionFormPage />} />
       </Routes>
+      </PetProvider>
     </UserProvider>
   );
 }

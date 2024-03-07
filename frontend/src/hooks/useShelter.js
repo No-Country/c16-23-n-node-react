@@ -47,7 +47,7 @@ const useShelter = () => {
           res.data.shelterUser._id,
         );
         console.log("Inicio de sesión exitoso");
-        navigate("/");
+        navigate("/petdashboard");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }

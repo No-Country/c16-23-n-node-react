@@ -38,7 +38,7 @@ function PetDashboard() {
     alert("Próximamente se Editarás a Firuly");
   }
   const handleNavigation = () => {
-    navigate(`/NewPet`);
+    navigate(`/newpet`);
   };
   return (
     <>
