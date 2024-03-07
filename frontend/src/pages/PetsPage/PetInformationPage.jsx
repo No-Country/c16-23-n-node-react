@@ -1,28 +1,33 @@
 import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
-// import pets from "../../data/pets.json";
 import { useParams, useNavigate } from "react-router-dom";
 import usePets from "../../hooks/usePets";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 function PetInformationPage() {
   const { id } = useParams();
-  // const [pet, getSinglePet] = usePet();
-  const { petInfo: pet, getPetInfo: getSinglePet } = usePets();
+  const [pet, setPet] = useState(null);
+  const { getPetInfoById } = usePets();
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getSinglePet(`/pet/${id}`);
-  }, [id]);
+  const fetchPetInfoById = useCallback(async () => {
+    try {
+      const pet = await getPetInfoById(id);
+      setPet(pet);
+      if (pet && pet.images && pet.images.length > 0) {
+        const imageUrls = pet.images.map((image) => image.url);
+        setImages(imageUrls);
+      }
+    } catch (error) {
+      console.error("Error fetching pet info:", error);
+    }
+  }, [id, getPetInfoById]);
 
   useEffect(() => {
-    if (pet && pet.images && pet.images.length > 0) {
-      const imageUrls = pet.images.map((image) => image.url);
-      setImages(imageUrls);
-    }
-  }, [pet]);
+    fetchPetInfoById();
+  }, [fetchPetInfoById]);
 
   const handleDetails = () => {
     navigate(`/adopcionForm/${id}`);

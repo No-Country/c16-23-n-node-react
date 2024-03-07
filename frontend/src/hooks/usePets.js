@@ -17,7 +17,19 @@ const usePets = () => {
         setPetInfo(res.data);
 
       })
-      .catch((err) => console.error("Error fetching pet info:", err));
+      .catch((err) => console.error("Error pet info:", err));
+  };
+
+  const getPetInfoById = async (id) => {
+    const url = `${defaultBaseUrl}/pet/${id}`;
+    try {
+      const response = await axios.get(url);
+      setPetInfo([response.data]);
+      return response.data; 
+    } catch (error) {
+      console.error("Error pet info by ID:", error);
+      throw error;
+    }
   };
 
   const updateAdoptionStatus = async (id) => {
@@ -53,7 +65,7 @@ const usePets = () => {
       throw error;
     }
   };
-  return { petInfo, getPetInfo, updateAdoptionStatus, createPet };
+  return { petInfo, getPetInfo, getPetInfoById, updateAdoptionStatus, createPet };
 };
 
 export default usePets;
