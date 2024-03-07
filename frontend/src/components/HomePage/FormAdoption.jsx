@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useShelter from "../../hooks/useShelter";
 import ModalAdoption from "./ModalAdoption";
@@ -7,6 +7,7 @@ import ModalAdoption from "./ModalAdoption";
 function FormAdoption() {
   const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const { id } = useParams();
 
   const {
     register,
@@ -16,8 +17,6 @@ function FormAdoption() {
   } = useForm();
 
   const navigate = useNavigate();
-
-  const { registerAdoption } = useShelter();
 
   const handleCheckboxChange = (e) => {
     const { value } = e.target;
@@ -40,15 +39,17 @@ function FormAdoption() {
     navigate("/");
   };
 
+  const { registerAdoption } = useShelter();
+
   const onSubmit = async (data) => {
     try {
       const formData = {
         ...data,
-        tuvoMascota: data.tuvoMascota.split(", "), // Si tuvoMascota es un string, divídalo en un array
-        actividades: opcionesSeleccionadas, // Agrega las opciones seleccionadas al objeto de datos
+        id: id,
+        tuvoMascota: data.tuvoMascota.split(", "),
+        actividades: opcionesSeleccionadas,
       };
-
-      registerAdoption(formData); // Llama a la función registerAdoption del custom hook useShelter
+      await registerAdoption(formData, `/adopt/${id}`);
       localStorage.setItem("formData", JSON.stringify(formData));
       reset();
       setShowModal(true);

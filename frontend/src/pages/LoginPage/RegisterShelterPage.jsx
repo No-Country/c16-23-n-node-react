@@ -2,8 +2,10 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/shared/Navbar";
+import useShelter from "../../hooks/useShelter";
 
 function RegisterShelterPage() {
+  const { createShelter } = useShelter();
   const {
     register,
     handleSubmit,
@@ -12,7 +14,7 @@ function RegisterShelterPage() {
   } = useForm();
 
   const submit = (data) => {
-    // loginUser(data, navigate);
+    createShelter(data);
   };
 
   return (
@@ -54,49 +56,41 @@ function RegisterShelterPage() {
             <div className="mb-5">
               <label
                 className="mb-3 block text-lg font-semibold"
-                htmlFor="email"
+                htmlFor="name"
               >
                 Nombre del refugio
               </label>
               <input
                 className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-xl outline-none"
-                {...register("email", {
+                {...register("name", {
                   required: true,
-                  pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
                 })}
-                type="email"
-                id="shelter"
+                type="text"
+                id="name"
                 placeholder="Ingresa el nombre de tu refugio"
               />
               <small className="text-xs font-medium text-red-700">
-                {errors.email?.type === "required" &&
-                  "* Correo Electrónico es requerido"}
-                {errors.email?.type === "pattern" &&
-                  "* Correo Electrónico ingresado tiene un formato incorrecto"}
+                {errors.name?.type === "required" && "* Campo Requerido"}
               </small>
             </div>
             <div className="mb-5">
               <label
                 className="mb-3 block text-lg font-semibold"
-                htmlFor="email"
+                htmlFor="userName"
               >
                 Nombre del responsable
               </label>
               <input
                 className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-2xl outline-none"
-                {...register("email", {
+                {...register("userName", {
                   required: true,
-                  pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
                 })}
-                type="email"
-                id="responsible"
+                type="text"
+                id="userName"
                 placeholder="Ingresa tu nombre"
               />
               <small className="text-xs font-medium text-red-700">
-                {errors.email?.type === "required" &&
-                  "* Correo Electrónico es requerido"}
-                {errors.email?.type === "pattern" &&
-                  "* Correo Electrónico ingresado tiene un formato incorrecto"}
+                {errors.userName?.type === "required" && "* Campo requerido"}
               </small>
             </div>
             <div className="mb-5">
@@ -116,32 +110,6 @@ function RegisterShelterPage() {
                 type="password"
                 id="password"
                 placeholder="Ingresa tu contraseña"
-              />
-              <small className="text-xs font-medium text-red-700">
-                {errors.password?.type === "required" &&
-                  "* Contraseña es requerida"}
-                {errors.password?.type === "minLength" &&
-                  "* Contraseña ingresada tiene menos de 8 caracteres"}
-                {errors.password?.type === "maxLength" &&
-                  "* Contraseña ingresada tiene más de 20 caracteres"}
-              </small>
-            </div>
-            <div className="mb-5">
-              <label
-                className="mb-3 block text-lg font-semibold"
-                htmlFor="password"
-              >
-                Confirmar Contraseña
-              </label>
-              <input
-                className="mt-1 block w-full rounded-3xl bg-White px-4 py-3 shadow-2xl outline-none"
-                {...register("password", {
-                  required: true,
-                  minLength: 5,
-                  maxLength: 20,
-                })}
-                type="password"
-                placeholder="Repite tu contraseña"
               />
               <small className="text-xs font-medium text-red-700">
                 {errors.password?.type === "required" &&

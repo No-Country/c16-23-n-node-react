@@ -1,15 +1,12 @@
-import FotoPerro from "/img/pets/fotoPerro.jpg";
-import FotoGato from "/img/pets/fotoGato.jpg";
 import PetCard from "../../components/HomePage/PetCard";
-import Carousel from "../../components/shared/Carrousel";
 import Footer from "../../components/shared/Footer";
 import Navbar from "../../components/shared/Navbar";
 import Dropdown from "../../components/HomePage/Dropdown";
 import usePets from "../../hooks/usePets";
 import { useEffect, useState } from "react";
+import HeroSection from "../../components/HomePage/HeroSection";
 
 function HomePage() {
-  const images = [FotoPerro, FotoGato];
   // const [pets, getAllPets] = usePet();
   const { petInfo: pets, getPetInfo: getAllPets } = usePets();
   const [species, setSpecies] = useState(null);
@@ -45,12 +42,10 @@ function HomePage() {
   return (
     <>
       <Navbar />
+      <HeroSection />
+
       <main className="select-none bg-Primary p-5 pt-16">
         <div className="mx-auto 2xl:w-1440">
-          <div className="mx-5 mb-8">
-            <Carousel images={images} />
-          </div>
-
           <h1 className="my-5 font-poppins text-2xl font-bold 2xl:text-6xl">
             ¡Encuentra tu mascota ideal!
           </h1>
@@ -81,13 +76,13 @@ function HomePage() {
             />
           </div>
 
-          <section className="flex flex-wrap">
-            {pets?.map((pet, index) => (
+          <article className="flex flex-wrap">
+            {pets.map((pet, index) => (
               <div key={index} className="w-1/2">
-                <PetCard pet={pet} />
+                <PetCard pet={pet} uso={"home"} />
               </div>
             ))}
-          </section>
+          </article>
         </div>
       </main>
       <Footer />
