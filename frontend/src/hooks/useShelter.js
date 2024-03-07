@@ -3,8 +3,9 @@ import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import getConfigToken from "../utils/getConfigToken";
 
-const useShelter = (baseUrl) => {
+const useShelter = () => {
   const navigate = useNavigate();
 
   const context = useContext(AuthContext);
@@ -58,14 +59,22 @@ const useShelter = (baseUrl) => {
     }
   }
 
-  //POST
-  const registerAdoption = (data) => {
-    const url = `${baseUrl}`;
-    axios
-      .post(url, data)
-      .then((res) => setAdoption(res.data))
-      .catch((err) => console.log(err));
-  };
+  async function registerAdoption(data, path = "") {
+    const baseUrl =
+      "https://c16-23-n-node-react-production.up.railway.app/api/pet";
+
+    const url = `${baseUrl}${path}`;
+    const configToken = getConfigToken();
+    try {
+      console.log(url, data, configToken);
+      const response = await axios.put(url, data, configToken);
+      console.log(response);
+      setAdoption(response.data);
+    } catch (error) {
+      console.error("Error registering adoption:", error);
+      throw error;
+    }
+  }
 
   return { adoption, registerAdoption, loginShelter, createShelter };
 };

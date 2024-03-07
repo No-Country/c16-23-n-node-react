@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 
 const usePets = () => {
-  const defaultBaseUrl = "https://c16-23-n-node-react-production.up.railway.app/api";
+  const defaultBaseUrl =
+    "https://c16-23-n-node-react-production.up.railway.app/api";
   const [petInfo, setPetInfo] = useState([]);
 
   const getPetInfo = (path = "/pet") => {

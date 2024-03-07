@@ -25,7 +25,7 @@ function PetInformationPage() {
   }, [pet]);
 
   const handleDetails = () => {
-    navigate(`/adopcionForm`);
+    navigate(`/adopcionForm/${id}`);
   };
 
   return (
@@ -57,7 +57,9 @@ function PetInformationPage() {
             <span className="text-base font-semibold">
               Refugio en que se encuentra:
             </span>
-            {/* <span className="text-base font-normal">{pet.shelter_id}</span> */}
+            <span className="text-base font-normal">
+              {pet?.shelter_id?.name || ""}
+            </span>
           </div>
           <div className="text-center">
             <button

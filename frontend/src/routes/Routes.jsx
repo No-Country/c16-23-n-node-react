@@ -58,6 +58,7 @@ function Rutas() {
           path="/updateUserPassword"
           element={<UpdateUserPasswordPage />}
         />
+        <Route path="/adopcionForm/:id" element={<AdopcionFormPage />} />
       </Routes>
     </UserProvider>
   );

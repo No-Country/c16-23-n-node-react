@@ -1,34 +1,61 @@
 import { useForm } from "react-hook-form";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useShelter from "../../hooks/useShelter";
+import ModalAdoption from "./ModalAdoption";
 
 function FormAdoption() {
   const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState([]);
-
-  const handleCheckboxChange = (e) => {
-    const { value } = e.target;
-
-    if (opcionesSeleccionadas.includes(value)) {
-      setOpcionesSeleccionadas(
-        opcionesSeleccionadas.filter((opcion) => opcion !== value),
-      );
-    } else {
-      setOpcionesSeleccionadas([...opcionesSeleccionadas, value]);
-    }
-  };
+  const [showModal, setShowModal] = useState(false);
+  const { id } = useParams();
 
   const {
     register,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(
-      "Formulario enviado con datos:",
-      data,
-      "opciones elegidas",
-      opcionesSeleccionadas,
-    );
+  const navigate = useNavigate();
+
+  const handleCheckboxChange = (e) => {
+    const { value } = e.target;
+    setOpcionesSeleccionadas((prevOpciones) => {
+      if (prevOpciones.includes(value)) {
+        return prevOpciones.filter((opcion) => opcion !== value);
+      } else {
+        return [...prevOpciones, value];
+      }
+    });
+  };
+
+  const handleGoShelter = () => {
+    setShowModal(false);
+    navigate("/shelters");
+  };
+
+  const handleGoHome = () => {
+    setShowModal(false);
+    navigate("/");
+  };
+
+  const { registerAdoption } = useShelter();
+
+  const onSubmit = async (data) => {
+    try {
+      const formData = {
+        ...data,
+        id: id,
+        tuvoMascota: data.tuvoMascota.split(", "),
+        actividades: opcionesSeleccionadas,
+      };
+      await registerAdoption(formData, `/adopt/${id}`);
+      localStorage.setItem("formData", JSON.stringify(formData));
+      reset();
+      setShowModal(true);
+    } catch (error) {
+      console.error("Error al enviar formulario:", error);
+    }
   };
 
   return (
@@ -394,6 +421,13 @@ function FormAdoption() {
           Enviar Formulario
         </button>
       </form>
+
+      <ModalAdoption
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleGoShelter={handleGoShelter}
+        handleGoHome={handleGoHome}
+      />
     </>
   );
 }

@@ -80,7 +80,9 @@ const petController = {
         filters.characteristics
       );
       if (petsByFilters.length === 0) {
-        return res.status(404).json({ message: `No se encontraron Mascotas ${size}s ` });
+        return res
+          .status(404)
+          .json({ message: `No se encontraron Mascotas ${size}s ` });
       }
       return res.status(200).json(petsByFilters);
     } catch (error) {
@@ -117,12 +119,16 @@ const petController = {
       const { body } = req;
 
       const authHeader = req.headers.bearer;
-
+      console.log(authHeader);
       if (!authHeader) {
         return res.status(401).json({ error: "Token de autenticación vacío" });
       }
 
       const decodedToken = jwt.verify(authHeader, process.env.JWT_SECRET);
+      const isTokenExpired = decodedToken.exp < Date.now() / 1000;
+      if (isTokenExpired) {
+        return res.status(401).json({ error: "Token expirado" });
+      }
 
       const userId = decodedToken.id;
 
@@ -193,14 +199,20 @@ a
         if (error) {
           console.log("Error al enviar el correo electrónico:", error);
         } else {
-          console.log("Correo electrónico de validación enviado:", info.response);
+          console.log(
+            "Correo electrónico de validación enviado:",
+            info.response
+          );
         }
       });
       transporter.sendMail(mailOptions2, (error, info) => {
         if (error) {
           console.log("Error al enviar el correo electrónico:", error);
         } else {
-          console.log("Correo electrónico de validación enviado:", info.response);
+          console.log(
+            "Correo electrónico de validación enviado:",
+            info.response
+          );
         }
       });
 
@@ -212,8 +224,14 @@ a
       await pet.populate("adopter");
       res.status(200).json(pet);
     } catch (error) {
-      console.error("Error al adoptar mascota:", error);
-      res.status(500).json({ error: "Error interno del servidor" });
+      if (error.name === "TokenExpiredError") {
+        return res.status(401).json({ error: "El token ha expirado, inicie sesión nuevamente" });
+      } else if (error.name === "JsonWebTokenError") {
+        return res.status(401).json({ error: "Token JWT inválido" });
+      } else {
+        console.error("Error al adoptar mascota:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
+      }
     }
   },
 };
