@@ -191,10 +191,10 @@ function FormAdoption() {
               id="deAcuerdo"
             >
               <option value="">Selecciona</option>
-              <option value="si" className="text-GrayDark">
+              <option value="si" className="text-White bg-TertiaryDark">
                 Sí
               </option>
-              <option value="no" className="text-GrayDark">
+              <option value="no" className="text-White bg-TertiaryDark">
                 No
               </option>
             </select>
@@ -405,10 +405,10 @@ function FormAdoption() {
               id="contactoPermanente"
             >
               <option value="">Selecciona</option>
-              <option value="si" className="text-GrayDark">
+              <option value="si" className="text-White bg-TertiaryDark">
                 Sí
               </option>
-              <option value="no" className="text-GrayDark">
+              <option value="no" className="text-White bg-TertiaryDark">
                 No
               </option>
             </select>
