@@ -61,7 +61,7 @@ const useShelter = () => {
 
   async function registerAdoption(data, path = "") {
     const baseUrl =
-      "https://c16-23-n-node-react-production.up.railway.app/api/pet/adopt";
+      "https://c16-23-n-node-react-production.up.railway.app/api/pet";
 
     const url = `${baseUrl}${path}`;
     const configToken = getConfigToken();
