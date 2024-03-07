@@ -113,7 +113,8 @@ const petController = {
       const id = req.params._id;
 
       const pet = await petService.getPetById(id);
-      const { body } = req;
+      const data = req.body;
+      console.log("DATA!!!", data);
 
       const authHeader = req.headers.bearer;
 
@@ -139,6 +140,28 @@ const petController = {
         return res.status(404).json({ error: "mascota sin refugio" });
       }
       // envio de mail
+      const formDataSummary = `
+      Resumen del Formulario de Adopción:
+      --------------------------------------
+    
+      Información Personal:
+      Nombre: ${data.nombre}
+      Correo Electrónico: ${data.email}
+      Número de Teléfono: ${data.telefono}
+    
+      Sobre la Mascota:
+      Responsable de Gastos: ${data.responsable}
+      Personas en el Hogar: ${data.personas}
+      Todos en Casa están de Acuerdo con la Adopción: ${data.deAcuerdo}
+      Quién Estará con la Mascota Cuando No Estés en Casa: ${data.noEsta}
+      Presupuesto para Cubrir los Gastos de la Mascota: ${data.presupuesto} ARS
+      Dónde Dormirá la Mascota: ${data.dormir}
+      Tuvo o Tiene Mascotas: ${data.tuvoMascota}
+      Acceso a las Siguientes Opciones: ${data.actividades.join(", ")}
+      Motivo de Adopción: ${data.motivoAdopcion}
+      Motivo por el Cuál Devolverías la Mascota: ${data.motivoDevolucion}
+      Estás de Acuerdo con que el Refugio Permanezca en Contacto Contigo: ${data.contactoPermanente}
+    `;
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
@@ -154,43 +177,50 @@ const petController = {
         to: user.email,
         subject: "Confirmación de Proceso de adopción",
         text: `¡Hola ${user.firstName} ${user.lastName}!`,
-        html: `<div style="font-family: Arial, sans-serif; color: #333;">
-    
-            <h2 style="color: #4CAF50;">¡Gracias por iniciar el proceso de adopción! 🎉</h2>
-            <h3 style="color: #4CAF50;">Hola ${user.firstName} ${user.lastName},</h3>
-            
-            <p>Estamos emocionados de informarte que has iniciado el proceso de adopción para ${pet.name}, una ${pet.pet_type} de ${pet.age} años de edad, ${pet.size} y ${pet.gender}.</p>
-    
-            <p>Tu amor y consideración para con ${pet.name} significan mucho para nosotros y para la mascota. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en breve para continuar con el proceso de adopción.</p>
-    
-            <p>¡Gracias por elegir darle una oportunidad a ${body.hola} y por tu compromiso con el bienestar animal!</p>
-    
-            <p>Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
-    
-            <p>Con cariño,</p>
-            <p>El equipo de Huellitas 🐾</p>
-    
-        </div>`,
+        html: `<div style="font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+
+        <h2 style="color: #4CAF50;">¡Gracias por iniciar el proceso de adopción! 🎉</h2>
+        <h3 style="color: #4CAF50;">Hola ${user.firstName} ${user.lastName},</h3>
+        
+        <p>Estamos emocionados de informarte que has iniciado el proceso de adopción para ${pet.name}, una ${pet.pet_type} de ${pet.age} años de edad, ${pet.size} y ${pet.gender}.</p>
+
+        <p>Tu amor y consideración para con ${pet.name} significan mucho para nosotros y para la mascota. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en breve para continuar con el proceso de adopción.</p>
+
+        <p>¡Gracias por elegir darle una oportunidad a y por tu compromiso con el bienestar animal!</p>
+
+        <p>A continuación, encontrarás un resumen de la información proporcionada:</p>
+        <pre style="background-color: #fff; padding: 10px; border-radius: 5px;">${formDataSummary}</pre>
+
+        <p>Si tienes alguna pregunta o necesitas más información, no dudes en ponerte en contacto con nosotros.</p>
+
+        <p>Con cariño,</p>
+        <p>El equipo de Huellitas 🐾</p>
+
+    </div>`,
       };
       const mailOptions2 = {
         from: "conexionhuellitas@gmail.com",
         to: pet.shelter_id.email,
-        subject: `Pedido de adopcion a ${pet.name}`,
+        subject: `Pedido de adopción para ${pet.name}`,
         text: `¡Hola ${pet.shelter_id.userName}!`,
-        html: `<div style="font-family: Arial, sans-serif; color: #333;">
-    
-            <h2 style="color: #4CAF50;">¡Gracias por iniciar el proceso de adopción! 🎉</h2>
-            <h3 style="color: #4CAF50;">Hola ${pet.shelter_id.userName},</h3>
-            
-            <p>${pet.name}, una ${pet.pet_type} de ${pet.age} años de edad, ${pet.size} y ${pet.gender}.</p>
-    
-a    
-            <p>${body.hola} ${body.a}  ${body.b} ${body.c} </p>
-    
-            <p>Con cariño,</p>
-            <p>El equipo de Huellitas 🐾</p>
-    
-        </div>`,
+        html: `<div style="font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; padding: 20px; border-radius: 10px;">
+
+        <h2 style="color: #4CAF50;">¡Nuevo pedido de adopción en Huellitas! 🐾</h2>
+        <h3 style="color: #4CAF50;">Hola ${pet.shelter_id.userName},</h3>
+        
+        <p>Hemos recibido una solicitud de adopción para ${pet.name}, una ${pet.pet_type} de ${pet.age} años de edad, ${pet.size} y ${pet.gender}.</p>
+
+        <p>A continuación, encontrarás un resumen de la información proporcionada por el solicitante:</p>
+        <pre style="background-color: #fff; padding: 10px; border-radius: 5px;">${formDataSummary}</pre>
+
+        <p>Por favor, revisa la solicitud y ponte en contacto con el solicitante para continuar con el proceso de adopción.</p>
+
+        <p>Gracias por tu compromiso con el bienestar animal.</p>
+
+        <p>Con cariño,</p>
+        <p>El equipo de Huellitas 🐾</p>
+
+    </div>`,
       };
       transporter.sendMail(mailOptions1, (error, info) => {
         if (error) {
