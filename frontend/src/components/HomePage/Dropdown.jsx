@@ -47,7 +47,7 @@ const Dropdown = ({ title, options, onSelect }) => {
 
       {/* Dropdown panel, visible si isOpen es true */}
       {isOpen && (
-        <div className="left-0  origin-top-left  rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+        <div className="absolute left-0 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-10">
           <div className="py-1">
             {/* Mapea sobre las opciones para crear los elementos del dropdown */}
             {options.map((option, index) => (
