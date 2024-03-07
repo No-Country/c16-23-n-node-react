@@ -124,6 +124,10 @@ const petController = {
       }
 
       const decodedToken = jwt.verify(authHeader, process.env.JWT_SECRET);
+      const isTokenExpired = decodedToken.exp < Date.now() / 1000;
+      if (isTokenExpired) {
+        return res.status(401).json({ error: "Token expirado" });
+      }
 
       const userId = decodedToken.id;
 
@@ -131,6 +135,10 @@ const petController = {
 
       if (!user) {
         return res.status(404).json({ error: "Usuario no encontrado" });
+      }
+
+      if (!pet.shelter_id) {
+        return res.status(404).json({ error: "mascota sin refugio" });
       }
       // envio de mail
       const transporter = nodemailer.createTransport({
@@ -142,7 +150,7 @@ const petController = {
           pass: process.env.NODEMAILER,
         },
       });
-      console.log(pet.shelter_id.email);
+
       const mailOptions1 = {
         from: "conexionhuellitas@gmail.com",
         to: user.email,
@@ -215,8 +223,14 @@ a
       await pet.populate("adopter");
       res.status(200).json(pet);
     } catch (error) {
-      console.error("Error al adoptar mascota:", error);
-      res.status(500).json({ error: "Error interno del servidor" });
+      if (error.name === "TokenExpiredError") {
+        return res.status(401).json({ error: "El token ha expirado, inicie sesión nuevamente" });
+      } else if (error.name === "JsonWebTokenError") {
+        return res.status(401).json({ error: "Token JWT inválido" });
+      } else {
+        console.error("Error al adoptar mascota:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
+      }
     }
   },
 };
