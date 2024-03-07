@@ -1,34 +1,36 @@
 import Navbar from "../../components/shared/Navbar";
 import Footer from "../../components/shared/Footer";
 import PetCardComponent from "../../components/HomePage/PetCardRefined";
-// import pets from "../../data/pets.json";
 import Plus from "/img/others/plus.svg";
-import { TrashIcon } from "@heroicons/react/20/solid";
+import Pencil from "/img/others/pencil.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import usePets from "../../hooks/usePets";
 
 function PetDashboard() {
-  const { petInfo: pets, getPetInfo: getAllPets, deletePetById } = usePets();
+  const {
+    petInfo: pets,
+    getPetInfo: getAllPets,
+    updateAdoptionStatus,
+  } = usePets();
 
   useEffect(() => {
     getAllPets("/pet");
   }, []);
-  console.log("deevuelte :" + pets.length);
 
   const navigate = useNavigate();
-  const handleButtonDelete = async (id, name) => {
+  const handleAdoptionStatus = async (id, adoption_status, name) => {
     try {
-      const confirmDelete = window.confirm(
-        `Seguro que desean eliminar a ${name}?`,
+      const confirmStatusAdoption = window.confirm(
+        `Confirmar que ${name} ha sido adoptado?`,
       );
-      if (confirmDelete) {
-        await deletePetById(id);
-        alert("Mascota Eliminada");
+      if (confirmStatusAdoption) {
+        await updateAdoptionStatus(id);
+        alert("Estado Cambiado! 😎");
         getAllPets("/pet");
       }
     } catch (error) {
-      console.error("Error deleting pet:", error);
+      console.error("Error updating pet:", error);
     }
   };
 
@@ -54,7 +56,7 @@ function PetDashboard() {
               <img src={Plus} alt="Add Pet" />
             </span>
           </div>
-          {pets.length == 28 ? (
+          {pets.length === 0 ? (
             <div className="w-full py-40 text-center ">
               <p>No hay mascotas. Agrega una nueva mascota.</p>
             </div>
@@ -64,16 +66,22 @@ function PetDashboard() {
                 <div key={index} className="w-1/2">
                   <PetCardComponent pet={pet}>
                     <button
-                      className="rounded-full bg-Alert px-3 py-1 font-poppins text-White"
-                      onClick={() => handleButtonDelete(pet._id, pet.name)}
+                      className="rounded-full bg-Alert px-3 py-1 font-poppins text-xs text-White"
+                      onClick={() =>
+                        handleAdoptionStatus(
+                          pet._id,
+                          pet.adoption_status,
+                          pet.name,
+                        )
+                      }
                     >
-                      <TrashIcon className="mr-2 h-5 w-8" />
+                      Adoptad@
                     </button>
                     <button
                       className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
                       onClick={handleButtonEdit}
                     >
-                      Editar
+                      <img src={Pencil} alt="Edit Pet" />
                     </button>
                   </PetCardComponent>
                 </div>

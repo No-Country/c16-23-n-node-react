@@ -63,10 +63,17 @@ const petService = {
       throw new Error(`${error.message}`);
     }
   },
-  editPetById: async (data) => {
-    try {
-      let pet = await Pet.findByIdAndUpdate(data.id, data, { new: true });
-      return pet;
+    editPetById: async (data) => {
+      try {
+        const { id } = data;
+        
+        // Assuming `Pet` is your model and you have a method like `findByIdAndUpdate`
+        const updatedPet = await Pet.findByIdAndUpdate(id,  data , { new: true });
+  
+        if (!updatedPet) {
+          throw new Error('Pet not found');
+        }
+        return updatedPet;
     } catch (error) {
       throw new Error(`${error.message}`);
     }

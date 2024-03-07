@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 
 const usePets = () => {
-  const defaultBaseUrl =
-    "https://c16-23-n-node-react-production.up.railway.app/api";
+  const defaultBaseUrl = "https://c16-23-n-node-react-production.up.railway.app/api";
+
   const [petInfo, setPetInfo] = useState([]);
 
   const getPetInfo = (path = "/pet") => {
@@ -11,16 +11,22 @@ const usePets = () => {
     axios
       .get(url)
       .then((res) => {
+        const pets = res.data.filter((pet) => pet.adoption_status === true);
+        setPetInfo(pets);
         // console.log("Response from API:", res.data);
         setPetInfo(res.data);
+
       })
       .catch((err) => console.error("Error fetching pet info:", err));
   };
 
-  const deletePetById = async (id, name) => {
+  const updateAdoptionStatus = async (id) => {
     const url = `${defaultBaseUrl}/pet/${id}`;
     try {
-      await axios.delete(url);
+      const response = await axios.get(url);
+      const pet = response.data;
+      pet.adoption_status = false;
+      await axios.put(url, pet);
     } catch (error) {
       console.error("Error deleting pet:", error);
     }
@@ -47,7 +53,7 @@ const usePets = () => {
       throw error;
     }
   };
-  return { petInfo, getPetInfo, deletePetById, createPet };
+  return { petInfo, getPetInfo, updateAdoptionStatus, createPet };
 };
 
 export default usePets;
