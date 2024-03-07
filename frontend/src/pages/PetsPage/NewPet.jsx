@@ -72,7 +72,7 @@ function NewPet() {
         </strong>
         
         <form onSubmit={handleSubmit} className="w-full max-w-md rounded-xl p-5">
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-5">
           <input
             type="file"
             multiple
@@ -83,7 +83,9 @@ function NewPet() {
           />
           <label htmlFor="galleryInput" className="cursor-pointer">
             {imagePreview ? (
-              <img src={imagePreview} alt="Pet Preview" width={150} />
+              <img src={imagePreview} alt="Pet Preview" width={150}
+              style={{ borderRadius: imagePreview ? "15%" : "none"  }}
+              />
             ) : (
               <img src={ImageDefault} alt="Add Pet" />
             )}
