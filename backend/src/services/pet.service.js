@@ -10,23 +10,11 @@ const petService = {
 
       const shelter = await Shelter.findById(data.shelter_id);
       console.log(shelter);
-
       // Agregar el ID de la nueva mascota a la lista de mascotas del refugio
       if (shelter) {
         shelter.pets.push(pet._id);
         await shelter.save();
       }
-      // // const {pet_type, name, age, gender, characteristics, shelter_id, status} = data;
-      // // const images = {folder: data.folder, url: data.url};
-      //   pet = {
-      //     pet_type: pet.pet_type,
-      //     shelter_id: pet.shelter_id,
-      //     name: pet.name,
-      //     age: pet.age,
-      //     gender: pet.gender,
-      //     characteristics: pet.characteristics,
-      //     status: pet.status,
-      //   };
       const pet1 = await Pet.findById(pet._id).populate("shelter_id", "address name website");
       return pet1;
     } catch (error) {
@@ -67,8 +55,7 @@ const petService = {
       try {
         const { id } = data;
         
-        // Assuming `Pet` is your model and you have a method like `findByIdAndUpdate`
-        const updatedPet = await Pet.findByIdAndUpdate(id,  data , { new: true });
+        const updatedPet = await Pet.findByIdAndUpdate(id,{ adoption_status },  data , { new: true });
   
         if (!updatedPet) {
           throw new Error('Pet not found');

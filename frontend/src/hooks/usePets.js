@@ -25,22 +25,22 @@ const usePets = () => {
     try {
       const response = await axios.get(url);
       setPetInfo([response.data]);
-      return response.data; 
+      return response.data;
     } catch (error) {
       console.error("Error pet info by ID:", error);
       throw error;
     }
   };
 
-  const updateAdoptionStatus = async (id) => {
+  const updateAdoptionStatus = async (id, currentStatus) => {
     const url = `${defaultBaseUrl}/pet/${id}`;
     try {
       const response = await axios.get(url);
       const pet = response.data;
-      pet.adoption_status = false;
+      pet.adoption_status = !currentStatus;
       await axios.put(url, pet);
     } catch (error) {
-      console.error("Error deleting pet:", error);
+      console.error("Error actualizando estado de adopción:", error);
     }
   };
   const createPet = async (petData) => {
@@ -61,7 +61,7 @@ const usePets = () => {
       alert("Mascota creada correctamente!");
       return response.data;
     } catch (error) {
-      console.error("Error creating pet:", error);
+      console.error("Error creando mascota:", error);
       throw error;
     }
   };

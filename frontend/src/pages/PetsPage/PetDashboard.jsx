@@ -25,7 +25,7 @@ function PetDashboard() {
         `Confirmar que ${name} ha sido adoptado?`,
       );
       if (confirmStatusAdoption) {
-        await updateAdoptionStatus(id);
+        await updateAdoptionStatus(id, adoption_status);;
         alert("Estado Cambiado! 😎");
         getAllPets("/pet");
       }
@@ -42,56 +42,59 @@ function PetDashboard() {
   };
   return (
     <>
-      <Navbar />
-      <main className="select-none bg-Primary pt-16 font-poppins text-black">
-        <strong className="mb-10 ml-5 block pt-5 text-left text-2xl font-bold leading-normal">
-          Tus Mascotas
-        </strong>
-        <section className="mx-5 flex flex-wrap pb-10">
-          <div
-            className="flex w-1/2 items-center justify-center rounded-xl bg-Tertiary"
-            onClick={handleNavigation}
-          >
-            <span className="mx-2">
-              <img src={Plus} alt="Add Pet" />
-            </span>
-          </div>
-          {pets.length === 0 ? (
-            <div className="w-full py-40 text-center ">
-              <p>No hay mascotas. Agrega una nueva mascota.</p>
-            </div>
-          ) : (
-            <>
-              {pets.map((pet, index) => (
-                <div key={index} className="w-1/2">
-                  <PetCardComponent pet={pet}>
-                    <button
-                      className="rounded-full bg-Alert px-3 py-1 font-poppins text-xs text-White"
-                      onClick={() =>
-                        handleAdoptionStatus(
-                          pet._id,
-                          pet.adoption_status,
-                          pet.name,
-                        )
-                      }
-                    >
-                      Adoptad@
-                    </button>
-                    <button
-                      className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                      onClick={handleButtonEdit}
-                    >
-                      <img src={Pencil} alt="Edit Pet" />
-                    </button>
-                  </PetCardComponent>
-                </div>
-              ))}
-            </>
-          )}
-        </section>
-      </main>
-      <Footer />
-    </>
+  <Navbar />
+  <main className="select-none bg-Primary pt-16 font-poppins text-black">
+    <strong className="mb-10 ml-5 block pt-5 text-left text-2xl font-bold leading-normal">
+      Tus Mascotas
+    </strong>
+    <section className="mx-5 flex flex-wrap pb-10">
+      <div
+        className="flex w-1/2 items-center justify-center rounded-xl bg-Tertiary"
+        onClick={handleNavigation}
+      >
+        <span className="mx-2">
+          <img src={Plus} alt="Add Pet" />
+        </span>
+      </div>
+      {!Array.isArray(pets) || (pets.length === 0 || pets.every(pet => pet.adoption_status)) ? (
+        <div className="w-full py-40 text-center ">
+          <p>No hay mascotas. Agrega una nueva mascota.</p>
+        </div>
+      ) : (
+        <>
+          {pets
+            .filter(pet => !pet.adoption_status) 
+            .map((pet, index) => (
+              <div key={index} className="w-1/2">
+                <PetCardComponent pet={pet}>
+                  <button
+                    className="rounded-full bg-Alert px-3 py-1 font-poppins text-xs text-White"
+                    onClick={() =>
+                      handleAdoptionStatus(
+                        pet._id,
+                        pet.adoption_status,
+                        pet.name,
+                      )
+                    }
+                  >
+                    Adoptad@
+                  </button>
+                  <button
+                    className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
+                    onClick={handleButtonEdit}
+                  >
+                    <img src={Pencil} alt="Edit Pet" />
+                  </button>
+                </PetCardComponent>
+              </div>
+            ))}
+        </>
+      )}
+    </section>
+  </main>
+  <Footer />
+</>
+
   );
 }
 
