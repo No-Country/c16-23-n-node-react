@@ -18,7 +18,7 @@ const verified = async (req, res) => {
     shelter.emailVerified = true;
 
     await shelter.save();
-    const url = "http://localhost:5173";
+    const url = "https://c16-23-n-node-react-eta.vercel.app/";
     res.redirect(url);
   } catch (error) {
     res.status(400).json({ error: "Token de verificación inválido o expirado" });
