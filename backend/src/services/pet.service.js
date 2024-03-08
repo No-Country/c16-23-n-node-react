@@ -54,7 +54,7 @@ const petService = {
   },
     editPetById: async (data) => {
       try {
-        const { id } = data;
+        const { id, adoption_status } = data;
         
         const updatedPet = await Pet.findByIdAndUpdate(id,{ adoption_status },  data , { new: true });
   
