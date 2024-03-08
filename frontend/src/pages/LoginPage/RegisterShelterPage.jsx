@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/shared/Navbar";
 import useShelter from "../../hooks/useShelter";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import InfoModal from "../../modals/InfoModal";
 
 function RegisterShelterPage() {
   const { createShelter } = useShelter();
@@ -13,9 +16,18 @@ function RegisterShelterPage() {
     formState: { errors },
   } = useForm();
 
+  const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
+
   const submit = (data) => {
     createShelter(data);
-    alert("¡Hemos enviado un correo de verificación!");
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/loginUser");
   };
 
   return (
@@ -143,6 +155,19 @@ function RegisterShelterPage() {
             </div>
           </form>
         </section>
+         {/* Modal */}
+         {showModal && (
+          <InfoModal
+            title="Registro Exitoso"
+            content={
+              <p>
+                ¡Hemos enviado un correo de verificación! Por favor, revisa tu
+                bandeja de entrada.
+              </p>
+            }
+            closeModal={closeModal}
+          />
+        )}
       </main>
     </>
   );

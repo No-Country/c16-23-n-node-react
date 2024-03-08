@@ -21,7 +21,7 @@ const useShelter = () => {
       console.log(res);
       if (res) {
         console.log("Registrado exitosamente");
-        navigate("/loginShelter");
+        // navigate("/loginShelter");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }
