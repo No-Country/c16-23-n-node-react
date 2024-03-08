@@ -25,6 +25,7 @@ import NewPet from "../pages/PetsPage/NewPet";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
+  const [type, setType] = useLocalStorage("Type");
 
   return (
     <UserProvider>
@@ -55,8 +56,14 @@ function Rutas() {
           >
             <Route path="/adopcionForm" element={<AdopcionFormPage />} />
           </Route>
-          <Route path="/petdashboard" element={<PetDashboard />} />
-          <Route path="/newpet" element={<NewPet />} />
+          <Route
+            element={
+              <ProtectedRoutes canActivate={type == "user"} redirectPath="/" />
+            }
+          >
+            <Route path="/petdashboard" element={<PetDashboard />} />
+            <Route path="/newpet" element={<NewPet />} />
+          </Route>
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/shelters" element={<SheltersPage />} />

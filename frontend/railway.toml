@@ -1,0 +1,5 @@
+[[services]]
+  internal_port = 3000  # Puerto interno utilizado por tu aplicación
+  protocol = "http"
+  script = "npm start"
+  build = "npm run build"
