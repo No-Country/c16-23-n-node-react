@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 
-const InfoModal = ({ title, content }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
+const InfoModal = ({ title, content, isOpen, handleClose }) => {
   return (
     <>
       {isOpen && (

@@ -39,7 +39,7 @@ function LoginPage() {
       <main className="select-none bg-Primary font-poppins text-black">
         <section className="flex min-h-screen items-center justify-center">
           <form
-            className="w-full max-w-md rounded-xl p-6"
+            className="w-full max-w-md rounded-xl p-6 mt-8"
             onSubmit={handleSubmit(submit)}
           >
             <strong className="mb-10 block text-center text-2xl font-bold leading-normal">

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import usePets from "../../hooks/usePets";
 import { PetContext } from "../../context/PetContext";
+import InfoModal from "../../modals/InfoModal"
 
 function NewPet() {
   const { createPet } = usePets();
@@ -13,17 +14,9 @@ function NewPet() {
 
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   age: "",
-  //   pet_type: "",
-  //   size: "",
-  //   gender: "",
-  //   characteristics: "",
-  //   description: "",
-  // });
-  // const [images, setImages] = useState([]);
-  // const [imagePreview, setImagePreview] = useState(null);
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
  const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,9 +38,11 @@ function NewPet() {
     }));
   };
 
-  
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/petdashboard");
+  }; 
 
-  const navigate = useNavigate();
   const handleNavigation = () => {
     navigate(`/PetPreview`);
   };
@@ -57,8 +52,8 @@ function NewPet() {
     try {
       const petDataWithImages = { ...petData, images };
       await createPet(petDataWithImages);
+      setShowModal(true);
       updatePetData(petDataWithImages);
-      navigate("/PetDashboard");
     } catch (error) {
       console.error("Error creating pet:", error);
     }
@@ -215,6 +210,15 @@ function NewPet() {
             </button>
           </div>
         </form>
+         {/* Modal */}
+        {showModal && (
+          <InfoModal
+            title="Registro Exitoso"
+            content={<p>{`${petData.name} ha sido creado/a correctamente!`}</p>}
+            isOpen={showModal} 
+            handleClose={closeModal} 
+          />
+        )}
         <Footer />
       </main>
     </>

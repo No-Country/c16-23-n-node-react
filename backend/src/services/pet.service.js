@@ -6,6 +6,7 @@ const petService = {
   createPet: async (data) => {
     console.log(data);
     try {
+      console.log("Envio datos mascotas: ", data); 
       let pet = await Pet.create(data);
 
       const shelter = await Shelter.findById(data.shelter_id);

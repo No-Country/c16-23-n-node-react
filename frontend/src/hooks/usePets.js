@@ -58,7 +58,7 @@ const usePets = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      alert("Mascota creada correctamente!");
+      // alert("Mascota creada correctamente!");
       return response.data;
     } catch (error) {
       console.error("Error creando mascota:", error);
