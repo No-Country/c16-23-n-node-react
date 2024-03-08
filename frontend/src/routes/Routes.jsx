@@ -47,10 +47,10 @@ function Rutas() {
             <ProtectedRoutes canActivate={user} redirectPath="/loginUser" />
           }
         >
+        </Route>
         <Route path="/petdashboard" element={<PetDashboard />} />
         <Route path="/newpet" element={<NewPet />} />
         <Route path="/adopcionForm" element={<AdopcionFormPage />} />
-        </Route>
         <Route path="/" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/shelters" element={<SheltersPage />} />

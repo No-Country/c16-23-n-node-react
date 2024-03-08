@@ -159,13 +159,9 @@ function RegisterShelterPage() {
          {showModal && (
           <InfoModal
             title="Registro Exitoso"
-            content={
-              <p>
-                ¡Hemos enviado un correo de verificación! Por favor, revisa tu
-                bandeja de entrada.
-              </p>
-            }
-            closeModal={closeModal}
+            content={<p>{`¡Hemos enviado un correo de Verificación. Por favor, revisar tu bandeja de entrada!`}</p>}
+            isOpen={showModal}
+            handleClose={closeModal}
           />
         )}
       </main>
