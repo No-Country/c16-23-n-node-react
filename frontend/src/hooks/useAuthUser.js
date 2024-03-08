@@ -17,7 +17,7 @@ function useAuthUser() {
       const res = await axios.post(url, data);
       if (res) {
         console.log("Registrado exitosamente");
-        navigate("/loginUser");
+        // navigate("/loginUser");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
       }

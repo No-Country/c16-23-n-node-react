@@ -15,6 +15,7 @@ function RegisterShelterPage() {
 
   const submit = (data) => {
     createShelter(data);
+    alert("¡Hemos enviado un correo de verificación!");
   };
 
   return (

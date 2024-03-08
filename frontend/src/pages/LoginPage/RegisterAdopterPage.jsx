@@ -2,6 +2,9 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/shared/Navbar";
 import useAuthUser from "../../hooks/useAuthUser";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import InfoModal from "../../modals/InfoModal";
 
 function RegisterAdopterPage() {
   const { createUser } = useAuthUser();
@@ -10,11 +13,19 @@ function RegisterAdopterPage() {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  // const navigate = useNavigate();
 
-  // eslint-disable-next-line no-unused-vars
+  const [showModal, setShowModal] = useState(false);
+
+  const navigate = useNavigate();
+
   const submit = async (data) => {
     createUser(data);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/loginUser");
   };
 
   return (
@@ -163,6 +174,19 @@ function RegisterAdopterPage() {
             </div>
           </form>
         </section>
+         {/* Modal */}
+         {showModal && (
+          <InfoModal
+            title="Registro Exitoso"
+            content={
+              <p>
+                ¡Hemos enviado un correo de verificación! Por favor, revisa tu
+                bandeja de entrada.
+              </p>
+            }
+            closeModal={closeModal}
+          />
+        )}
       </main>
     </>
   );
