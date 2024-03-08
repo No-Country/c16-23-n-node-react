@@ -58,7 +58,7 @@ const petsSchema = new mongoose.Schema({
   adoption_status: {
     type: Boolean,
     required: true,
-    default: true,
+    default: false,
   },
   images: [
     {
