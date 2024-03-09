@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import usePets from "../../hooks/usePets";
 import useShelter from "../../hooks/useShelter";
 import ModalAdoption from "./ModalAdoption";
 
 function FormAdoption() {
   const [opcionesSeleccionadas, setOpcionesSeleccionadas] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const { getPetInfoById } = usePets();
   const { id } = useParams();
 
   const {
@@ -46,6 +48,7 @@ function FormAdoption() {
       const formData = {
         ...data,
         id: id,
+        shelter_id: pet.shelter_id,
         tuvoMascota: data.tuvoMascota.split(", "),
         actividades: opcionesSeleccionadas,
       };
