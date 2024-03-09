@@ -66,8 +66,8 @@ const shelterService = {
       let shelterUser = await Shelter.findOne({ email });
 
       if (!shelterUser || shelterUser.emailVerified === false) throw new Error("Email o Contraseña no válidas");
-      if (await shelterUser.verifyPassword(password)) {
-        const token = await generateToken(shelterUser._id);
+      if (shelterUser.verifyPassword(password)) {
+        const token = generateToken(shelterUser._id);
         shelterUser = {
           name: shelterUser.name,
           userName: shelterUser.userName,
