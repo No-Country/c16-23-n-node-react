@@ -44,9 +44,8 @@ function FormAdoption() {
   const { registerAdoption } = useShelter();
 
   const onSubmit = async (data) => {
-
     const pet = await getPetInfoById(id);
-    
+
     try {
       const formData = {
         ...data,
@@ -197,10 +196,10 @@ function FormAdoption() {
               id="deAcuerdo"
             >
               <option value="">Selecciona</option>
-              <option value="si" className="text-White bg-TertiaryDark">
+              <option value="si" className="bg-TertiaryDark text-White">
                 Sí
               </option>
-              <option value="no" className="text-White bg-TertiaryDark">
+              <option value="no" className="bg-TertiaryDark text-White">
                 No
               </option>
             </select>
@@ -411,10 +410,10 @@ function FormAdoption() {
               id="contactoPermanente"
             >
               <option value="">Selecciona</option>
-              <option value="si" className="text-White bg-TertiaryDark">
+              <option value="si" className="bg-TertiaryDark text-White">
                 Sí
               </option>
-              <option value="no" className="text-White bg-TertiaryDark">
+              <option value="no" className="bg-TertiaryDark text-White">
                 No
               </option>
             </select>
