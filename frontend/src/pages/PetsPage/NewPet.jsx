@@ -6,11 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import usePets from "../../hooks/usePets";
 import { PetContext } from "../../context/PetContext";
+import { AuthContext } from "../../context/AuthContext";
 import InfoModal from "../../modals/InfoModal"
 
 function NewPet() {
   const { createPet } = usePets();
   const { setPetData, petData, updatePetData } = useContext(PetContext);
+  const { id } = useContext(AuthContext);
+
+  const shelter_id = id.replace(/^"|"$/g, "");
 
   const [images, setImages] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
@@ -35,6 +39,7 @@ function NewPet() {
     setPetData((prevData) => ({
       ...prevData,
       image: imageUrl,
+      shelter_id: shelter_id,
     }));
   };
 
@@ -52,6 +57,7 @@ function NewPet() {
     try {
       const petDataWithImages = { ...petData, images };
       await createPet(petDataWithImages);
+      localStorage.setItem("formData", JSON.stringify(petDataWithImages));
       setShowModal(true);
       updatePetData(petDataWithImages);
     } catch (error) {
