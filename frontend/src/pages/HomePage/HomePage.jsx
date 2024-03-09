@@ -77,7 +77,9 @@ function HomePage() {
           </div>
 
           <article className="flex flex-wrap">
-            {pets.map((pet, index) => (
+            {pets
+            .filter(pet => !pet.adoption_status)
+            .map((pet, index) => (
               <div key={index} className="w-1/2">
                 <PetCard pet={pet} uso={"home"} />
               </div>
