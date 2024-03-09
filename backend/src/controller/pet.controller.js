@@ -116,17 +116,21 @@ const petController = {
       const id = req.params._id;
 
       const pet = await petService.getPetById(id);
+      
       const data = req.body;
-      console.log("DATA!!!", data);
 
-      const authHeader = req.headers.bearer;
-      console.log(authHeader);
-      if (!authHeader) {
+      const authHeader = req.headers.authorization;
+
+      const tokenAuth = authHeader.match(/"([^"]+)"/)[1];
+      
+      if (!tokenAuth) {
         return res.status(401).json({ error: "Token de autenticación vacío" });
       }
 
-      const decodedToken = jwt.verify(authHeader, process.env.JWT_SECRET);
+      const decodedToken = jwt.verify(tokenAuth, process.env.JWT_SECRET);
+      
       const isTokenExpired = decodedToken.exp < Date.now() / 1000;
+      
       if (isTokenExpired) {
         return res.status(401).json({ error: "Token expirado" });
       }
@@ -142,6 +146,7 @@ const petController = {
       if (!pet.shelter_id) {
         return res.status(404).json({ error: "mascota sin refugio" });
       }
+      
       // envio de mail
       const formDataSummary = `
       Resumen del Formulario de Adopción:
