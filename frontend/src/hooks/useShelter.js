@@ -62,16 +62,13 @@ const useShelter = () => {
   async function registerAdoption(data, path = "") {
     const baseUrl =
       "https://c16-23-n-node-react-production.up.railway.app/api/pet";
-
     const url = `${baseUrl}${path}`;
     const configToken = getConfigToken();
     try {
-      console.log(url, data, configToken);
       const response = await axios.put(url, data, configToken);
-      console.log(response);
       setAdoption(response.data);
     } catch (error) {
-      console.error("Error registering adoption:", error);
+      console.error("Error registering adoption:", error.message);
       throw error;
     }
   }
