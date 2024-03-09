@@ -44,6 +44,9 @@ function FormAdoption() {
   const { registerAdoption } = useShelter();
 
   const onSubmit = async (data) => {
+
+    const pet = await getPetInfoById(id);
+    
     try {
       const formData = {
         ...data,
