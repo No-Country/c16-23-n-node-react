@@ -252,7 +252,7 @@ const petController = {
       });
 
       pet.adopter = user._id;
-      pet.adoption_status = false;
+      pet.adoption_status = true;
 
       await pet.save();
 
