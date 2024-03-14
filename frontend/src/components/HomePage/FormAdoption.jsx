@@ -55,7 +55,6 @@ function FormAdoption() {
         actividades: opcionesSeleccionadas,
       };
       await registerAdoption(formData, `/adopt/${id}`);
-      localStorage.setItem("formData", JSON.stringify(formData));
       reset();
       setShowModal(true);
     } catch (error) {
