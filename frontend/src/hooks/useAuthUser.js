@@ -25,6 +25,7 @@ function useAuthUser() {
       console.error(
         "Error al iniciar sesión",
         error.response?.data || error.message,
+        alert(`Error al crear usuario: ${error.response?.data.message}`)
       );
     }
   }
