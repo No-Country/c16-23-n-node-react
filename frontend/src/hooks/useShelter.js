@@ -20,7 +20,6 @@ const useShelter = () => {
       const res = await axios.post(url, data);
       console.log(res);
       if (res) {
-        console.log("Registrado exitosamente");
         // navigate("/loginShelter");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
@@ -46,7 +45,6 @@ const useShelter = () => {
           res.data.shelterUser.name,
           res.data.shelterUser._id,
         );
-        console.log("Inicio de sesión exitoso");
         navigate("/petdashboard");
       } else {
         console.error("Error: Respuesta inesperada del servidor");
