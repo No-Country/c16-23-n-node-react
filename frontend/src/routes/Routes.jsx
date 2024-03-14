@@ -22,6 +22,9 @@ import UpdateUserPasswordPage from "../pages/UserProfilePage/UpdateUserPasswordP
 import AdopcionFormPage from "../pages/PetsPage/AdopcionFormPage";
 import PetDashboard from "../pages/PetsPage/PetDashboard";
 import NewPet from "../pages/PetsPage/NewPet";
+import UploadImagesPage from "../pages/PetsPage/UploadImagesPage";
+import PetPreview from "../pages/PetsPage/PetPreview";
+import UpdatePetPage from "../pages/PetsPage/UpdatePetPage";
 
 function Rutas() {
   const [user, setUser] = useLocalStorage("user");
@@ -31,6 +34,7 @@ function Rutas() {
     <UserProvider>
       <PetProvider>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/loginUser" element={<LoginPage />} />
           <Route path="/loginShelter" element={<LoginPage />} />
           <Route path="/loginTypes" element={<TypeRegister />} />
@@ -44,7 +48,6 @@ function Rutas() {
           />
           <Route path="/petInformation/:id" element={<PetInformationPage />} />
           <Route path="/logout" element={<LogoutPage />} />
-
           <Route
             path="/shelterInformation/:id"
             element={<ShelterInformationPage />}
@@ -56,13 +59,12 @@ function Rutas() {
           >
             <Route path="/adopcionForm" element={<AdopcionFormPage />} />
           </Route>
-
           <Route path="/petdashboard" element={<PetDashboard />} />
-          <Route path="/newpet" element={<NewPet />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/petPreview" element={<PetPreview />} />
+          <Route path="/newPet" element={<NewPet />} />
+          <Route path="/updatePet" element={<UpdatePetPage />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/shelters" element={<SheltersPage />} />
-          <Route path="*" element={<NotFound404Page />} />
           <Route path="/userprofile" element={<UserProfilePage />} />
           <Route path="/shelterprofile" element={<ShelterProfilePage />} />
           <Route
@@ -74,6 +76,8 @@ function Rutas() {
             element={<UpdateUserPasswordPage />}
           />
           <Route path="/adopcionForm/:id" element={<AdopcionFormPage />} />
+          <Route path="/uploadImages" element={<UploadImagesPage />} />
+          <Route path="*" element={<NotFound404Page />} />
         </Routes>
       </PetProvider>
     </UserProvider>
@@ -81,3 +85,4 @@ function Rutas() {
 }
 
 export default Rutas;
+
