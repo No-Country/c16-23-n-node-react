@@ -199,7 +199,7 @@ const Navbar = () => {
               Sobre Nosotros
             </Link>
           </li>
-          {context.type == "shelter" && (
+          {context.type === "shelter" && context.login && (
             <li>
               <Link
                 onClick={handleClick}

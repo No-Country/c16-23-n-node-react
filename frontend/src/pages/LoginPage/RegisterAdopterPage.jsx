@@ -19,12 +19,8 @@ function RegisterAdopterPage() {
   const navigate = useNavigate();
 
   const submit = async (data) => {
-    try {
-      await createUser(data);
-      setShowModal(true);
-    } catch (error) {
-      alert("Error al crear el usuario: " + error.message);
-    }
+    createUser(data);
+    setShowModal(true);
   };
 
   const closeModal = () => {
