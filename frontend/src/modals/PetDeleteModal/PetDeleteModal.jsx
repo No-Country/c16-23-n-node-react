@@ -1,31 +1,47 @@
-const PetDeleteModal = () => {
-    return (
-        <div className="sm:bg-PrimaryDark sm:w-296 sm:h-328 sm:rounded-2xl sm:py-4 sm:pl-4 sm:pr-4 sm:flex sm:flex-col sm:align-center sm:gap-4"> 
-            
-                <div className="sm:h-7 sm:gap-2.5 sm:flex sm:flex-col sm:items-end"> 
-                    <div className="sm:w-full sm:h-full sm:flex sm:justify-end">
-                        {/* <img src="" alt="" /> */}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-</svg>
-
-                    </div>
-                </div>
-
-                <div className="sm:w-full sm:h-180"> 
-                    <p className="sm:text-SecondaryDark sm:font-poppins sm:font-semibold sm:text-2xl sm:leading-9 text-center">¿Estás seguro de que quieres eliminar esta mascota?</p>
-                </div>
-
-                <div className=" sm:h-14 sm:flex sm:justify-center sm:items-end">  
-                    <button className="sm:bg-Alert sm:text-White sm:w-171 sm:h-10 sm:rounded-2xl sm:font-poppins sm:font-semibold sm:text-base sm:text-center">Eliminar</button>
-                </div>  
-                
-                <div className="sm:flex sm:justify-center sm:items-end">  
-                    <button className="sm:bg-TertiaryDark sm:text-White sm:w-171 sm:h-10 sm:rounded-2xl sm:font-poppins sm:font-semibold sm:text-base sm:text-center">Cancelar</button>
-                </div>
-           
+const PetDeleteModal = ({ setShowModal, handlePetDelete }) => {
+  return (
+    <div className="fixed inset-0 z-30 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
+      <div className="h-300 relative w-296 max-w-md rounded-lg bg-PrimaryDark p-8 shadow-lg">
+        <div className="absolute right-0 top-0">
+          <button
+            className="p-2 text-SecondaryDark hover:text-gray-700"
+            onClick={() => setShowModal(false)}
+          >
+            <svg
+              className="h-12 w-12 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M13.657 6.343a.5.5 0 0 1 .708.707L10.707 10l3.658 3.657a.5.5 0 1 1-.708.708L10 10.707l-3.657 3.658a.5.5 0 1 1-.708-.708L9.293 10 5.636 6.343a.5.5 0 0 1 .708-.707L10 9.293l3.657-3.657z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
         </div>
-    )
-}
+        <div className="mt-12 text-center">
+          <p className="mb-6 text-2xl font-semibold text-SecondaryDark">
+            ¿Estás seguro de que quieres eliminar esta mascota?
+          </p>
+          <div className="flex flex-col items-center justify-center gap-5">
+            <button
+              className="w-180 rounded-2xl bg-Alert px-4 py-2 font-semibold text-white hover:bg-blue-600"
+              onClick={handlePetDelete}
+            >
+              Eliminar
+            </button>
+            <button
+              className="w-180 rounded-2xl bg-TertiaryDark px-4 py-2 font-semibold text-white hover:bg-blue-600"
+              onClick={() => setShowModal(false)}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default PetDeleteModal
+export default PetDeleteModal;
