@@ -93,9 +93,7 @@ const petController = {
     try {
       const data = req.body;
       data.id = req.params._id;
-      console.log(data.id);
       const pet = await petService.editPetById(data);
-      console.log(data);
       return res.status(200).json(pet);
     } catch (error) {
       return res.status(404).json({ message: error.message });
@@ -105,7 +103,6 @@ const petController = {
     try {
       const id = req.params._id;
       const pet = await petService.deletePetById({ id });
-      console.log(pet);
       return res.status(200).json(pet);
     } catch (error) {
       return res.status(404).json({ message: error.message });
@@ -116,21 +113,21 @@ const petController = {
       const id = req.params._id;
 
       const pet = await petService.getPetById(id);
-      
+
       const data = req.body;
 
       const authHeader = req.headers.authorization;
 
       const tokenAuth = authHeader.match(/"([^"]+)"/)[1];
-      
+
       if (!tokenAuth) {
         return res.status(401).json({ error: "Token de autenticación vacío" });
       }
 
       const decodedToken = jwt.verify(tokenAuth, process.env.JWT_SECRET);
-      
+
       const isTokenExpired = decodedToken.exp < Date.now() / 1000;
-      
+
       if (isTokenExpired) {
         return res.status(401).json({ error: "Token expirado" });
       }
@@ -146,7 +143,7 @@ const petController = {
       if (!pet.shelter_id) {
         return res.status(404).json({ error: "mascota sin refugio" });
       }
-      
+
       // envio de mail
       const formDataSummary = `
       Resumen del Formulario de Adopción:
@@ -168,7 +165,9 @@ const petController = {
       Acceso a las Siguientes Opciones: ${data.actividades.join(", ")}
       Motivo de Adopción: ${data.motivoAdopcion}
       Motivo por el Cuál Devolverías la Mascota: ${data.motivoDevolucion}
-      Estás de Acuerdo con que el Refugio Permanezca en Contacto Contigo: ${data.contactoPermanente}
+      Estás de Acuerdo con que el Refugio Permanezca en Contacto Contigo: ${
+        data.contactoPermanente
+      }
     `;
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -253,14 +252,14 @@ const petController = {
 
       pet.adopter = user._id;
       pet.adoption_status = true;
-
       await pet.save();
-
       await pet.populate("adopter");
       res.status(200).json(pet);
     } catch (error) {
       if (error.name === "TokenExpiredError") {
-        return res.status(401).json({ error: "El token ha expirado, inicie sesión nuevamente" });
+        return res
+          .status(401)
+          .json({ error: "El token ha expirado, inicie sesión nuevamente" });
       } else if (error.name === "JsonWebTokenError") {
         return res.status(401).json({ error: "Token JWT inválido" });
       } else {
