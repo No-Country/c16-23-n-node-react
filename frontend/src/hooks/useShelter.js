@@ -46,6 +46,7 @@ const useShelter = () => {
           res.data.shelterUser.name,
           res.data.shelterUser._id,
         );
+        alert("Inicio de sesión exitoso");
         console.log("Inicio de sesión exitoso");
         navigate("/petdashboard");
       } else {

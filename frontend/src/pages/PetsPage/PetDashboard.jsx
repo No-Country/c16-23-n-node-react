@@ -34,8 +34,8 @@ function PetDashboard() {
     }
   };
 
-  function handleButtonEdit() {
-    alert("Próximamente se Editarás a Firuly");
+  function handleButtonEdit(petName) {
+    alert(`Próximamente se Editarás a ${petName}`);
   }
   const handleNavigation = () => {
     navigate(`/newpet`);
@@ -81,7 +81,7 @@ function PetDashboard() {
                   </button>
                   <button
                     className="rounded-full bg-Tertiary px-3 py-1 font-poppins text-White"
-                    onClick={handleButtonEdit}
+                    onClick={() => handleButtonEdit(pet.name)}
                   >
                     <img src={Pencil} alt="Edit Pet" />
                   </button>

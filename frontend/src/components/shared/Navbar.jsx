@@ -203,7 +203,7 @@ const Navbar = () => {
             <li>
               <Link
                 onClick={handleClick}
-                to="/petDashboard"
+                to="/petdashboard"
                 className="text-shadow-sm text-xl font-bold text-white hover:text-blue-600 active:text-zinc-600"
               >
                 Mis mascotas
